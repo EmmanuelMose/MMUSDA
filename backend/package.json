@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "push": "drizzle-kit push",
+    "generate": "drizzle-kit generate",
+    "migrate": "node src/drizzle/migrate.js",
+    "seed": "node src/drizzle/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.1",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.0",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.8",
+    "nodemon": "^3.1.11"
+  }
+}
