@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-//import logo1 from '../../../frontend/src/assets/images/logo1';
+import logo1 from "../../assets/images/logo1.jpeg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ const Navbar = () => {
         <ul className={isOpen ? 'nav-links open' : 'nav-links'}>
           <li>
             <a href="#" className="logo-link">
-              <img src="" alt="SDA Logo" className="logo" />
+              <img src={logo1} alt="SDA Logo" className="logo" />
               <span>MMUSDA</span>
             </a>
           </li>
