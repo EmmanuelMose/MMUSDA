@@ -41,7 +41,7 @@
 
 /* ---- IMAGE SLIDER ---- */
 .home-container {
-  height: 260px;          /* Increased size */
+  height: 280px;          /* Taller container */
   margin-left: 30px;
   margin-right: 50px;
   background: whitesmoke;
@@ -51,7 +51,7 @@
   position: relative;
   border-radius: 12px;
 
-  padding: 8px;           /* Space around the image */
+  padding: 10px;           /* Space around the image */
   box-sizing: border-box;
 
   box-shadow: 0 4px 15px rgba(255, 165, 0, 0.6);
@@ -59,11 +59,10 @@
 }
 
 .slider-image {
-  height: 100%;
-  width: 100%;
-
-  border-radius: 8px;
-  object-fit: cover;      /* Fill the whole area nicely */
+  height: calc(100% - 20px);   /* 10px space top & bottom */
+  width: calc(100% - 20px);    /* 10px space left & right */
+  border-radius: 7px;          /* Rounded corners */
+  object-fit: cover;
   transition: opacity 0.5s ease-in-out;
 }
 
