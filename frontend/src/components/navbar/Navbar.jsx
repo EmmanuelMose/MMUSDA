@@ -37,7 +37,9 @@ const Navbar = () => {
           <li><a href="#">Contact</a></li>
           <li><a href="#">Offering</a></li>
           <li><a href="#">Evangelism</a></li>
+          <li><a href="#">Leadership</a></li>
           <li><a href="#">Music</a></li>
+          <li><a href="#">Others</a></li>
         </ul>
       </div>
     </nav>
