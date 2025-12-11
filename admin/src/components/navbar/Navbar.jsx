@@ -4,7 +4,7 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <div>
-      <h1>Welcome to mmusda website</h1>
+      <h1>Welcome to mmusda website Admin page</h1>
     </div>
   );
 };
