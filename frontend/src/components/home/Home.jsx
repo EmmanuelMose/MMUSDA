@@ -2,16 +2,19 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 
 // Importing images
-import logo1 from "../../assets/images/logo1.jpeg";
-import logo2 from "../../assets/images/logo2.png";
-import logo3 from "../../assets/images/logo3.png";
+//import logo1 from "../../assets/images/logo1";
+import image1 from "../../assets/images/image1.jpeg";
+import image2 from "../../assets/images/image2.jpg";
+import image3 from "../../assets/images/image3.jpg";
+import image4 from "../../assets/images/image4.jpg";
+import image5 from "../../assets/images/image5.jpg";
 
 // Repeat these images to make 12 total
 const images = [
-  logo1, logo2, logo3,
-  logo1, logo2, logo3,
-  logo1, logo2, logo3,
-  logo1, logo2, logo3
+  image1, image2, image3,
+  image4, image5, image1,
+  image2, image3, image4,
+  image5, image1, image2
 ];
 
 const Home = () => {
