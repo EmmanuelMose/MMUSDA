@@ -41,7 +41,7 @@
 
 /* ---- IMAGE SLIDER ---- */
 .home-container {
-  height: 280px;          /* Taller container */
+  height: 430px;          /* Default height */
   margin-left: 30px;
   margin-right: 50px;
   background: whitesmoke;
@@ -51,7 +51,7 @@
   position: relative;
   border-radius: 12px;
 
-  padding: 10px;           /* Space around the image */
+  padding: 5px;           /* 5px space around the image */
   box-sizing: border-box;
 
   box-shadow: 0 4px 15px rgba(255, 165, 0, 0.6);
@@ -59,11 +59,13 @@
 }
 
 .slider-image {
-  height: calc(100% - 20px);   /* 10px space top & bottom */
-  width: calc(100% - 20px);    /* 10px space left & right */
-  border-radius: 7px;          /* Rounded corners */
+  height: 100%;
+  width: 100%;
+  margin: 5px;            /* 5px margin all around */
+  border-radius: 7px;
   object-fit: cover;
-  transition: opacity 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  box-sizing: border-box;
 }
 
 /* Arrows */
@@ -137,4 +139,25 @@
 
 .info-card p {
   color: #555;
+}
+
+/* ---- RESPONSIVE ---- */
+@media screen and (max-width: 1200px) {
+  .home-container {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-container {
+    height: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-container {
+    height: 250px;
+  }
 }
