@@ -1,10 +1,10 @@
 import React from "react";
-import "./Navbar.css";   
+import Navbar from "./components/navbar/Navbar";  
 
 const Navbar = () => {
   return (
     <div>
-      <h1>Welcome to mmusda church website users  page</h1>
+      <Navbar />
     </div>
   );
 };
