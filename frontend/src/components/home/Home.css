@@ -41,7 +41,7 @@
 
 /* ---- IMAGE SLIDER ---- */
 .home-container {
-  height: 100px;
+  height: 260px;          /* Increased size */
   margin-left: 30px;
   margin-right: 50px;
   background: whitesmoke;
@@ -49,7 +49,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  border-radius: 10px;
+  border-radius: 12px;
+
+  padding: 8px;           /* Space around the image */
+  box-sizing: border-box;
 
   box-shadow: 0 4px 15px rgba(255, 165, 0, 0.6);
   overflow: hidden;
@@ -57,9 +60,10 @@
 
 .slider-image {
   height: 100%;
-  width: auto;
-  object-fit: cover;
+  width: 100%;
+
   border-radius: 8px;
+  object-fit: cover;      /* Fill the whole area nicely */
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -68,23 +72,23 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 22px;
-  padding: 8px 12px;
+  font-size: 28px;
+  padding: 10px 14px;
   color: white;
-  background: rgba(255, 140, 0, 0.85);
+  background: rgba(255, 140, 0, 0.9);
   border-radius: 50%;
   cursor: pointer;
   border: none;
-  z-index: 10;
+  z-index: 20;
   transition: 0.3s;
 }
 
 .arrow:hover {
-  background: rgba(255, 69, 0, 0.9);
+  background: darkblue;
 }
 
-.left-arrow { left: 10px; }
-.right-arrow { right: 10px; }
+.left-arrow { left: 15px; }
+.right-arrow { right: 15px; }
 
 /* ---- EXTRA INFO SECTION ---- */
 .home-info {
