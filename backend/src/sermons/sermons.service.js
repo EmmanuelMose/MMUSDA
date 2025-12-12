@@ -1,6 +1,7 @@
 // src/services/sermons.service.js
 import { db } from '../Drizzle/db.js';
 import { sermons } from '../Drizzle/schema.js';
+import { desc, eq } from 'drizzle-orm'; // Import desc and eq
 
 const SermonsService = {
   // Fetch latest 3 sermons
@@ -8,7 +9,7 @@ const SermonsService = {
     return await db
       .select()
       .from(sermons)
-      .orderBy(sermons.sermonDate.desc())
+      .orderBy(desc(sermons.sermonDate)) //  Use desc helper
       .limit(3);
   },
 
@@ -17,7 +18,7 @@ const SermonsService = {
     return await db
       .select()
       .from(sermons)
-      .orderBy(sermons.sermonDate.desc());
+      .orderBy(desc(sermons.sermonDate)); //  Use desc helper
   },
 
   // Create a new sermon
@@ -33,7 +34,7 @@ const SermonsService = {
   deleteSermon: async (sermonId) => {
     const result = await db
       .delete(sermons)
-      .where(sermons.sermonId.eq(sermonId));
+      .where(eq(sermons.sermonId, sermonId)); // ✅ Use eq helper
     return result;
   },
 };
