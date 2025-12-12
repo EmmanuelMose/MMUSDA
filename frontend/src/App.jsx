@@ -1,15 +1,31 @@
 import React from "react";
-import Navbar from "./components/navbar/Navbar";
-import Home from "./components/home/Home";
-import Main from "./components/main/Main";
- 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LandingPage from "../../frontend/src/pages/LandingPage";
+import { Toaster } from "sonner";
+import "./App.css"; 
+
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LandingPage />, 
+    },
+  ]);
+
   return (
-    <div>
-      <Navbar />
-      <Home />
-      <Main />
-    </div>
+    <>
+      <RouterProvider router={router} />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          classNames: {
+            error: "error-toast",
+            success: "success-toast",
+            info: "info-toast",
+          },
+        }}
+      />
+    </>
   );
 }
 

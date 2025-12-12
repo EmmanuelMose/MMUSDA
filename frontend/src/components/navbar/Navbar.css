@@ -103,6 +103,7 @@ body {
   transform: rotate(360deg);
 }
 
+/* Dropdown styling */
 .dropdown {
   position: relative;
 }
@@ -111,10 +112,11 @@ body {
   display: none;
   position: absolute;
   background-color: #001f3f;
-  min-width: 160px;
+  min-width: 180px;
   border-radius: 5px;
   overflow: hidden;
   top: 100%;
+  z-index: 2000;
 }
 
 .dropdown-content a {
@@ -141,6 +143,7 @@ body {
   transform: rotate(180deg);
 }
 
+/* Mobile menu */
 .menu-icon {
   display: none;
   font-size: 2.2rem;
@@ -198,6 +201,7 @@ body {
   }
 }
 
+/* Animations */
 @keyframes fadeInDown {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }

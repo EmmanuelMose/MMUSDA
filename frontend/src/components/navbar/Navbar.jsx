@@ -29,17 +29,33 @@ const Navbar = () => {
               <a href="#">Our History</a>
               <a href="#">Beliefs</a>
               <a href="#">Mission and Vision</a>
-              <a href="#">Homechurches</a>
-              <a href="#">Families</a>
             </div>
           </li>
           <li><a href="#">Events</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="#">Offering</a></li>
-          <li><a href="#">Evangelism</a></li>
-          <li><a href="#">Leadership</a></li>
-          <li><a href="#">Music</a></li>
-          <li><a href="#">Others</a></li>
+          <li className="dropdown">
+            <a href="#" className="dropbtn">Evangelism <span className="arrow">▼</span></a>
+            <div className="dropdown-content">
+              <a href="#">Sermons</a>
+              <a href="#">Lesson Discussion</a>
+              <a href="#">Books</a>
+              <a href="#">Bible</a>
+              <a href="#">Semons</a>
+              <a href="#">Missions</a>
+              <a href="#">Choirs</a>
+            </div>
+          </li>
+          <li className="dropdown">
+            <a href="#" className="dropbtn">Others <span className="arrow">▼</span></a>
+            <div className="dropdown-content">
+              <a href="#">Announcements</a>
+              <a href="#">Homechurches</a>
+              <a href="#">Families</a>
+              <a href="#">Prayer Requests</a>
+              <a href="#">Donations</a>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>
