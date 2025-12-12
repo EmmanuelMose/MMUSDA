@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getInitialSermons, getAllSermons } from "./sermonsAPI";
+import { getInitialSermons, getAllSermons } from "../../Features/sermons/sermonsAPI";
 import "./Sermons.css";
 
 const Sermons = () => {
