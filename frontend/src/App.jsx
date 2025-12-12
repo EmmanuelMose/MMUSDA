@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "../../frontend/src/pages/LandingPage";
 import { Toaster } from "sonner";
 import "./App.css"; 
+//import Sermons from "../../frontend/src/components/sermons/Sermons"
 
 function App() {
   const router = createBrowserRouter([
