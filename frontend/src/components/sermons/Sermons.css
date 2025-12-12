@@ -1,0 +1,56 @@
+.sermons-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sermons-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.sermon-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: transform 0.2s;
+}
+
+.sermon-card:hover {
+  transform: translateY(-5px);
+}
+
+.sermon-card h3 {
+  margin-bottom: 5px;
+}
+
+.sermon-card p {
+  margin-bottom: 10px;
+}
+
+.sermon-card a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.sermon-card a:hover {
+  text-decoration: underline;
+}
+
+.toggle-btn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #ffd700;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 50px;
+}
