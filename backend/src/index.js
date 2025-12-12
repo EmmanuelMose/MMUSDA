@@ -8,8 +8,8 @@ const initializeApp = () => {
   const app = express();
 
   const allowedOrigins = [
-    "http://localhost:5173",
-    "http://localhost:3000"
+    "https://mmusda.vercel.app",
+    "https://mmusdaadmin.vercel.app"
   ];
 
   // Middleware
