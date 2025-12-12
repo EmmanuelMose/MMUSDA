@@ -1,5 +1,5 @@
 // src/controllers/sermons.controller.js
-import SermonsService from '../services/sermons.service.js';
+import SermonsService from '../sermons/sermons.service.js';
 
 const SermonsController = {
   // GET /api/sermons/initial

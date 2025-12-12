@@ -1,12 +1,13 @@
 // src/routes/sermons.router.js
 import express from 'express';
-import SermonsController from '../controllers/sermons.controller.js';
+import SermonsController from '../sermons/sermons.controller.js';
 
-const router = express.Router();
+const sermonsRouter = express.Router(); // Use this name
 
-router.get('/initial', SermonsController.getInitialSermons);  // First 3 sermons
-router.get('/all', SermonsController.getAllSermons);          // All sermons
-router.post('/', SermonsController.createSermon);             // Create sermon
-router.delete('/:id', SermonsController.deleteSermon);        // Delete sermon by ID
+// Define routes
+sermonsRouter.get('/initial', SermonsController.getInitialSermons);  // First 3 sermons
+sermonsRouter.get('/all', SermonsController.getAllSermons);          // All sermons
+sermonsRouter.post('/', SermonsController.createSermon);             // Create sermon
+sermonsRouter.delete('/:id', SermonsController.deleteSermon);        // Delete sermon by ID
 
-export default sermonRouter;
+export default sermonsRouter; // Export the same name

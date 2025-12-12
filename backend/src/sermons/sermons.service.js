@@ -1,6 +1,6 @@
 // src/services/sermons.service.js
-import { db } from '../db.js';
-import { sermons } from '../models/sermons.js';
+import { db } from '../Drizzle/db.js';
+import { sermons } from '../Drizzle/schema.js';
 
 const SermonsService = {
   // Fetch latest 3 sermons
