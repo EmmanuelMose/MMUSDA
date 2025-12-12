@@ -29,11 +29,12 @@ const Home = () => {
 
   // Fetch live or recent YouTube video
   useEffect(() => {
-    const channelId = "UCvWV-kXVd_jp9MwT4Dcsd0Q";
-    const apiKey = "AIzaSyB9vyAOw2lmqALFcqcD4SKrifugIIbNFvA";
+    const channelId = import.meta.env.VITE_YOUTUBE_CHANNEL_ID;
+    const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
 
     const fetchVideo = async () => {
       try {
+        // 1. Try LIVE video
         const liveRes = await fetch(
           `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${apiKey}`
         );
@@ -41,13 +42,19 @@ const Home = () => {
 
         if (liveData.items && liveData.items.length > 0) {
           setVideoId(liveData.items[0].id.videoId);
-        } else {
-          const pastRes = await fetch(
-            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=1&order=date&type=video&key=${apiKey}`
-          );
-          const pastData = await pastRes.json();
+          return;
+        }
+
+        // 2. If no live video, get recent upload
+        const pastRes = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=1&order=date&type=video&key=${apiKey}`
+        );
+        const pastData = await pastRes.json();
+
+        if (pastData.items && pastData.items.length > 0) {
           setVideoId(pastData.items[0].id.videoId);
         }
+
       } catch (err) {
         console.error("Error fetching YouTube videos:", err);
       }
@@ -64,7 +71,6 @@ const Home = () => {
       {/* ---- VIDEO PLAYER ---- */}
       {showVideo && videoId && (
         <div className="video-container">
-
           <iframe
             width="100%"
             height="100%"
