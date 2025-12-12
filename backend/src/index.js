@@ -1,22 +1,48 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
+// src/index.js
+import express from "express";
+import cors from "cors";
 
-dotenv.config();
+// Routers (function-style import; exported as default)
+import sermonsRouter from "./routes/sermons.router.js";
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const initializeApp = () => {
+  const app = express();
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+  // Allowed frontend origins
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+  ];
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('Backend server is running!');
-});
+  // Middleware
+  app.use(express.json());
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+  app.use(
+    cors({
+      origin: (origin, callback) => {
+        // Allow requests with no origin (like Postman)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error("Not allowed by CORS"));
+        }
+      },
+      methods: ["GET", "POST", "PUT", "DELETE"],
+    })
+  );
+
+  // Register routers
+  sermonsRouter(app);
+
+  // Default route
+  app.get("/", (req, res) => {
+    res.send("Backend server is running with multi-frontend support!");
+  });
+
+  return app;
+};
+
+const app = initializeApp();
+export default app;
