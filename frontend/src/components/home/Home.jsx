@@ -16,7 +16,6 @@ const images = [
 const Home = () => {
   const [current, setCurrent] = useState(0);
   const [showVideo, setShowVideo] = useState(true);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [videoId, setVideoId] = useState(null);
 
   const nextImage = () => setCurrent((prev) => (prev + 1) % images.length);
@@ -62,9 +61,10 @@ const Home = () => {
   return (
     <div className="home-wrapper">
 
-      {/* ---- LIVE OR RECENT VIDEO PLAYER ---- */}
+      {/* ---- VIDEO PLAYER ---- */}
       {showVideo && videoId && (
-        <div className={`video-container ${isExpanded ? "expanded" : ""}`}>
+        <div className="video-container">
+
           <iframe
             width="100%"
             height="100%"
@@ -77,9 +77,6 @@ const Home = () => {
 
           <div className="video-controls">
             <button onClick={() => setShowVideo(false)}>Close</button>
-            <button onClick={() => setIsExpanded(!isExpanded)}>
-              {isExpanded ? "Minimize" : "Expand"}
-            </button>
           </div>
         </div>
       )}
