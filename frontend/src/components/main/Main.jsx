@@ -1,7 +1,6 @@
 import React from "react";
 import "./Main.css";
 import OpenedBible from "../../assets/images/OpenedBible.jpeg";
-//import MemberIcon from "../../assets/images/member-icon.jpeg"; // replace with your 50x50 image
 
 const Main = () => {
   return (
@@ -29,10 +28,12 @@ const Main = () => {
           </a>
         </div>
         <div className="header-right">
-          <img src={OpenedBible} alt="Member" className="member-icon" />
-          <a href="/become-member">
-            <button className="member-btn">Become a Member</button>
-          </a>
+          <div className="member-container">
+            <img src={OpenedBible} alt="Member" className="member-icon" />
+            <a href="/become-member">
+              <button className="member-btn">Become a Member</button>
+            </a>
+          </div>
         </div>
       </div>
 
