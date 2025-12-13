@@ -19,6 +19,7 @@ const Main = () => {
           <p className="tagline-line">Empowering Faith</p>
           <p className="tagline-line">Inspiring Hope</p>
           <p className="tagline-line">Serving Community</p>
+          <p className="tagline-line">Growing Together in Spirit</p>
           <button className="welcome-btn">Learn More</button>
         </div>
       </div>
@@ -31,21 +32,40 @@ const Main = () => {
           and serving our community with love and purpose. Join us every Sabbath
           for worship, music, fellowship, and spiritual enrichment.
         </p>
+        <p>
+          Our mission is to inspire hearts, strengthen families, and bring
+          hope to everyone who walks through our doors. We offer programs for
+          all ages, including youth mentorship, adult study groups, and
+          community outreach initiatives.
+        </p>
+        <p>
+          Come and be part of a welcoming family where your spiritual journey
+          is supported, and your gifts are celebrated.
+        </p>
 
         <div className="info-grid">
           <div className="info-card card-animate">
             <h3>Worship</h3>
-            <p>Experience uplifting sermons and inspiring messages every Sabbath.</p>
+            <p>
+              Experience uplifting sermons, inspiring messages, and heartfelt
+              praise every Sabbath. Join us as we celebrate faith together.
+            </p>
           </div>
 
           <div className="info-card card-animate">
             <h3>Youth Ministry</h3>
-            <p>Empowering the next generation through mentorship and activities.</p>
+            <p>
+              Empowering the next generation through mentorship, activities,
+              and spiritual guidance to help them grow in faith and character.
+            </p>
           </div>
 
           <div className="info-card card-animate">
             <h3>Community</h3>
-            <p>Serving the MMUST community and beyond with compassion.</p>
+            <p>
+              Serving the MMUST community and beyond with compassion,
+              support programs, and outreach events that make a real impact.
+            </p>
           </div>
         </div>
       </div>
