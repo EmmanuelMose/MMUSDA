@@ -54,7 +54,7 @@
 
 .header-line {
   font-size: 20px;
-  color: #ffd28a;
+  color: black;
   margin: 0; /* remove extra spacing between lines */
   line-height: 1.6;
 }
@@ -88,7 +88,7 @@
 .member-container {
   display: inline-block;
   padding: 15px;
-  border: 2px solid #00aaff;
+  border: 2px solid black;
   border-radius: 10px;
   animation: borderPulse 2s infinite;
   transition: transform 0.3s ease, border-color 0.3s ease;
@@ -130,9 +130,9 @@
 
 /* Border pulse animation for header-right container */
 @keyframes borderPulse {
-  0% { border-color: #00aaff; }
-  50% { border-color: #0077cc; }
-  100% { border-color: #00aaff; }
+  0% { border-color: black; }
+  50% { border-color: black; }
+  100% { border-color: black; }
 }
 
 /* ---- MAIN INFO ---- */
