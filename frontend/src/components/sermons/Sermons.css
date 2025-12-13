@@ -1,14 +1,14 @@
 /* Outer page container */
 .sermons-container {
   padding: 20px;
-  max-width: 1000px;
-  margin: 20px 10px 0 10px; /* top 20px, left/right 10px */
+  margin: 20px; /* 20px margin all around */
   background-color: #fff;
   color: #000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 2px solid darkblue; /* thin dark blue border */
+  border: 2px solid darkblue; /* dark blue frame */
   border-radius: 12px;
   box-sizing: border-box;
+  width: calc(100% - 40px); /* full width minus 2*20px margin */
 }
 
 /* Heading */
@@ -25,25 +25,15 @@
 }
 
 .sermons-heading:hover {
-  color: #1e90ff; /* bright blue on hover */
+  color: #1e90ff;
   transform: scale(1.05);
 }
 
 /* Scrollable video section */
 .sermons-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  height: 400px; /* fixed height */
-  overflow-y: auto; /* vertical scroll if overflow */
-  padding-right: 10px; /* for scrollbar spacing */
-}
-
-/* Limit to max 3 in a row */
-@media (min-width: 900px) {
-  .sermons-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  grid-template-columns: repeat(3, 1fr); /* always 3 columns */
+  gap: 20px; /* uniform spacing between videos */
 }
 
 /* Individual sermon card */
@@ -97,7 +87,7 @@
   border: 0;
   height: 3px;
   background: linear-gradient(to right, darkblue, #ff8c42);
-  margin: 10px 0; /* space between elements */
+  margin: 10px 0;
   border-radius: 2px;
 }
 
@@ -113,7 +103,7 @@
   margin: 20px auto 0;
   display: block;
   padding: 12px 25px;
-  background-color: #ff8c42; /* warm orange */
+  background-color: #ff8c42;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -139,32 +129,36 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-  .sermons-heading {
-    font-size: 2.5rem;
+
+/* Tablets: 2 columns */
+@media (max-width: 900px) {
+  .sermons-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 
   .sermon-card iframe {
     height: 220px;
   }
 
-  .sermons-list {
-    grid-template-columns: repeat(2, 1fr);
+  .sermons-heading {
+    font-size: 2.5rem;
   }
 }
 
+/* Mobile: 1 column */
 @media (max-width: 480px) {
-  .sermons-heading {
-    font-size: 2rem;
-  }
-
   .sermons-list {
-    grid-template-columns: 1fr; /* single column for small screens */
+    grid-template-columns: 1fr;
     gap: 15px;
   }
 
   .sermon-card iframe {
     height: 180px;
+  }
+
+  .sermons-heading {
+    font-size: 2rem;
   }
 }
 
