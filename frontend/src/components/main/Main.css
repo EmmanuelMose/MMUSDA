@@ -4,12 +4,11 @@
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
-  margin-top: 20px;
+  margin-top: 20px; /* reduced top spacing */
   overflow: hidden;
   background-color: rgba(0, 0, 50, 0.6);
 }
 
-/* Background image effect */
 .main-wrapper::before {
   content: "";
   position: absolute;
@@ -32,12 +31,13 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 40px auto;
+  margin: 20px auto; /* reduced spacing from top */
   padding: 30px;
   max-width: 1200px;
   z-index: 2;
   position: relative;
   color: #ffffff;
+  flex-wrap: wrap;
 }
 
 /* Left header content */
@@ -55,13 +55,13 @@
 .header-line {
   font-size: 20px;
   color: #ffd28a;
-  margin: 6px 0;
+  margin: 0; /* remove extra spacing between lines */
   line-height: 1.6;
 }
 
 /* Learn More button */
 .welcome-btn {
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 14px 26px;
   background: darkblue;
   border: none;
@@ -82,7 +82,7 @@
 .header-right {
   flex: 0.5;
   text-align: center;
-  margin-top: 20px; /* reduced margin */
+  margin-top: 20px;
 }
 
 .member-container {
@@ -96,7 +96,7 @@
 
 .member-container:hover {
   transform: scale(1.05);
-  border-color: #ffa500; /* hover border color */
+  border-color: #ffa500;
 }
 
 .member-icon {
@@ -137,8 +137,8 @@
 
 /* ---- MAIN INFO ---- */
 .main-info {
-  margin: 40px auto;
-  padding: 30px;
+  margin: 20px auto; /* reduced spacing from header */
+  padding: 25px 30px;
   max-width: 1200px;
   background: rgba(10, 25, 50, 0.75);
   border-radius: 20px;
@@ -157,15 +157,15 @@
   color: #00aaff;
   font-size: 34px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .main-info p {
   max-width: 850px;
-  margin: 10px auto 25px;
+  margin: 10px 0; /* paragraphs stacked naturally */
   color: #ffffff;
   font-size: 17px;
-  line-height: 1.7;
+  line-height: 1.6;
   text-align: left;
 }
 
@@ -236,25 +236,45 @@
   .main-header-section {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
   .header-left {
     padding-right: 0;
-    text-align: center;
   }
   .header-right {
-    margin-top: 20px;
+    margin-top: 15px;
+  }
+  .member-icon {
+    width: 250px;
+    height: 250px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .main-header h1 {
-    font-size: 32px;
+  .main-header-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  .info-card {
-    width: 80%;
+  .header-left h1 {
+    font-size: 28px;
+  }
+  .header-line {
+    font-size: 16px;
   }
   .member-icon {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+  }
+  .welcome-btn, .member-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  .main-info {
+    margin: 15px auto;
+    padding: 20px;
+  }
+  .info-card {
+    width: 90%;
   }
 }
