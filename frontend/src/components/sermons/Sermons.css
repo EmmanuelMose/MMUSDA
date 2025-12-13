@@ -1,11 +1,14 @@
-/* General container */
+/* Outer page container */
 .sermons-container {
-  padding: 40px 20px;
+  padding: 20px;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 20px 10px 0 10px; /* top 20px, left/right 10px */
   background-color: #fff;
   color: #000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 2px solid darkblue; /* thin dark blue border */
+  border-radius: 12px;
+  box-sizing: border-box;
 }
 
 /* Heading */
@@ -14,7 +17,7 @@
   font-size: 3rem;
   font-weight: bold;
   color: darkblue;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   position: relative;
   transition: color 0.3s ease, transform 0.5s ease;
   cursor: default;
@@ -26,11 +29,21 @@
   transform: scale(1.05);
 }
 
-/* Sermons grid */
+/* Scrollable video section */
 .sermons-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
+  height: 400px; /* fixed height */
+  overflow-y: auto; /* vertical scroll if overflow */
+  padding-right: 10px; /* for scrollbar spacing */
+}
+
+/* Limit to max 3 in a row */
+@media (min-width: 900px) {
+  .sermons-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* Individual sermon card */
@@ -97,7 +110,7 @@
 
 /* Toggle button */
 .toggle-btn {
-  margin: 30px auto 0;
+  margin: 20px auto 0;
   display: block;
   padding: 12px 25px;
   background-color: #ff8c42; /* warm orange */
@@ -134,6 +147,10 @@
   .sermon-card iframe {
     height: 220px;
   }
+
+  .sermons-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
@@ -142,6 +159,7 @@
   }
 
   .sermons-list {
+    grid-template-columns: 1fr; /* single column for small screens */
     gap: 15px;
   }
 
