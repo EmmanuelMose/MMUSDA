@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-heading-container">
-        <h1 className="main-heading">Masinde Muliro University Seventy Day Adventist Church</h1>
+        <h1 className="main-heading">Masinde Muliro University Seventh Day Adventist Church</h1>
       </div>
       <div className="navbar-container">
         <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
