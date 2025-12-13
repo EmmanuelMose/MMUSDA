@@ -15,10 +15,10 @@ const images = [
 
 const Home = () => {
   const [current, setCurrent] = useState(0);
-  const [showVideo, setShowVideo] = useState(true);
-  const [videoId, setVideoId] = useState(null);
 
-  const nextImage = () => setCurrent((prev) => (prev + 1) % images.length);
+  const nextImage = () =>
+    setCurrent((prev) => (prev + 1) % images.length);
+
   const prevImage = () =>
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
@@ -27,73 +27,19 @@ const Home = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Fetch live or recent YouTube video
-  useEffect(() => {
-    const channelId = import.meta.env.VITE_YOUTUBE_CHANNEL_ID;
-    const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
-
-    const fetchVideo = async () => {
-      try {
-        // 1. Try LIVE video
-        const liveRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${apiKey}`
-        );
-        const liveData = await liveRes.json();
-
-        if (liveData.items && liveData.items.length > 0) {
-          setVideoId(liveData.items[0].id.videoId);
-          return;
-        }
-
-        // 2. If no live video, get recent upload
-        const pastRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=1&order=date&type=video&key=${apiKey}`
-        );
-        const pastData = await pastRes.json();
-
-        if (pastData.items && pastData.items.length > 0) {
-          setVideoId(pastData.items[0].id.videoId);
-        }
-
-      } catch (err) {
-        console.error("Error fetching YouTube videos:", err);
-      }
-    };
-
-    fetchVideo();
-    const interval = setInterval(fetchVideo, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="home-wrapper">
-
-      {/* ---- VIDEO PLAYER ---- */}
-      {showVideo && videoId && (
-        <div className="video-container">
-          <iframe
-            width="100%"
-            height="100%"
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="Church Video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-
-          <div className="video-controls">
-            <button onClick={() => setShowVideo(false)}>Close</button>
-          </div>
-        </div>
-      )}
-
-      {/* ---- IMAGE SLIDER ---- */}
       <div className="home-container">
         <button className="arrow left-arrow" onClick={prevImage}>❮</button>
-        <img src={images[current]} alt="slider" className="slider-image" />
+
+        <img
+          src={images[current]}
+          alt="slider"
+          className="slider-image"
+        />
+
         <button className="arrow right-arrow" onClick={nextImage}>❯</button>
       </div>
-
     </div>
   );
 };
