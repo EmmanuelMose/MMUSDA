@@ -34,7 +34,7 @@ const SermonsService = {
   deleteSermon: async (sermonId) => {
     const result = await db
       .delete(sermons)
-      .where(eq(sermons.sermonId, sermonId)); // ✅ Use eq helper
+      .where(eq(sermons.sermonId, sermonId)); //  Use eq helper
     return result;
   },
 };
