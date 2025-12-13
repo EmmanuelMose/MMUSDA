@@ -1,4 +1,3 @@
-/* ---- MAIN WRAPPER ---- */
 .main-wrapper {
   min-height: 100vh;
   padding: 20px;
@@ -18,7 +17,6 @@
   z-index: 0;
 }
 
-/* ---- HEADER SECTION ---- */
 .main-header-section {
   display: flex;
   justify-content: space-between;
@@ -33,26 +31,21 @@
   flex-wrap: wrap;
 }
 
-/* ---- LEFT HEADER (TEXT FIXED) ---- */
 .header-left {
   flex: 1;
   max-width: 600px;
 }
 
-/* Title */
 .header-left h1 {
   font-size: 42px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* TEXT LINES (FIXED WRAPPING + SPACING) */
 .header-line {
   display: block;
   font-size: 20px;
   color: orange;
-
-  /* IMPORTANT FIXES */
   margin: 0;
   padding: 0;
   line-height: 1.4;
@@ -60,12 +53,10 @@
   word-break: break-word;
 }
 
-/* Slight spacing only between lines */
 .header-line + .header-line {
   margin-top: 4px;
 }
 
-/* Learn More button */
 .welcome-btn {
   margin-top: 15px;
   padding: 12px 24px;
@@ -84,7 +75,6 @@
   transform: scale(1.05);
 }
 
-/* ---- RIGHT HEADER ---- */
 .header-right {
   flex: 0.5;
   text-align: center;
@@ -118,7 +108,6 @@
   color: black;
 }
 
-/* ---- MAIN INFO ---- */
 .main-info {
   margin: 20px auto;
   padding: 25px;
@@ -139,7 +128,6 @@
   line-height: 1.6;
 }
 
-/* ---- GRID CARDS ---- */
 .info-grid {
   display: flex;
   gap: 20px;
@@ -155,9 +143,7 @@
   border: 1px solid #00aaff;
 }
 
-/* ---- RESPONSIVE FIXES ---- */
 @media (max-width: 768px) {
-
   .main-header-section {
     flex-direction: column;
     text-align: center;
