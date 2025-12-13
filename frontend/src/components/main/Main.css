@@ -1,9 +1,10 @@
+/* ---- MAIN WRAPPER ---- */
 .main-wrapper {
-  min-height: 100vh;
+  min-height: 160vh;
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
-  margin-top: 10px;
+  margin-top: 20px; /* reduced top spacing */
   overflow: hidden;
   background-color: rgba(0, 0, 50, 0.6);
 }
@@ -11,168 +12,269 @@
 .main-wrapper::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: url("../../assets/images/OpenedBible.jpeg") center/cover no-repeat;
-  opacity: 0.35;
+  opacity: 0.4;
+  transition: transform 0.6s ease;
   z-index: 0;
 }
 
+.main-wrapper:hover::before {
+  transform: scale(1.05) rotate(1deg);
+}
+
+/* ---- HEADER SECTION ---- */
 .main-header-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 20px auto; /* reduced spacing from top */
+  padding: 30px;
   max-width: 1200px;
-  position: relative;
   z-index: 2;
+  position: relative;
   color: #ffffff;
-  gap: 20px;
   flex-wrap: wrap;
 }
 
+/* Left header content */
 .header-left {
   flex: 1;
-  max-width: 600px;
+  padding-right: 20px;
 }
 
 .header-left h1 {
   font-size: 42px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .header-line {
-  display: block;
   font-size: 20px;
   color: orange;
-  margin: 0;
-  padding: 0;
-  line-height: 1.4;
-  white-space: normal;
-  word-break: break-word;
+  margin: 0; /* remove extra spacing between lines */
+  line-height: 1.6;
 }
 
-.header-line + .header-line {
-  margin-top: 4px;
-}
-
+/* Learn More button */
 .welcome-btn {
   margin-top: 15px;
-  padding: 12px 24px;
+  padding: 14px 26px;
   background: darkblue;
   border: none;
   border-radius: 10px;
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .welcome-btn:hover {
-  background: orange;
-  color: black;
+  background: #ffa500;
   transform: scale(1.05);
+  color: #000;
 }
 
+/* Right header content */
 .header-right {
   flex: 0.5;
   text-align: center;
+  margin-top: 20px;
 }
 
 .member-container {
+  display: inline-block;
   padding: 15px;
-  border: 6px solid darkblue;
-  border-radius: 12px;
+  border: 10px solid darkblue;
+  border-radius: 10px;
+  animation: borderPulse 2s infinite;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.member-container:hover {
+  transform: scale(1.05);
+  border-color: #ffa500;
 }
 
 .member-icon {
-  width: 280px;
-  height: 280px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.member-icon:hover {
+  transform: scale(1.2) rotate(-5deg);
 }
 
 .member-btn {
-  padding: 10px 18px;
+  padding: 12px 20px;
   background: darkblue;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .member-btn:hover {
   background: orange;
-  color: black;
+  transform: scale(1.05);
+  color: #ffd28a;
 }
 
+/* Border pulse animation for header-right container */
+@keyframes borderPulse {
+  0% { border-color: black; }
+  50% { border-color: black; }
+  100% { border-color: black; }
+}
+
+/* ---- MAIN INFO ---- */
 .main-info {
-  margin: 20px auto;
-  padding: 25px;
+  margin: 20px auto; /* reduced spacing from header */
+  padding: 25px 30px;
   max-width: 1200px;
   background: rgba(10, 25, 50, 0.75);
   border-radius: 20px;
   border: 2px solid #ff8c00;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1.3s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-info:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 15px 35px rgba(255, 140, 0, 0.5);
 }
 
 .main-info h2 {
-  font-size: 30px;
   color: #00aaff;
+  font-size: 34px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
 .main-info p {
-  margin: 8px 0;
+  max-width: 850px;
+  margin: 10px 0; /* paragraphs stacked naturally */
+  color: #ffffff;
+  font-size: 17px;
   line-height: 1.6;
+  text-align: left;
 }
 
+/* ---- GRID CARDS ---- */
 .info-grid {
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 20px;
 }
 
 .info-card {
-  flex: 1 1 260px;
+  flex: 1 1 270px;
   padding: 20px;
-  border-radius: 15px;
   background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
   border: 1px solid #00aaff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  cursor: pointer;
+  color: #ffffff;
 }
 
-@media (max-width: 768px) {
+.info-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(255, 140, 0, 0.7);
+  background: rgba(0, 0, 128, 0.6);
+}
+
+.info-card h3 {
+  color: #ff8c00;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 1.2s ease-out;
+}
+
+.fade-in-up {
+  animation: fadeInUp 1.3s ease-out;
+}
+
+.card-animate {
+  animation: fadeInUp 1.4s ease-out;
+}
+
+/* ---- RESPONSIVE ---- */
+@media screen and (max-width: 1024px) {
   .main-header-section {
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 15px;
   }
-
   .header-left {
-    max-width: 100%;
+    padding-right: 0;
   }
+  .header-right {
+    margin-top: 15px;
+  }
+  .member-icon {
+    width: 250px;
+    height: 250px;
+  }
+}
 
+@media screen and (max-width: 768px) {
+  .main-header-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
   .header-left h1 {
     font-size: 28px;
   }
-
   .header-line {
     font-size: 16px;
-    line-height: 1.3;
   }
-
-  .header-line + .header-line {
-    margin-top: 3px;
-  }
-
   .member-icon {
     width: 150px;
     height: 150px;
   }
-
+  .welcome-btn, .member-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  .main-info {
+    margin: 15px auto;
+    padding: 20px;
+  }
   .info-card {
-    width: 100%;
+    width: 90%;
   }
 }
