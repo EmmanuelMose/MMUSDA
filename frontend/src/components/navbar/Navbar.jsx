@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import logo1 from "../../assets/images/logo1.jpeg";
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +43,6 @@ const Navbar = () => {
               <a href="#">Lesson Discussion</a>
               <a href="#">Books</a>
               <a href="#">Bible</a>
-              <a href="#">Semons</a>
               <a href="#">Missions</a>
               <a href="#">Choirs</a>
             </div>
