@@ -1,6 +1,6 @@
 import React from "react";
 import "./Main.css";
-import OpenedBible from "../../assets/images/OpenedBible.jpeg"; 
+import OpenedBible from "../../assets/images/OpenedBible.jpeg";
 
 const Main = () => {
   return (
@@ -13,12 +13,14 @@ const Main = () => {
       }}
     >
       {/* ---- HEADER ---- */}
-      <div className="main-header fade-in">
-        <h1>Welcome to MMUSDA Church</h1>
-        <p className="tagline">
-          Empowering Faith • Inspiring Hope • Serving Community
-        </p>
-        <button className="welcome-btn">Learn More</button>
+      <div className="main-header-frame fade-in">
+        <div className="main-header">
+          <h1>Welcome to MMUSDA Church</h1>
+          <p className="tagline-line">Empowering Faith</p>
+          <p className="tagline-line">Inspiring Hope</p>
+          <p className="tagline-line">Serving Community</p>
+          <button className="welcome-btn">Learn More</button>
+        </div>
       </div>
 
       {/* ---- EXTRA CONTENT ---- */}
