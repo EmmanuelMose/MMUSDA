@@ -54,11 +54,13 @@
 
 .header-line {
   font-size: 20px;
-  color: orange;
+  color: black;
   margin: 0; /* remove extra spacing between lines */
   line-height: 1.6;
 }
-
+.header-line:hover {
+  color: blue;
+}
 /* Learn More button */
 .welcome-btn {
   margin-top: 15px;
@@ -130,9 +132,9 @@
 
 /* Border pulse animation for header-right container */
 @keyframes borderPulse {
-  0% { border-color: black; }
-  50% { border-color: black; }
-  100% { border-color: black; }
+  0% { border-color: orange }
+  50% { border-color: orange }
+  100% { border-color: orange }
 }
 
 /* ---- MAIN INFO ---- */
@@ -154,7 +156,7 @@
 }
 
 .main-info h2 {
-  color: #00aaff;
+  color: blue;
   font-size: 34px;
   font-weight: bold;
   margin-bottom: 10px;
