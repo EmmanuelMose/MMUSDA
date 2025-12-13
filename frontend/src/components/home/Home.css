@@ -1,4 +1,4 @@
-/* Wrapper */
+/* ---- WRAPPER ---- */
 .home-wrapper {
   margin-top: 20px;
   padding: 15px;
@@ -22,17 +22,28 @@
   overflow: hidden;
 }
 
+/* Slider images with fade effect */
 .slider-image {
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
   margin: 5px;
   border-radius: 7px;
   object-fit: cover;
-  transition: 0.5s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
   box-sizing: border-box;
+  z-index: 1;
 }
 
-/* Arrows */
+.slider-image.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* ---- SLIDER ARROWS ---- */
 .arrow {
   position: absolute;
   top: 50%;
@@ -89,7 +100,6 @@
   transition: all 0.4s ease;
 }
 
-
 .video-controls {
   display: flex;
   justify-content: center;
@@ -118,7 +128,7 @@
   box-shadow: 0 6px 14px rgba(0,0,0,0.4);
 }
 
-/* Responsive Video */
+/* ---- RESPONSIVE VIDEO PLAYER ---- */
 @media screen and (max-width: 768px) {
   .video-container {
     width: 70%;

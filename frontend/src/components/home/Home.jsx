@@ -23,7 +23,7 @@ const Home = () => {
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
   useEffect(() => {
-    const timer = setInterval(nextImage, 2000);
+    const timer = setInterval(nextImage, 1000); // 1 second interval
     return () => clearInterval(timer);
   }, []);
 
@@ -32,11 +32,14 @@ const Home = () => {
       <div className="home-container">
         <button className="arrow left-arrow" onClick={prevImage}>❮</button>
 
-        <img
-          src={images[current]}
-          alt="slider"
-          className="slider-image"
-        />
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt="slider"
+            className={`slider-image ${index === current ? "active" : ""}`}
+          />
+        ))}
 
         <button className="arrow right-arrow" onClick={nextImage}>❯</button>
       </div>
