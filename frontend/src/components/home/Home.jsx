@@ -23,7 +23,7 @@ const Home = () => {
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
   useEffect(() => {
-    const timer = setInterval(nextImage, 5000);
+    const timer = setInterval(nextImage, 2000);
     return () => clearInterval(timer);
   }, []);
 
