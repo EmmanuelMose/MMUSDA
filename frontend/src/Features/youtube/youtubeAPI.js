@@ -1,4 +1,4 @@
-import { APIDomain } from "../utils/APIDomain";
+import { APIDomain } from "../../utils/APIDomain";
 
 // Fetch latest video (live or recent)
 export const fetchLatestVideo = async () => {
