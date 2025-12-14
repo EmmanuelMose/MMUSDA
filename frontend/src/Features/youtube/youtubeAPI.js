@@ -1,14 +1,14 @@
 import { APIDomain } from "../../utils/APIDomain";
 
-// Fetch latest video (live or recent)
-export const fetchLatestVideo = async () => {
+// Fetch videos: live first, then recent to past
+export const fetchLatestVideos = async () => {
   try {
-    const response = await fetch(`${APIDomain}/youtube/latest`);
-    if (!response.ok) throw new Error("Failed to fetch video");
+    const response = await fetch(`${APIDomain}/youtube/latest-videos`);
+    if (!response.ok) throw new Error("Failed to fetch videos");
     const data = await response.json();
-    return data;
+    return data; // Array of videos [{ videoId, title, isLive }, ...]
   } catch (error) {
     console.error("YouTube API error:", error);
-    return null;
+    return [];
   }
 };
