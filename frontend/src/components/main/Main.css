@@ -1,282 +1,227 @@
-/* ---- MAIN WRAPPER ---- */
-.main-wrapper {
-  min-height: 160vh;
-  padding: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  position: relative;
-  margin-top: 20px; /* reduced top spacing */
-  overflow: hidden;
-  background-color: rgba(0, 0, 50, 0.6);
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
 }
 
-.main-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("../../assets/images/OpenedBible.jpeg") center/cover no-repeat;
-  opacity: 0.4;
-  transition: transform 0.6s ease;
-  z-index: 0;
-}
-
-.main-wrapper:hover::before {
-  transform: scale(1.05) rotate(1deg);
-}
-
-/* ---- HEADER SECTION ---- */
-.main-header-section {
+/* ===== MAIN SECTION ===== */
+.main-home {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin: 20px auto; /* reduced spacing from top */
-  padding: 30px;
-  max-width: 1200px;
-  z-index: 2;
-  position: relative;
-  color: #ffffff;
+  align-items: center;
+  gap: 50px;
+  min-height: 100vh;
+  padding: 80px 8%;
   flex-wrap: wrap;
+  animation: fadeIn 1.4s ease forwards;
 }
 
-/* Left header content */
-.header-left {
-  flex: 1;
-  padding-right: 20px;
-}
-
-.header-left h1 {
-  font-size: 42px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.header-line {
-  font-size: 20px;
-  color: black;
-  margin: 0; /* remove extra spacing between lines */
-  line-height: 1.6;
-}
-.header-line:hover {
-  color: blue;
-}
-/* Learn More button */
-.welcome-btn {
-  margin-top: 15px;
-  padding: 14px 26px;
-  background: darkblue;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.welcome-btn:hover {
-  background: #ffa500;
-  transform: scale(1.05);
-  color: #000;
-}
-
-/* Right header content */
-.header-right {
-  flex: 0.5;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.member-container {
-  display: inline-block;
-  padding: 15px;
-  border: 10px solid darkblue;
-  border-radius: 10px;
-  animation: borderPulse 2s infinite;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.member-container:hover {
-  transform: scale(1.05);
-  border-color: #ffa500;
-}
-
-.member-icon {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
-}
-
-.member-icon:hover {
-  transform: scale(1.2) rotate(-5deg);
-}
-
-.member-btn {
-  padding: 12px 20px;
-  background: darkblue;
-  border: none;
-  border-radius: 10px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.member-btn:hover {
-  background: orange;
-  transform: scale(1.05);
-  color: #ffd28a;
-}
-
-/* Border pulse animation for header-right container */
-@keyframes borderPulse {
-  0% { border-color: orange }
-  50% { border-color: orange }
-  100% { border-color: orange }
-}
-
-/* ---- MAIN INFO ---- */
+/* ===== TEXT CONTENT ===== */
 .main-info {
-  margin: 20px auto; /* reduced spacing from header */
-  padding: 25px 30px;
-  max-width: 1200px;
-  background: rgba(10, 25, 50, 0.75);
-  border-radius: 20px;
-  border: 2px solid #ff8c00;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-  animation: fadeInUp 1.3s ease-out;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1;
+  min-width: 280px;
 }
 
-.main-info:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 15px 35px rgba(255, 140, 0, 0.5);
+.main-info h1 {
+  font-size: clamp(28px, 4vw, 46px);
+  margin-bottom: 15px;
+  line-height: 1.3;
 }
 
-.main-info h2 {
-  color: blue;
-  font-size: 34px;
-  font-weight: bold;
-  margin-bottom: 10px;
+/* Animated text lines */
+.animated-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 
+.animated-lines span {
+  position: relative;
+  font-size: clamp(18px, 3vw, 28px);
+  margin-top: 14px;
+  color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+  animation: showText 16s linear infinite;
+  animation-delay: calc(-3s * var(--i));
+  white-space: nowrap;
+}
+
+.animated-lines span::before {
+  content: attr(data-text);
+  position: absolute;
+  width: 0;
+  overflow: hidden;
+  border-right: 2px solid currentColor;
+  animation: fillText 4s linear infinite;
+  white-space: nowrap;
+}
+
+/* Paragraphs */
 .main-info p {
-  max-width: 850px;
-  margin: 10px 0; /* paragraphs stacked naturally */
-  color: #ffffff;
-  font-size: 17px;
-  line-height: 1.6;
+  max-width: 700px;
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.8;
+  margin: 14px 0;
   text-align: left;
 }
 
-/* ---- GRID CARDS ---- */
-.info-grid {
+/* Buttons */
+.main-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.main-btn {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 2px solid currentColor;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.4s ease;
+}
+
+.main-btn:hover {
+  transform: scale(1.05);
+}
+
+.main-btn.outline {
+  background: transparent;
+}
+
+/* ===== IMAGE SECTION ===== */
+.main-image {
+  flex: 1;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
-.info-card {
-  flex: 1 1 270px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 1px solid #00aaff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-  cursor: pointer;
-  color: #ffffff;
+.image-box {
+  position: relative;
+  width: clamp(220px, 35vw, 420px);
+  height: clamp(220px, 35vw, 420px);
+  border-radius: 50%;
+  padding: 6px;
+  overflow: hidden;
 }
 
-.info-card:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 12px 28px rgba(255, 140, 0, 0.7);
-  background: rgba(0, 0, 128, 0.6);
+.image-box::before,
+.image-box::after {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    currentColor
+  );
+  animation: rotateBorder 6s linear infinite;
 }
 
-.info-card h3 {
-  color: #ff8c00;
-  font-size: 20px;
-  margin-bottom: 10px;
+.image-box::after {
+  animation-delay: -3s;
 }
 
-.info-card p {
-  color: #ffffff;
-  font-size: 15px;
-  line-height: 1.5;
+.image-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 
-/* ---- ANIMATIONS ---- */
+.image-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ===== ANIMATIONS ===== */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes showText {
+  25%,
+  100% {
+    display: none;
+  }
 }
 
-.fade-in {
-  animation: fadeIn 1.2s ease-out;
+@keyframes fillText {
+  10%,
+  100% {
+    width: 0%;
+  }
+  70%,
+  90% {
+    width: 100%;
+  }
 }
 
-.fade-in-up {
-  animation: fadeInUp 1.3s ease-out;
+@keyframes rotateBorder {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.card-animate {
-  animation: fadeInUp 1.4s ease-out;
-}
-
-/* ---- RESPONSIVE ---- */
-@media screen and (max-width: 1024px) {
-  .main-header-section {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .main-home {
     flex-direction: column;
-    align-items: center;
     text-align: center;
+    padding-top: 120px;
   }
-  .header-left {
-    padding-right: 0;
+
+  .animated-lines {
+    align-items: center;
   }
-  .header-right {
-    margin-top: 15px;
+
+  .main-info p {
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .member-icon {
-    width: 250px;
-    height: 250px;
+
+  .main-buttons {
+    justify-content: center;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .main-header-section {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+@media (max-width: 576px) {
+  .main-home {
+    padding: 60px 6%;
+    gap: 30px;
   }
-  .header-left h1 {
-    font-size: 28px;
-  }
-  .header-line {
+
+  .animated-lines span {
     font-size: 16px;
   }
-  .member-icon {
-    width: 150px;
-    height: 150px;
+
+  .main-info p {
+    font-size: 13px;
+    line-height: 1.9;
   }
-  .welcome-btn, .member-btn {
-    padding: 10px 18px;
-    font-size: 14px;
+
+  .main-btn {
+    padding: 10px 22px;
+    font-size: 13px;
   }
-  .main-info {
-    margin: 15px auto;
-    padding: 20px;
-  }
-  .info-card {
-    width: 90%;
+
+  .image-box {
+    width: 65vw;
+    height: 65vw;
   }
 }
