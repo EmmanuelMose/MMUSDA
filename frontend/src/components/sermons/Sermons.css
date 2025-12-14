@@ -1,141 +1,148 @@
-.sermons-container {
-  padding: 20px;
-  margin: 20px;
-  background-color: #000;
-  color: #fff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  border: 5px solid darkblue;
-  border-radius: 12px;
+/* ===== BASE ===== */
+* {
   box-sizing: border-box;
-  width: calc(100% - 40px);
 }
 
-.sermons-heading {
+body {
+  overflow-x: hidden;
+}
+
+/* ===== COLORS ===== */
+:root {
+  --orange: #ff8c42;
+  --blue: #0b3c5d;
+  --black: #000;
+  --white: #fff;
+  --gray: #dddddd;
+}
+
+/* ===== CONTAINER ===== */
+.sermons-container {
+  max-width: 1400px;
+  margin: 30px auto;
+  padding: 30px 20px 40px;
+  background: var(--black);
+  color: var(--white);
+  border: 4px solid var(--blue);
+  border-radius: 14px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== INTRO SECTION ===== */
+.sermons-intro {
   text-align: center;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 20px;
-  transition: transform 0.4s ease;
+  margin-bottom: 35px;
 }
 
-.sermons-heading:hover {
-  transform: scale(1.05);
+.sermons-intro h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--orange);
+  margin-bottom: 15px;
 }
 
+.sermons-intro p {
+  font-size: clamp(14px, 2.5vw, 18px);
+  line-height: 1.8;
+  color: var(--white);
+  margin: 6px 0;
+}
+
+/* ===== SERMON GRID ===== */
 .sermons-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 22px;
 }
 
+/* ===== CARD ===== */
 .sermon-card {
-  border: 5px solid #ff8c42;
+  background: var(--black);
+  border: 3px solid var(--orange);
   border-radius: 12px;
-  padding: 15px;
-  background-color: #000;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  padding: 16px;
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .sermon-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.8);
 }
 
+/* ===== VIDEO ===== */
 .sermon-card iframe {
   width: 100%;
-  height: 250px;
+  height: 240px;
   border-radius: 10px;
-  margin-bottom: 15px;
+  border: 2px solid var(--blue);
+  margin-bottom: 12px;
 }
 
-.sermon-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 10px;
+/* ===== TEXT ===== */
+.sermon-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: var(--white);
 }
 
-.sermon-divider {
+.sermon-card hr {
   width: 50%;
-  border: 0;
+  margin: 10px auto;
+  border: none;
   height: 3px;
-  background: linear-gradient(to right, #ffffff, #ff8c42);
-  margin: 10px 0;
-  border-radius: 2px;
+  background: linear-gradient(to right, var(--blue), var(--orange));
 }
 
 .sermon-date {
   font-size: 0.9rem;
-  color: #ddd;
-  margin-bottom: 10px;
+  color: var(--gray);
 }
 
+/* ===== BUTTON ===== */
 .toggle-btn {
-  margin: 25px auto 0;
   display: block;
-  padding: 12px 25px;
-  background-color: #ff8c42;
-  color: #000;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px;
-  font-weight: bold;
+  margin: 30px auto 0;
+  padding: 12px 28px;
   font-size: 1rem;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-weight: bold;
+  background: var(--orange);
+  color: var(--black);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .toggle-btn:hover {
-  background-color: #fff;
+  background: var(--white);
   transform: scale(1.05);
 }
 
+/* ===== LOADING ===== */
 .loading {
   text-align: center;
-  margin-top: 80px;
   font-size: 1.2rem;
-  font-weight: bold;
-  color: #fff;
-  animation: pulse 1.5s infinite;
+  margin-top: 80px;
+  color: var(--orange);
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .sermons-list {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
   }
 
   .sermon-card iframe {
-    height: 220px;
-  }
-
-  .sermons-heading {
-    font-size: 2.5rem;
+    height: 210px;
   }
 }
 
 @media (max-width: 480px) {
   .sermons-list {
     grid-template-columns: 1fr;
-    gap: 15px;
   }
 
   .sermon-card iframe {
     height: 180px;
   }
-
-  .sermons-heading {
-    font-size: 2rem;
-  }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
 }
