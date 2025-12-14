@@ -3,6 +3,7 @@ import { getLatestVideo } from "../controllers/youtube.controller.js";
 
 const youtubeRouter = express.Router();
 
-router.get("/latest", getLatestVideo);
+// Use the correct router variable
+youtubeRouter.get("/latest", getLatestVideo);
 
 export default youtubeRouter;
