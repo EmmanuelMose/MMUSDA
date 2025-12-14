@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchLatestVideo } from "../../Features/youtubeAPI";
+import { fetchLatestVideo } from "../../Features/youtube/youtubeAPI";
 //import "./YouTubeLive.css"; // optional if you want extra styling
 
 const YouTubeLive = () => {
