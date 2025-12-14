@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Home.css";
+import YouTubeLive from "../youtube/YoutubeLive"; // import player
 
 import image1 from "../../assets/images/image1.jpeg";
 import image2 from "../../assets/images/image2.jpg";
@@ -16,19 +17,18 @@ const images = [
 const Home = () => {
   const [current, setCurrent] = useState(0);
 
-  const nextImage = () =>
-    setCurrent((prev) => (prev + 1) % images.length);
-
-  const prevImage = () =>
-    setCurrent((prev) => (prev - 1 + images.length) % images.length);
+  const nextImage = () => setCurrent((prev) => (prev + 1) % images.length);
+  const prevImage = () => setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
   useEffect(() => {
-    const timer = setInterval(nextImage, 1000); // 1 second interval
+    const timer = setInterval(nextImage, 1000);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="home-wrapper">
+      <YouTubeLive /> {/* Top-right floating player */}
+
       <div className="home-container">
         <button className="arrow left-arrow" onClick={prevImage}>❮</button>
 

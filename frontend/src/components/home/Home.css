@@ -86,19 +86,17 @@
 /* ---- VIDEO PLAYER ---- */
 .video-container {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  width: calc(40% + 50px);
-  height: calc(30% + 50px);
+  top: 5px;
+  right: 5px;
+  width: 400px; /* adjust as needed */
+  height: 225px; /* 16:9 ratio */
   background-color: black;
   z-index: 1000;
   border-radius: 12px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
   box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  transition: all 0.4s ease;
 }
+
 
 .video-controls {
   display: flex;
