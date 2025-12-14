@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchLatestVideo } from "../../Features/youtubeAPI";
-import "./YouTubeLive.css"; // optional if you want extra styling
+//import "./YouTubeLive.css"; // optional if you want extra styling
 
 const YouTubeLive = () => {
   const [video, setVideo] = useState(null);
