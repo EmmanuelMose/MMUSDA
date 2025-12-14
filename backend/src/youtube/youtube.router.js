@@ -1,5 +1,5 @@
 import express from "express";
-import { getLatestVideo } from "../controllers/youtube.controller.js";
+import { getLatestVideo } from "../youtube/youtube.controller.js";
 
 const youtubeRouter = express.Router();
 
