@@ -91,7 +91,7 @@
   color: #ffd700;
 }
 
-/* ===== DROPDOWNS (ALL SCREENS) ===== */
+/* DROPDOWNS (ALL SCREENs) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -119,13 +119,14 @@
   display: block;
 }
 
-/* ===== DROPDOWN ARROW POSITION ===== */
+/*  DROPDOWN ARROW POSITION  */
 .arrow {
   font-size: 0.7rem;
-  margin-left: auto; /* pushes arrow to far right */
+  margin-left: auto;
+  color: white; 
 }
 
-/* ===== MENU TOGGLE ===== */
+/* MENU TOGGLE */
 .menu-icon {
   display: none;
   font-size: 2rem;
@@ -136,7 +137,7 @@
   top: 12px;
 }
 
-/* ===== MOBILE ===== */
+/*  MOBILE  */
 @media (max-width: 768px) {
 
   .menu-icon {
