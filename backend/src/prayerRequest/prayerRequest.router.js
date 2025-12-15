@@ -1,5 +1,5 @@
 import express from "express";
-import * as prayerController from "./prayerRequests.controller.js";
+import * as prayerController from "./prayerRequest.controller.js";
 
 const prayerRouter = express.Router();
 

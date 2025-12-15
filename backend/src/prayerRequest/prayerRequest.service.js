@@ -1,4 +1,4 @@
-import { db } from "../db.js"; // adjust this to your db import
+import { db } from "../Drizzle/db.js"; 
 import { prayerRequests } from "../Drizzle/schema.js";
 
 export const createPrayerRequest = async ({ firstName, lastName, phoneNumber, title, description, requestedBy, isPublic }) => {

@@ -1,4 +1,4 @@
-import * as prayerService from "./prayerRequests.service.js";
+import * as prayerService from "../prayerRequest/prayerRequest.service.js";
 
 export const createPrayerRequest = async (req, res) => {
   try {

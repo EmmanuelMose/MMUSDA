@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import youtubeRoutes from "./youtube/youtube.router.js";
-import prayerRouter from "./prayerRequests/prayerRequests.router.js";
+import prayerRouter from "./prayerRequest/prayerRequest.router.js";
 import sermonsRouter from "./sermons/sermons.router.js";
 
 const initializeApp = () => {
