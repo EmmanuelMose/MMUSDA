@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchLatestVideos } from "../../Features/youtube/youtubeAPI";
-//import "./YouTubeLive.css";
+import "./YouTubeLive.css";
 
 const YouTubeLive = () => {
   const [videos, setVideos] = useState([]);
@@ -11,7 +11,7 @@ const YouTubeLive = () => {
     const getVideos = async () => {
       const data = await fetchLatestVideos();
       setVideos(data);
-      if (data.length > 0) setCurrentVideo(data[0]); // Show first video
+      if (data.length > 0) setCurrentVideo(data[0]);
     };
     getVideos();
   }, []);
@@ -27,7 +27,7 @@ const YouTubeLive = () => {
       <div className="video-container">
         <iframe
           width="100%"
-          height="400px"
+          height="450px"
           src={`https://www.youtube.com/embed/${currentVideo.videoId}?autoplay=1&mute=1`}
           title={currentVideo.title}
           frameBorder="0"
@@ -44,6 +44,7 @@ const YouTubeLive = () => {
           ))}
         </div>
       )}
+      <button className="bottom-close" onClick={() => setShowPlayer(false)}>Close Live</button>
     </div>
   );
 };
