@@ -3,7 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "../../frontend/src/pages/LandingPage";
 import { Toaster } from "sonner";
 import "./App.css"; 
-import Sermons from "../../frontend/src/components/sermons/Sermons"
+import Sermons from "../../frontend/src/components/sermons/Sermons";
+import Error from "./components/Error/Error";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,10 @@ function App() {
     {
       path: "/sermons",
       element: <Sermons />,
+    },
+    {
+      path: "*",
+      element: <Error />,
     },
     
   ]);
