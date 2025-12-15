@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import "./App.css"; 
 import Sermons from "../../frontend/src/components/sermons/Sermons";
 import Error from "./components/Error/Error";
+import PrayerRequest from "./components/prayerRequest/PrayerRequest";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,6 +20,10 @@ function App() {
     {
       path: "*",
       element: <Error />,
+    },
+    {
+      path: "/prayers",
+      element: <PrayerRequest />,
     },
     
   ]);
