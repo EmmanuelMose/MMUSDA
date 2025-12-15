@@ -27,13 +27,14 @@ const YouTubeLive = () => {
       <div className="video-container">
         <iframe
           width="100%"
-          height="450px"
+          height="350px"
           src={`https://www.youtube.com/embed/${currentVideo.videoId}?autoplay=1&mute=1`}
           title={currentVideo.title}
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
         />
+        <button className="overlay-close" onClick={() => setShowPlayer(false)}>Close Live</button>
       </div>
       {videos.length > 1 && (
         <div className="video-list">
@@ -44,7 +45,6 @@ const YouTubeLive = () => {
           ))}
         </div>
       )}
-      <button className="bottom-close" onClick={() => setShowPlayer(false)}>Close Live</button>
     </div>
   );
 };
