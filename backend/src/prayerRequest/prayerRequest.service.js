@@ -1,5 +1,6 @@
 import { db } from "../Drizzle/db.js"; 
 import { prayerRequests } from "../Drizzle/schema.js";
+import { eq } from "drizzle-orm";
 
 export const createPrayerRequest = async ({ firstName, lastName, phoneNumber, title, description, requestedBy, isPublic }) => {
   const result = await db.insert(prayerRequests).values({
@@ -18,6 +19,6 @@ export const getPublicPrayerRequests = async () => {
   const result = await db
     .select()
     .from(prayerRequests)
-    .where(prayerRequests.isPublic.eq("yes"));
+    .where(eq(prayerRequests.isPublic, "yes")); // use eq(column, value)
   return result;
 };
