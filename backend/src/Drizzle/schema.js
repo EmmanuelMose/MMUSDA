@@ -125,6 +125,9 @@ export const families = pgTable("families", {
 
 export const prayerRequests = pgTable("prayerRequests", {
   requestId: serial("request_id").primaryKey(),
+  firstName: varchar("first_name", { length: 255 }).notNull(),
+  lastName: varchar("last_name", { length: 255 }).notNull(),
+  phoneNumber: varchar("phone_number", { length: 50 }).default(null),
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
   requestedBy: integer("requested_by"),
