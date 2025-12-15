@@ -1,0 +1,1 @@
+ALTER TABLE "prayerRequests" ALTER COLUMN "is_public" SET DEFAULT 'yes';

@@ -29,6 +29,13 @@
       "when": 1765809444001,
       "tag": "0003_nosy_pride",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1765810125279,
+      "tag": "0004_abnormal_lucky_pierre",
+      "breakpoints": true
     }
   ]
 }
