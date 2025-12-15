@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchLatestVideos } from "../../Features/youtube/youtubeAPI";
-//import "./YouTubeLive.css";
+import "./YouTubeLive.css";
 
 const YouTubeLive = () => {
   const [videos, setVideos] = useState([]);
@@ -10,9 +10,8 @@ const YouTubeLive = () => {
   useEffect(() => {
     const getVideos = async () => {
       const data = await fetchLatestVideos();
-      console.log("Fetched videos:", data);
       setVideos(data);
-      if (data.length > 0) setCurrentVideo(data[0]);
+      if (data.length > 0) setCurrentVideo(data[0]); // Show first video
     };
     getVideos();
   }, []);
