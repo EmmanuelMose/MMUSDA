@@ -131,7 +131,7 @@ export const prayerRequests = pgTable("prayerRequests", {
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
   requestedBy: integer("requested_by"),
-  isPublic: varchar("is_public", { length: 3 }).default("no"), // "yes" or "no"
+  isPublic: varchar("is_public", { length: 3 }).default("yes"), // "yes" or "no"
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });

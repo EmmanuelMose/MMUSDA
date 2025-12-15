@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import youtubeRoutes from "./youtube/youtube.router.js";
+import prayerRouter from "./prayerRequests/prayerRequests.router.js";
 // Routers
 import sermonsRouter from "./sermons/sermons.router.js";
 
@@ -26,6 +27,7 @@ const initializeApp = () => {
   // Routers
   app.use("/sermons", sermonsRouter);
   app.use("/youtube", youtubeRoutes);
+  app.use("/api/prayer-requests", prayerRouter);
 
   // Default route
   app.get("/", (req, res) => {
