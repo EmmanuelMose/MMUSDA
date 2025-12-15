@@ -1,5 +1,5 @@
 import { pgTable, serial, text, varchar, timestamp, boolean, integer, date } from "drizzle-orm/pg-core";
-const YesNoEnum = pgEnum("yes_no", ["yes", "no"]);
+
 
 export const users = pgTable("users", {
   userId: serial("user_id").primaryKey(),
@@ -128,7 +128,7 @@ export const prayerRequests = pgTable("prayerRequests", {
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
   requestedBy: integer("requested_by"),
-  isPublic: YesNoEnum("is_public").default("yes"),
+  isPublic: varchar("is_public", { length: 3 }).default("no"), // "yes" or "no"
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
