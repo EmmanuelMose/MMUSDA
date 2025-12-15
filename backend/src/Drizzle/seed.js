@@ -113,12 +113,13 @@ async function seed() {
     ]);
 
     await db.insert(schema.prayerRequests).values([
-      { title: "Prayer 1", description: "Description 1", requestedBy: 1 },
-      { title: "Prayer 2", description: "Description 2", requestedBy: 2 },
-      { title: "Prayer 3", description: "Description 3", requestedBy: 3 },
-      { title: "Prayer 4", description: "Description 4", requestedBy: 4 },
-      { title: "Prayer 5", description: "Description 5", requestedBy: 5 }
-    ]);
+  { title: "Prayer 1", description: "Description 1", requestedBy: 1, isPublic: "yes" },
+  { title: "Prayer 2", description: "Description 2", requestedBy: 2, isPublic: "yes" },
+  { title: "Prayer 3", description: "Description 3", requestedBy: 3, isPublic: "yes" },
+  { title: "Prayer 4", description: "Description 4", requestedBy: 4, isPublic: "yes" },
+  { title: "Prayer 5", description: "Description 5", requestedBy: 5, isPublic: "no" }
+]);
+
 
     await db.insert(schema.leaders).values([
       { name: "Leader 1", department: "Music", membersCount: 10, contactInfo: "leader1@example.com" },

@@ -15,6 +15,13 @@
       "when": 1765518762199,
       "tag": "0001_typical_moon_knight",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1765808343805,
+      "tag": "0002_glorious_vanisher",
+      "breakpoints": true
     }
   ]
 }
