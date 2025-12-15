@@ -1,0 +1,143 @@
+.prayer-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000000;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #ffffff, #f0f8ff);
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.prayer-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.prayer-header h1 {
+  font-size: 2.5rem;
+  color: #0B3D91; /* dark blue */
+  margin-bottom: 0.5rem;
+}
+
+.bible-verse {
+  font-size: 1rem;
+  color: #FF7F50; /* warm orange */
+  font-style: italic;
+}
+
+.prayer-form-section {
+  background-color: #1E90FF; /* blue */
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.prayer-form-section:hover {
+  transform: scale(1.02);
+}
+
+.prayer-form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #FFD700;
+}
+
+.prayer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prayer-form input,
+.prayer-form textarea,
+.prayer-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.prayer-form input:focus,
+.prayer-form textarea:focus,
+.prayer-form select:focus {
+  border: 2px solid #FF7F50;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.prayer-form button {
+  padding: 10px;
+  background-color: #FF7F50;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prayer-form button:hover {
+  background-color: #0B3D91;
+  transform: scale(1.05);
+}
+
+.form-message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.prayer-requests-section h2 {
+  text-align: center;
+  color: #0B3D91;
+  margin-bottom: 1rem;
+}
+
+.prayer-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.prayer-item {
+  background-color: #ffffff;
+  border-left: 5px solid #FF7F50;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.prayer-item:hover {
+  transform: translateY(-5px);
+}
+
+.prayer-author {
+  font-weight: bold;
+  color: #0B3D91;
+}
+
+.prayer-desc {
+  color: #000000;
+}
+
+.prayer-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-style: italic;
+  color: #FF7F50;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
