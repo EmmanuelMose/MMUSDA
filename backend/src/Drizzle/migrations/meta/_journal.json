@@ -22,6 +22,13 @@
       "when": 1765808343805,
       "tag": "0002_glorious_vanisher",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1765809444001,
+      "tag": "0003_nosy_pride",
+      "breakpoints": true
     }
   ]
 }
