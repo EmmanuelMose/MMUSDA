@@ -11,6 +11,10 @@ function App() {
       path: "/",
       element: <LandingPage />, 
     },
+    {
+      path: "/sermons",
+      element: <Sermons />,
+    },
     
   ]);
 
