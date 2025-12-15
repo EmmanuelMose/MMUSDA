@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import { fetchLatestVideos } from "../../Features/youtube/youtubeAPI";
-// import "./YouTubeLive.css";
+//import "./YouTubeLive.css";
 
 const YouTubeLive = () => {
-  const [videos, setVideos] = useState([]); // Array of videos
+  const [videos, setVideos] = useState([]);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [showPlayer, setShowPlayer] = useState(true);
 
   useEffect(() => {
     const getVideos = async () => {
-      const data = await fetchLatestVideos(); // Returns array of videos, live first if any
+      const data = await fetchLatestVideos();
+      console.log("Fetched videos:", data);
       setVideos(data);
-      if (data && data.length > 0) {
-        setCurrentVideo(data[0]); // Show first video
-      }
+      if (data.length > 0) setCurrentVideo(data[0]);
     };
     getVideos();
   }, []);
@@ -24,12 +23,7 @@ const YouTubeLive = () => {
     <div className="video-wrapper">
       <div className="video-header">
         <h2>{currentVideo.title}</h2>
-        <button
-          className="close-button"
-          onClick={() => setShowPlayer(false)}
-        >
-          X
-        </button>
+        <button className="close-button" onClick={() => setShowPlayer(false)}>X</button>
       </div>
       <div className="video-container">
         <iframe
@@ -42,15 +36,10 @@ const YouTubeLive = () => {
           allowFullScreen
         />
       </div>
-      {/* Show a list of other recent videos if more than 1 */}
       {videos.length > 1 && (
         <div className="video-list">
           {videos.slice(1).map((vid) => (
-            <div
-              key={vid.videoId}
-              className="video-item"
-              onClick={() => setCurrentVideo(vid)}
-            >
+            <div key={vid.videoId} className="video-item" onClick={() => setCurrentVideo(vid)}>
               {vid.title}
             </div>
           ))}
