@@ -1,24 +1,31 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { APIDomain } from "../../utils/APIDomain";
 
-export const prayerRequestAPI = createApi({
-  reducerPath: "prayerRequestAPI",
-  baseQuery: fetchBaseQuery({ baseUrl: APIDomain }),
-  endpoints: (builder) => ({
-    getPublicPrayerRequests: builder.query({
-      query: () => "/api/prayer-requests/public",
-    }),
-    createPrayerRequest: builder.mutation({
-      query: (data) => ({
-        url: "/api/prayer-requests",
-        method: "POST",
-        body: data,
-      }),
-    }),
-  }),
-});
+// Fetch all public prayer requests
+export const getPublicPrayerRequests = async () => {
+  try {
+    const res = await fetch(`${APIDomain}/api/prayer-requests/public`);
+    const data = await res.json();
+    if (data.success) return data.data;
+    throw new Error(data.message || "Failed to fetch prayer requests");
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
 
-export const {
-  useGetPublicPrayerRequestsQuery,
-  useCreatePrayerRequestMutation,
-} = prayerRequestAPI;
+// Create a new prayer request
+export const createPrayerRequest = async (requestData) => {
+  try {
+    const res = await fetch(`${APIDomain}/api/prayer-requests`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestData),
+    });
+    const data = await res.json();
+    if (data.success) return data.data;
+    throw new Error(data.message || "Failed to create prayer request");
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
