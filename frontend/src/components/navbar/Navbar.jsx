@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo1 from "../../assets/images/logo1.jpeg";
 
@@ -8,7 +7,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* ===== HEADER ===== */}
+      {/* ===== HEADER (UNCHANGED STYLING) ===== */}
       <header className="header">
         <h1 className="main-heading">
           Welcome To Masinde Muliro University Seventh Day Adventist Church
@@ -18,7 +17,7 @@ const Navbar = () => {
       {/* ===== NAVBAR ===== */}
       <nav className="navbar">
         <div className="navbar-container">
-
+          
           {/* Logo */}
           <div className="navbar-logo">
             <img src={logo1} alt="MMUSDA Logo" />
@@ -26,58 +25,57 @@ const Navbar = () => {
           </div>
 
           {/* Menu Toggle */}
-          <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
+          <div
+            className="menu-icon"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? "✕" : "☰"}
           </div>
 
           {/* Nav Links */}
           <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Departments</a></li>
 
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/departments">Departments</Link></li>
-
-            {/* About Dropdown */}
             <li className="dropdown">
-              <span>
+              <a href="#">
                 About <span className="arrow">▼</span>
-              </span>
+              </a>
               <div className="dropdown-content">
-                <Link to="/about/history">Our History</Link>
-                <Link to="/about/beliefs">Beliefs</Link>
-                <Link to="/about/mission">Mission & Vision</Link>
+                <a href="#">Our History</a>
+                <a href="#">Beliefs</a>
+                <a href="#">Mission & Vision</a>
               </div>
             </li>
 
-            <li><Link to="/events">Events</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/offering">Offering</Link></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Offering</a></li>
 
-            {/* Evangelism Dropdown */}
             <li className="dropdown">
-              <span>
+              <a href="#">
                 Evangelism <span className="arrow">▼</span>
-              </span>
+              </a>
               <div className="dropdown-content">
-                <Link to="/sermons">Sermons</Link>
-                <Link to="/lessons">Lesson Discussion</Link>
-                <Link to="/books">Books</Link>
-                <Link to="/bible">Bible</Link>
+                <a href="#">Sermons</a>
+                <a href="#">Lesson Discussion</a>
+                <a href="#">Books</a>
+                <a href="#">Bible</a>
               </div>
             </li>
 
-            {/* Others Dropdown */}
             <li className="dropdown">
-              <span>
+              <a href="#">
                 Others <span className="arrow">▼</span>
-              </span>
+              </a>
               <div className="dropdown-content">
-                <Link to="/announcements">Announcements</Link>
-                <Link to="/prayers">Prayer Requests</Link>
-                <Link to="/donations">Donations</Link>
+                <a href="#">Announcements</a>
+                <a href="#">Prayer Requests</a>
+                <a href="#">Donations</a>
               </div>
             </li>
-
           </ul>
+
         </div>
       </nav>
     </>
