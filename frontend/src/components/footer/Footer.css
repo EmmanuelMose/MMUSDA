@@ -2,6 +2,7 @@
   --dark-blue: #0b1c2d;
   --white: #ffffff;
   --orange: #f4a261;
+  --orange-soft: rgba(244, 162, 97, 0.45);
   --light-blue: #132f4c;
 }
 
@@ -10,7 +11,6 @@
   color: var(--white);
   padding: 50px 20px 20px;
   border-radius: 10px;
-  border-bottom: 5px;
 }
 
 .footer-grid {
@@ -23,9 +23,16 @@
 
 .footer-card {
   background: var(--light-blue);
-  padding: 20px;
+  padding: 22px;
   border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 8px 20px var(--orange-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(244, 162, 97, 0.65);
 }
 
 .footer-card h3 {
@@ -77,35 +84,38 @@
 
 .newsletter {
   display: flex;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .newsletter input {
   flex: 1;
-  padding: 8px;
+  padding: 9px;
   border: none;
   border-radius: 6px 0 0 6px;
+  outline: none;
 }
 
 .newsletter button {
-  padding: 8px 14px;
+  padding: 9px 16px;
   background: var(--orange);
   border: none;
   color: #000;
   font-weight: bold;
   cursor: pointer;
   border-radius: 0 6px 6px 0;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .newsletter button:hover {
   background: #e76f51;
+  transform: scale(1.05);
 }
 
 .footer-bottom {
   text-align: center;
   margin-top: 40px;
   padding-top: 15px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
   font-size: 0.85rem;
+  color: var(--white);
 }
