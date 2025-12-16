@@ -1,0 +1,220 @@
+:root {
+  --dark-blue: #0f2038;
+  --warm-orange: #f39c12;
+  --white: #ffffff;
+  --light-gray: #f4f6f9;
+  --panel-bg: #e6eef5;
+  --green-gradient-start: #38a87b;
+  --green-gradient-end: #1e8449;
+}
+
+.contact-page-container {
+  font-family: Arial, sans-serif;
+  background-color: var(--light-gray);
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.contact-header {
+  background: linear-gradient(to right, var(--green-gradient-start), var(--green-gradient-end));
+  color: var(--white);
+  padding: 40px 0;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-header h1 {
+  font-size: 2.5em;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.contact-main {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.info-panel,
+.form-panel {
+  flex: 1;
+  background-color: var(--panel-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(243, 156, 18, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-panel:hover,
+.form-panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(243, 156, 18, 0.6);
+}
+
+.info-panel h2,
+.form-panel h2 {
+  color: var(--dark-blue);
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.info-panel h2 {
+  border-bottom: 3px solid var(--warm-orange);
+  padding-bottom: 10px;
+}
+
+.info-panel p {
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.7;
+}
+
+.contact-details {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+}
+
+.contact-details strong {
+  display: block;
+  font-size: 1.1em;
+  color: var(--dark-blue);
+  margin-bottom: 5px;
+}
+
+.contact-form {
+  display: flex;
+  gap: 20px;
+}
+
+.form-left {
+  flex: 3;
+}
+
+.form-right.social-links-block {
+  flex: 2;
+  padding-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--dark-blue);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--warm-orange);
+  box-shadow: 0 0 6px rgba(243, 156, 18, 0.6);
+  outline: none;
+}
+
+.submit-btn {
+  background-color: var(--warm-orange);
+  color: var(--white);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #e67e22;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.social-heading {
+  font-weight: bold;
+  color: var(--dark-blue);
+  margin-bottom: 15px;
+}
+
+.social-item {
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.social-item:hover {
+  transform: translateX(5px);
+}
+
+.social-item a {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95em;
+  transition: color 0.3s;
+}
+
+.social-item a:hover {
+  color: var(--warm-orange);
+}
+
+.social-icon {
+  font-size: 1.2em;
+  margin-right: 8px;
+  padding: 6px;
+  border-radius: 50%;
+  background-color: var(--white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.facebook-icon { color: #3b5998; }
+.twitter-icon { color: #1da1f2; }
+.instagram-icon { color: #c32aa3; }
+.youtube-icon { color: #ff0000; }
+.email-icon { color: var(--dark-blue); }
+.viber-icon { color: #7360f2; }
+
+@media (max-width: 992px) {
+  .contact-main {
+    flex-direction: column;
+  }
+
+  .contact-form {
+    flex-direction: column;
+  }
+
+  .form-right.social-links-block {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-header h1 {
+    font-size: 2em;
+  }
+
+  .info-panel,
+  .form-panel {
+    padding: 20px;
+  }
+}

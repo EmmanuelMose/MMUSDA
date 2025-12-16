@@ -4,6 +4,7 @@ import Home from "../../../frontend/src/components/home/Home";
 import Main from "../../../frontend/src/components/main/Main";
 import Sermons from "../../../frontend/src/components/sermons/Sermons";
 import Footer from "../../src/components/footer/Footer";
+import Contact from "../../src/components/contact/Contact";
 
 
 
@@ -14,6 +15,7 @@ function LandingPage() {
       <Home />
       <Main />
       <Sermons />
+      <Contact />
       <Footer />
     </div>
   );
