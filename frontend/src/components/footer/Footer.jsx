@@ -9,10 +9,10 @@ const Footer = () => {
       <div className="footer-main-content">
         {/* Section 1: About DeKUSDA Church */}
         <div className="footer-section footer-about">
-          <h3>About DeKUSDA Church</h3>
+          <h3>About MMUSDA Church</h3> 
           <p>A university-based Seventh-day Adventist Church centered on nurtitual growth, fellowship, and academic excellence through Christ.</p>
           <p className="footer-location">
-            Location: Dedan University of Technology <br /> drough. Welcome home.
+            Location: Masinde Muliro University Of Science And Technology <br /> drough. Welcome home.
           </p>
         </div>
 
@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="footer-section footer-quicklinks-header">
           <h3>About</h3>
           <ul>
-            <li><FaHome className="icon" /> Hone</li>
+            <li><FaHome className="icon" /> Home</li>
           </ul>
           <h3>Quick-Links</h3>
         </div>
@@ -42,7 +42,7 @@ const Footer = () => {
           <ul>
             <li><FaHome className="icon" /> About Us</li>
             <li>Ministries</li>
-            <li>Email: dekudssa@students.dkut.ac.ke</li>
+            <li>Email: emmanuelmose806@gmail.com</li>
           </ul>
         </div>
 
