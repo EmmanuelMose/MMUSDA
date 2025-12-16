@@ -6,6 +6,7 @@ import "./App.css";
 import Sermons from "../../frontend/src/components/sermons/Sermons";
 import Error from "./components/Error/Error";
 import PrayerRequest from "../../frontend/src/components/prayerRequest/PrayerRequest";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,7 +26,10 @@ function App() {
       path: "/prayers",
       element: <PrayerRequest />,
     },
-    
+    {
+      path: "/contact",
+      element: <ContactPage />,
+    },
   ]);
 
   return (
