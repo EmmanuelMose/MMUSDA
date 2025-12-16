@@ -1,0 +1,209 @@
+/* Variables for colors */
+:root {
+  --main-bg-color: #2c3e50; 
+  --text-color: #ecf0f1; 
+  --link-color: #f39c12; 
+  --light-bg-color: #34495e; /* Slightly lighter background for sections */
+  --lighter-bg-color: #465972; /* Lighter background for bottom banner */
+}
+
+/* Base Footer Container */
+.footer-container {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  padding: 30px 50px 0; /* Padding around the entire footer content */
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Main Content Grid Layout */
+.footer-main-content {
+  display: grid;
+  /* Defining the grid layout as seen in the image (3 columns, 3 rows for the main blocks) */
+  /* The layout is complex and uses explicit placement */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* General Section Styling */
+.footer-section {
+  background-color: var(--light-bg-color);
+  padding: 20px;
+  border-radius: 4px; /* Slight rounding on sections */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer-section h3 {
+  color: var(--text-color);
+  font-size: 1.2em;
+  margin-top: 0;
+  border-bottom: 2px solid var(--text-color); /* Separator line under header */
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+.footer-section p {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+/* --- Specific Grid Item Placement --- */
+
+/* Row 1 */
+.footer-about {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.footer-quicklinks-header {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+.footer-quicklinks {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+/* Row 2 */
+.footer-about-mini {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+.footer-quicklinks-mini {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+.footer-inquiries-schedule {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+/* Row 3 */
+.footer-schedule-1 {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+.footer-schedule-2 {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+.footer-contact-form {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+
+/* --- Contact Form Styling --- */
+.email-form {
+  display: flex;
+  margin: 10px 0;
+}
+
+.email-form input {
+  flex-grow: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background-color: var(--text-color);
+}
+
+.email-form button {
+  padding: 8px 15px;
+  border: none;
+  background-color: #e74c3c; /* Red button color */
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-text {
+  margin-top: 15px;
+  margin-bottom: 5px !important;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 1.5em;
+}
+
+.social-icon {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+/* --- Footer Bottom Sections --- */
+
+/* Footer Bottom Banner */
+.footer-bottom-banner {
+  background-color: var(--lighter-bg-color);
+  text-align: center;
+  padding: 15px 20px;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 0.9em;
+  border-radius: 4px;
+}
+
+/* Footer Bottom Links */
+.footer-bottom-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0 30px;
+  font-size: 0.8em;
+}
+
+.footer-bottom-links .links span {
+  margin-left: 15px;
+}
+
+/* Media Query for Responsiveness (Optional, but recommended) */
+@media (max-width: 900px) {
+  .footer-main-content {
+    grid-template-columns: 1fr 1fr; /* Two columns on smaller screens */
+    grid-template-rows: auto; /* Auto rows */
+  }
+
+  /* Resetting explicit grid placement for better flow on small screens */
+  .footer-about, .footer-quicklinks-header, .footer-quicklinks,
+  .footer-about-mini, .footer-quicklinks-mini, .footer-inquiries-schedule,
+  .footer-schedule-1, .footer-schedule-2, .footer-contact-form {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .footer-bottom-links {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-bottom-links .links {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-main-content {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+}
