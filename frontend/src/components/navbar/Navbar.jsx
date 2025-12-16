@@ -51,6 +51,7 @@ const Navbar = () => {
             <li><Link to="/events">Events</Link></li>
             <li><Link to="/contact">Contact</Link></li>
             <li><Link to="/offering">Offering</Link></li>
+            <li><Link to="/leadership">Leadership</Link></li>
 
             <li className="dropdown">
               <a href="#">
