@@ -10,7 +10,6 @@ import Footer from "../../src/components/footer/Footer";
 function LandingPage() {
   return (
     <div>
-      
       <Navbar />
       <Home />
       <Main />
