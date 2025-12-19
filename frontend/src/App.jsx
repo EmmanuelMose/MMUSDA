@@ -8,6 +8,7 @@ import Error from "./components/Error/Error";
 import PrayerRequest from "../../frontend/src/components/prayerRequest/PrayerRequest";
 import ContactPage from "./pages/ContactPage";
 import Beliefs from "./components/beliefs/Beliefs";
+import AboutMmusda from "./components/aboutmmusda/AboutMmusda";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ function App() {
     {
       path: "/about/beliefs",
       element: <Beliefs />,
+    },
+    {
+      path: "/about/mmusda",
+      element: <AboutMmusda />,
     },
   ]);
 

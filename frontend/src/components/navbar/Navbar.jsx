@@ -42,9 +42,9 @@ const Navbar = () => {
                 About <span className="arrow">▼</span>
               </a>
               <div className="dropdown-content">
-                <Link to="/about/history">Our History</Link>
+                <Link to="/about/mmusda">About MMUSDA</Link>
+                <Link to="/about/sda">About SDA</Link>
                 <Link to="/about/beliefs">Beliefs</Link>
-                <Link to="/about/mission">Mission & Vision</Link>
               </div>
             </li>
 
