@@ -3,6 +3,7 @@ import cors from "cors";
 import youtubeRoutes from "./youtube/youtube.router.js";
 import prayerRouter from "./prayerRequest/prayerRequest.router.js";
 import sermonsRouter from "./sermons/sermons.router.js";
+import { announcementsRouter } from "./announcements/announcements.router.js";
 
 const initializeApp = () => {
   const app = express();
@@ -26,6 +27,7 @@ const initializeApp = () => {
   app.use("/sermons", sermonsRouter);
   app.use("/youtube", youtubeRoutes);
   app.use("/api/prayer-requests", prayerRouter);
+  app.use("/api/announcements", announcementsRouter);
 
   app.get("/", (req, res) => {
     res.send("Backend server is running with multi-frontend support!");
