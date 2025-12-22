@@ -9,6 +9,7 @@ import PrayerRequest from "../../frontend/src/components/prayerRequest/PrayerReq
 import ContactPage from "./pages/ContactPage";
 import Beliefs from "./components/beliefs/Beliefs";
 import AboutMmusda from "./components/aboutmmusda/AboutMmusda";
+import Announcements from "./components/announcements/Announcements";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,6 +40,10 @@ function App() {
     {
       path: "/about/mmusda",
       element: <AboutMmusda />,
+    },
+    {
+      path: "/announcements",
+      element: <Announcements />,
     },
   ]);
 
