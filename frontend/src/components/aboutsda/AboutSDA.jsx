@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo1 from "../../assets/images/logo1.jpeg";
 import './AboutSDA.css';
 
 const AboutSDA = () => {
@@ -52,7 +53,7 @@ const AboutSDA = () => {
           <ul>
             <li><a href="#history">History</a></li>
             <li><a href="#faq">Frequent Q&A</a></li>
-            <li><a href="#impact">Global Impact</a></li>
+            <li><a href="#video">Global Impact</a></li>
             <li><a href="#mission">Mission & Structure</a></li>
           </ul>
         </nav>
@@ -74,14 +75,10 @@ const AboutSDA = () => {
         <section id="history" className="history-section">
           <div className="history-grid">
             <div className="history-image-container">
-              <span className="year-badge">1863</span>
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Seventh-day_Adventist_Church_logo.svg/1200px-Seventh-day_Adventist_Church_logo.svg.png" 
-                alt="SDA Logo" 
-              />
+              <img src={logo1} alt="SDA Logo" />
             </div>
             <div className="history-text">
-              <h2>SMALL HISTORY ABOUT SDA</h2>
+              <h2>HISTORY ABOUT SDA</h2>
               <p>
                 The Seventh-day Adventist Church emerged from the Great Awakening movements of the 19th century, 
                 when young Bible students began questioning mainstream interpretations of Scripture.
@@ -117,9 +114,7 @@ const AboutSDA = () => {
             <h3>The Adventist Story</h3>
             <div className="video-responsive">
                 <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://youtu.be/c5f6gVfysKo?si=6LQ4pR6g3yYOlGvp" 
+                    src="https://www.youtube.com/embed/Ezd2BdtkLX0" 
                     title="YouTube video player" 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -142,7 +137,7 @@ const AboutSDA = () => {
       </main>
 
       <div className="right-branding">
-        <img src="https://via.placeholder.com/100x150?text=DeKUSDA" alt="Branding" />
+        <img src={logo1} alt="SDA Logo" />
         <p>MMUSDA</p>
       </div>
     </div>
