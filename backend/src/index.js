@@ -10,6 +10,7 @@ const initializeApp = () => {
 
   const allowedOrigins = [
     "https://mmusda.vercel.app",
+    "http://localhost:5173",
     "https://mmusdaadmin.vercel.app"
   ];
 
