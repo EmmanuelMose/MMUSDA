@@ -1,0 +1,175 @@
+:root {
+  --sda-blue: #003366;
+  --sda-light-blue: #f0f7ff;
+  --sda-text: #333;
+  --white: #ffffff;
+}
+
+.sda-container {
+  display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--sda-text);
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+/* Sidebar Styling */
+.sda-sidebar {
+  width: 250px;
+  background-color: var(--sda-blue);
+  color: white;
+  padding: 20px 0;
+  flex-shrink: 0;
+}
+
+.sidebar-nav h3 {
+  padding: 0 20px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 10px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav ul li a {
+  display: block;
+  padding: 12px 20px;
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.sidebar-nav ul li a:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.did-you-know {
+  margin: 40px 15px;
+  background: #004080;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Main Content Styling */
+.sda-main {
+  flex-grow: 1;
+  padding: 40px;
+  max-width: 900px;
+}
+
+.sda-header {
+  text-align: center;
+  background-color: var(--sda-light-blue);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.sda-header h1 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.bible-verse {
+  font-style: italic;
+  color: #666;
+}
+
+/* History Section */
+.history-grid {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.history-image-container {
+  position: relative;
+  width: 300px;
+}
+
+.history-image-container img {
+  width: 100%;
+}
+
+.year-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--sda-blue);
+  color: white;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+/* Accordion Styling */
+.accordion-item {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  background: #f9f9f9;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.accordion-body {
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.accordion-body ul {
+  padding-left: 20px;
+}
+
+/* Video Section */
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+  margin-top: 20px;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+/* Right Branding Sidebar (Optional) */
+.right-branding {
+  width: 150px;
+  background-color: #5b6e9e;
+  color: white;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.right-branding img {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.mission-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f4f4f4;
+}

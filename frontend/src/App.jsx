@@ -11,6 +11,7 @@ import Beliefs from "./components/beliefs/Beliefs";
 import AboutMmusda from "./components/aboutmmusda/AboutMmusda";
 import Announcements from "./components/announcements/Announcements";
 import Events from "./components/events/Events";
+import AboutSDA from "./components/aboutsda/AboutSDA";
 
 function App() {
   const router = createBrowserRouter([
@@ -49,6 +50,10 @@ function App() {
     {
       path: "/events",
       element: <Events />,
+    },
+    {
+      path: "/about/sda",
+      element: <AboutSDA />,
     },
   ]);
 
