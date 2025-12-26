@@ -8,24 +8,19 @@ const Navbar = () => {
 
   return (
     <>
-      {/*HEADER (UNCHANGED STYLING)*/}
       <header className="header">
         <h1 className="main-heading">
           Welcome To Masinde Muliro University Seventh Day Adventist Church
         </h1>
       </header>
 
-      {/* NAVBAR */}
       <nav className="navbar">
         <div className="navbar-container">
-          
-          {/* Logo */}
           <div className="navbar-logo">
             <img src={logo1} alt="MMUSDA Logo" />
             <span>MMUSDA</span>
           </div>
 
-          {/* Menu Toggle */}
           <div
             className="menu-icon"
             onClick={() => setIsOpen(!isOpen)}
@@ -33,14 +28,12 @@ const Navbar = () => {
             {isOpen ? "✕" : "☰"}
           </div>
 
-          {/* Nav Links */}
           <ul className={`nav-links ${isOpen ? "open" : ""}`}>
             <li><Link to="/">Home</Link></li>
-             <li><Link to="/departments">Departments</Link></li>
+            <li><Link to="/departments">Departments</Link></li>
+
             <li className="dropdown">
-              <a href="#">
-                About <span className="arrow">▼</span>
-              </a>
+              <a href="#">About</a>
               <div className="dropdown-content">
                 <Link to="/about/mmusda">About MMUSDA</Link>
                 <Link to="/about/sda">About SDA</Link>
@@ -54,11 +47,9 @@ const Navbar = () => {
             <li><Link to="/leadership">Leadership</Link></li>
 
             <li className="dropdown">
-              <a href="#">
-                Evangelism <span className="arrow">▼</span>
-              </a>
+              <a href="#">Evangelism</a>
               <div className="dropdown-content">
-                 <Link to="/sermons">Sermons</Link>
+                <Link to="/sermons">Sermons</Link>
                 <Link to="/lessons">Lesson Discussion</Link>
                 <Link to="/books">Books</Link>
                 <Link to="/bible">Bible</Link>
@@ -66,17 +57,14 @@ const Navbar = () => {
             </li>
 
             <li className="dropdown">
-              <a href="#">
-                Others <span className="arrow">▼</span>
-              </a>
+              <a href="#">Others</a>
               <div className="dropdown-content">
-               <Link to="/announcements">Announcements</Link>
+                <Link to="/announcements">Announcements</Link>
                 <Link to="/prayers">Prayer Requests</Link>
                 <Link to="/donations">Donations</Link>
               </div>
             </li>
           </ul>
-
         </div>
       </nav>
     </>
