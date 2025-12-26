@@ -10,6 +10,7 @@ import ContactPage from "./pages/ContactPage";
 import Beliefs from "./components/beliefs/Beliefs";
 import AboutMmusda from "./components/aboutmmusda/AboutMmusda";
 import Announcements from "./components/announcements/Announcements";
+import Events from "./components/events/Events";
 
 function App() {
   const router = createBrowserRouter([
@@ -44,6 +45,10 @@ function App() {
     {
       path: "/announcements",
       element: <Announcements />,
+    },
+    {
+      path: "/events",
+      element: <Events />,
     },
   ]);
 

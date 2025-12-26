@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {
   fetchAllEvents,
   fetchEventsByTitle,
-} from "./eventsAPI";
+} from "../../Features/events/eventsAPI";
 import "./events.css";
 
 const Events = () => {
