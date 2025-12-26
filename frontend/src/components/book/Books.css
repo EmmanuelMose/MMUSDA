@@ -1,0 +1,195 @@
+.books-page {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.books-header {
+  background-color: #001f3f;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.books-header h1 {
+  color: #FF8C00;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-style: italic;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.books-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  color: #001f3f;
+  border-left: 5px solid #FF8C00;
+  padding-left: 15px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #FF8C00;
+  margin-bottom: 15px;
+}
+
+/* Cards & Layout */
+.vision-mission-grid, .list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.info-card, .list-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+  border-bottom: 4px solid #FF8C00;
+}
+
+.historical-box {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 15px;
+  margin: 30px 0;
+  border: 1px dashed #001f3f;
+}
+
+.scripture-quote {
+  color: #001f3f;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+}
+
+ul li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: #FF8C00;
+  font-size: 0.8rem;
+  top: 4px;
+}
+
+/* Involvement */
+.involvement-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.involvement-chips span {
+  background: #001f3f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.involvement-chips span:hover {
+  background: #FF8C00;
+  transform: scale(1.05);
+}
+
+/* CTA Section */
+.importance-box {
+  background: #001f3f;
+  color: white;
+  padding: 40px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+
+.importance-box h3 {
+  color: #FF8C00;
+}
+
+blockquote {
+  border-left: 4px solid #FF8C00;
+  padding-left: 20px;
+  margin: 25px 0 0 0;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+cite {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.online-library {
+  text-align: center;
+  padding: 40px;
+  background: #fff8f0;
+  border-radius: 20px;
+}
+
+.browse-button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 18px 40px;
+  background-color: #FF8C00;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.browse-button:hover {
+  background-color: #001f3f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 31, 63, 0.3);
+}
+
+/* Animations */
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .books-header h1 { font-size: 2rem; }
+  .books-content { padding: 20px; }
+}
