@@ -1,13 +1,17 @@
 .video-wrapper {
-  max-width: 80%;
-  margin: 20px auto;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  overflow: hidden;
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 300px;
+  height: 170px;
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  z-index: 1000;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .video-header {
@@ -15,21 +19,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
-  background-color: #ff0000;
+  padding: 6px 10px;
+  background-color: #0b3c5d;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
 }
 
 .close-button {
   background-color: white;
-  color: #ff0000;
+  color: #0b3c5d;
   border: none;
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  font-size: 18px;
+  width: 25px;
+  height: 25px;
+  font-size: 14px;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -41,9 +45,7 @@
 .video-container {
   position: relative;
   width: 100%;
-  max-width: 100%;
-  height: 350px;
-  margin: 0 auto;
+  height: 100%;
 }
 
 .video-container iframe {
@@ -54,69 +56,49 @@
 
 .overlay-close {
   position: absolute;
-  bottom: 15px;
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #ff0000;
+  background-color: #ff8c42;
   color: white;
-  padding: 8px 20px;
+  padding: 5px 12px;
   border: none;
-  border-radius: 25px;
-  font-size: 14px;
+  border-radius: 20px;
+  font-size: 12px;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
 }
 
 .overlay-close:hover {
-  background-color: #cc0000;
+  background-color: #ffb37a;
   transform: scale(1.05);
 }
 
 .video-list {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 12px;
-  gap: 10px;
-}
-
-.video-item {
-  background-color: #ececec;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.video-item:hover {
-  background-color: #d4d4d4;
-  transform: scale(1.05);
+  display: none;
 }
 
 @media (max-width: 768px) {
-  .video-container {
-    height: 250px;
+  .video-wrapper {
+    width: 220px;
+    height: 125px;
+    top: 70px;
+    right: 10px;
   }
 
   .video-header {
-    font-size: 16px;
-    padding: 8px 12px;
+    font-size: 12px;
+    padding: 4px 8px;
   }
 
   .close-button {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-  }
-
-  .overlay-close {
-    padding: 6px 16px;
+    width: 20px;
+    height: 20px;
     font-size: 12px;
   }
 
-  .video-item {
-    font-size: 14px;
-    padding: 6px 10px;
+  .overlay-close {
+    padding: 4px 10px;
+    font-size: 10px;
   }
 }
