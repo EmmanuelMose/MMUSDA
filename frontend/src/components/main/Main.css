@@ -1,4 +1,4 @@
-/* ===== GLOBAL RESET & SAFETY ===== */
+/* GLOBAL RESET & SAFETY */
 *,
 *::before,
 *::after {
@@ -11,14 +11,14 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== COLOR VARIABLES ===== */
+/*COLOR VARIABLES */
 :root {
   --primary-blue: #0b3c5d;
   --hover-orange: #f4a261;
   --text-dark: #1f2933;
 }
 
-/* ===== MAIN SECTION ===== */
+/*MAIN SECTION*/
 .main-home {
   display: flex;
   justify-content: space-between;
@@ -31,7 +31,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== TEXT CONTENT ===== */
+/*TEXT CONTENT*/
 .main-info {
   flex: 1;
   min-width: 0;
@@ -53,7 +53,7 @@ body {
   transform: rotate(-1.5deg) scale(1.05);
 }
 
-/* ===== ANIMATED TEXT ===== */
+/* ANIMATED TEXT*/
 .animated-lines {
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@ body {
   color: var(--hover-orange);
 }
 
-/* ===== PARAGRAPHS ===== */
+/*PARAGRAPHS*/
 .main-info p {
   max-width: 100%;
   font-size: clamp(13px, 3.5vw, 16px);
@@ -106,6 +106,7 @@ body {
   margin: 14px 0;
   color: var(--text-dark);
   transition: all 0.3s ease;
+  margin-left: 10px;
 }
 
 .main-info p:hover {
@@ -113,7 +114,7 @@ body {
   transform: scale(1.02);
 }
 
-/* ===== BUTTONS ===== */
+/*BUTTONS*/
 .main-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -143,7 +144,7 @@ body {
   background: transparent;
 }
 
-/* ===== IMAGE SECTION ===== */
+/*IMAGE SECTION*/
 .main-image {
   flex: 1;
   display: flex;
@@ -196,7 +197,7 @@ body {
   border-radius: 50%;
 }
 
-/* ===== ANIMATIONS ===== */
+/*ANIMATIONS*/
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -245,7 +246,7 @@ body {
   }
 }
 
-/* ===== TABLETS ===== */
+/*TABLETS*/
 @media (max-width: 992px) {
   .main-home {
     flex-direction: column;
@@ -266,7 +267,7 @@ body {
   }
 }
 
-/* ===== SMALL PHONES ===== */
+/*SMALL PHONES*/
 @media (max-width: 576px) {
   .main-home {
     padding: 50px 14px;

@@ -6,8 +6,6 @@ import Sermons from "../../../frontend/src/components/sermons/Sermons";
 import Footer from "../../src/components/footer/Footer";
 //import Contact from "../../src/components/contact/Contact";
 
-
-
 function LandingPage() {
   return (
     <div>

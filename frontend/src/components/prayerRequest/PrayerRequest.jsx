@@ -38,7 +38,7 @@ const PrayerRequest = () => {
     setMessage("");
     try {
       await createPrayerRequest(formData);
-      setMessage("🙏 Prayer request submitted successfully!");
+      setMessage("Prayer request submitted successfully!");
       setFormData({
         firstName: "",
         lastName: "",
