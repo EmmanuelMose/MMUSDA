@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import logo1 from "../../assets/images/logo1.jpeg";
 import './AboutSDA.css';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const AboutSDA = () => {
   const [activeFaq, setActiveFaq] = useState(0);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const faqData = [
     {
@@ -46,15 +48,17 @@ const AboutSDA = () => {
 
   return (
     <div className="sda-container">
-      {/* Sidebar */}
-      <aside className="sda-sidebar">
+      <aside className={`sda-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <button className="close-btn" onClick={() => setSidebarOpen(false)}>
+          <FaTimes size={22} />
+        </button>
         <nav className="sidebar-nav">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#history">History</a></li>
-            <li><a href="#faq">Frequent Q&A</a></li>
-            <li><a href="#video">Global Impact</a></li>
-            <li><a href="#mission">Mission & Structure</a></li>
+            <li><a href="#history" onClick={() => setSidebarOpen(false)}>History</a></li>
+            <li><a href="#faq" onClick={() => setSidebarOpen(false)}>Frequent Q&A</a></li>
+            <li><a href="#video" onClick={() => setSidebarOpen(false)}>Global Impact</a></li>
+            <li><a href="#mission" onClick={() => setSidebarOpen(false)}>Mission & Structure</a></li>
           </ul>
         </nav>
 
@@ -64,7 +68,10 @@ const AboutSDA = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
+      <button className="hamburger-btn" onClick={() => setSidebarOpen(true)}>
+        <FaBars size={22} />
+      </button>
+
       <main className="sda-main">
         <header className="sda-header">
           <h1>ABOUT SEVENTH DAY ADVENTIST CHURCH (SDA)</h1>

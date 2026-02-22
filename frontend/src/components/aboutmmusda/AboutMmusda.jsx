@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './AboutMmusda.css';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const AboutMmusda = () => {
   const [activeTab, setActiveTab] = useState('who');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const content = {
     who: (
@@ -67,18 +69,28 @@ const AboutMmusda = () => {
 
   return (
     <div className="about-container">
-      <div className="sidebar">
+      {/* Sidebar */}
+      <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="logo-section">
           <h1>MMUSDA</h1>
+          <button className="close-btn" onClick={() => setSidebarOpen(false)}>
+            <FaTimes size={25} />
+          </button>
         </div>
         <nav className="nav-menu">
-          <button className={activeTab === 'who' ? 'active' : ''} onClick={() => setActiveTab('who')}>Who We Are</button>
-          <button className={activeTab === 'vision' ? 'active' : ''} onClick={() => setActiveTab('vision')}>Vision & Mission</button>
-          <button className={activeTab === 'activities' ? 'active' : ''} onClick={() => setActiveTab('activities')}>Activities</button>
-          <button className={activeTab === 'worship' ? 'active' : ''} onClick={() => setActiveTab('worship')}>Worship</button>
+          <button className={activeTab === 'who' ? 'active' : ''} onClick={() => { setActiveTab('who'); setSidebarOpen(false); }}>Who We Are</button>
+          <button className={activeTab === 'vision' ? 'active' : ''} onClick={() => { setActiveTab('vision'); setSidebarOpen(false); }}>Vision & Mission</button>
+          <button className={activeTab === 'activities' ? 'active' : ''} onClick={() => { setActiveTab('activities'); setSidebarOpen(false); }}>Activities</button>
+          <button className={activeTab === 'worship' ? 'active' : ''} onClick={() => { setActiveTab('worship'); setSidebarOpen(false); }}>Worship</button>
         </nav>
       </div>
 
+      {/* Hamburger icon */}
+      <button className="hamburger-btn" onClick={() => setSidebarOpen(true)}>
+        <FaBars size={25} />
+      </button>
+
+      {/* Main content */}
       <div className="main-frame">
         <div className="content-area">
           {content[activeTab]}

@@ -1,9 +1,9 @@
 .about-container {
   display: flex;
   min-height: 100vh;
-  background-color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #000000;
+  position: relative;
 }
 
 .sidebar {
@@ -14,7 +14,16 @@
   display: flex;
   flex-direction: column;
   box-shadow: 4px 0 15px rgba(0,0,0,0.2);
-  z-index: 10;
+  transition: transform 0.3s ease-in-out;
+  z-index: 20;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.logo-section {
+  position: relative;
 }
 
 .logo-section h1 {
@@ -23,6 +32,25 @@
   text-align: center;
   margin-bottom: 50px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #FF8C00;
+  border: none;
+  color: #001f3f;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #ff9c33;
+  transform: scale(1.1);
 }
 
 .nav-menu {
@@ -104,7 +132,7 @@ h3 {
   color: white;
   padding: 15px;
   border-radius: 10px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 
 .day-card:hover {
@@ -145,4 +173,50 @@ ul {
 
 li::marker {
   color: #FF8C00;
+}
+
+.hamburger-btn {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #FF8C00;
+  border: none;
+  color: #001f3f;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 30;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+  background: #ff9c33;
+  transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-frame {
+    padding: 20px;
+  }
+
+  .hamburger-btn {
+    display: block;
+  }
+
+  .close-btn {
+    display: block;
+  }
 }
