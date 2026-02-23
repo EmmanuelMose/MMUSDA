@@ -1,68 +1,50 @@
 .admin-dashboard {
   display: flex;
-  height: 100vh;
-  background-color: #f5f5f5;
+  background: #f3f4f6;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Drawer */
-.drawer {
-  width: 250px;
-  background-color: #0d1b2a; /* dark blue */
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
-
-.drawer-header {
-  padding: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-bottom: 1px solid #f77f00; /* warm orange border */
-}
-
-.drawer-nav {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-}
-
-.drawer-item {
-  padding: 12px 20px;
-  text-decoration: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.drawer-item:hover {
-  background-color: #f77f00; /* warm orange on hover */
-  color: white;
-}
-
-.drawer-item.active {
-  background-color: #f77f00;
-}
-
-.drawer-footer {
-  padding: 20px;
-  border-top: 1px solid #f77f00;
-}
-
-.logout-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #f77f00;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Right content frame */
+/* content area */
 .dashboard-content {
   flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+  padding: 30px;
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+}
+
+/* beautiful centered card */
+.content-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  margin: 20px auto;
+  max-width: 1200px;
+  animation: fadeIn 0.4s ease;
+}
+
+/* fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE VIEW FIXED */
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .content-card {
+    margin: 10px 0;
+    border-radius: 10px;
+  }
+
+  body {
+    overflow-x: hidden;
+    position: fixed;
+    width: 100%;
+  }
 }
