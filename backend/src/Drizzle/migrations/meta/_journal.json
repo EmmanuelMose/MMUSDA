@@ -36,6 +36,13 @@
       "when": 1765810125279,
       "tag": "0004_abnormal_lucky_pierre",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1771824278736,
+      "tag": "0005_crazy_william_stryker",
+      "breakpoints": true
     }
   ]
 }

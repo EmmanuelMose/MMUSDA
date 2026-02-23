@@ -60,10 +60,22 @@ export const adminDrawerData = [
         description: "Announcements"
     },
     {
-        id: "music",
-        name: "Music",
+        id: "choirs",
+        name: "Choirs",
         icon: FaMusic,
-        link: "music",
-        description: "Music"
+        link: "choirs",
+        description: "Church Choirs"
+    },
+    {
+        id: "members",
+        name: "Members",
+        link: "members",
+        description: "members"
+    },
+    {
+        id: "contacts",
+        name: "contacts",
+        link: "contacts",
+        description: "contacts"
     }
 ];
