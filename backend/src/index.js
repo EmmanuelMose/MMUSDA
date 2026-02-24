@@ -8,6 +8,7 @@ import { eventsRouter } from "./events/events.router.js";
 import { authRouter } from "./auth/auth.router.js";
 import { departmentRouter } from "./departments/departments.router.js";
 import { contactsRouter } from "./contacts/contacts.router.js";
+import { leadersRouter } from "./leaders/leaders.router.js";
 
 const initializeApp = () => {
   const app = express();
@@ -36,7 +37,8 @@ const initializeApp = () => {
   app.use("/api/events", eventsRouter);
   app.use("/api/auth", authRouter);
   app.use("/api/department", departmentRouter);
-    app.use("/api/contacts", contactsRouter);
+  app.use("/api/contacts", contactsRouter);
+  app.use("/api/leaders", leadersRouter);   // Leaders API
 
   app.get("/", (req, res) => {
     res.send("Backend server is running with multi-frontend support!");
