@@ -6,6 +6,8 @@ import sermonsRouter from "./sermons/sermons.router.js";
 import { announcementsRouter } from "./announcements/announcements.router.js";
 import { eventsRouter } from "./events/events.router.js";
 import { authRouter } from "./auth/auth.router.js";
+import { departmentRouter } from "./departments/departments.router.js";
+import { contactsRouter } from "./contacts/contacts.router.js";
 
 const initializeApp = () => {
   const app = express();
@@ -33,6 +35,8 @@ const initializeApp = () => {
   app.use("/api/announcements", announcementsRouter);
   app.use("/api/events", eventsRouter);
   app.use("/api/auth", authRouter);
+  app.use("/api/department", departmentRouter);
+    app.use("/api/contacts", contactsRouter);
 
   app.get("/", (req, res) => {
     res.send("Backend server is running with multi-frontend support!");

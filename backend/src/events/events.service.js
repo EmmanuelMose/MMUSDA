@@ -1,37 +1,45 @@
-import { db } from "../Drizzle/db.js";
+import { db } from "../Drizzle/db.js"; // your Drizzle DB instance
 import { events } from "../Drizzle/schema.js";
-import { eq, desc } from "drizzle-orm";
+import { eq, ilike } from "drizzle-orm";
 
-export const getAllEvents = async () => {
-  return await db.select().from(events).orderBy(desc(events.eventDate));
-};
+export const EventService = {
+  // Create a new event
+  createEvent: async ({ title, description, eventDate, photo }) => {
+    const result = await db.insert(events).values({
+      title,
+      description,
+      eventDate,
+      photo: photo || null,
+    }).returning();
+    return result[0];
+  },
 
-export const getEventById = async (id) => {
-  const result = await db.select().from(events).where(eq(events.eventId, id));
-  return result[0];
-};
+  // Get all events
+  getAllEvents: async () => {
+    return db.select().from(events).orderBy(events.eventDate, "desc");
+  },
 
-export const getEventByTitle = async (title) => {
-  return await db.select().from(events).where(eq(events.title, title));
-};
+  // Get events by title (partial match, case-insensitive)
+  getEventsByTitle: async (title) => {
+    return db.select().from(events).where(ilike(events.title, `%${title}%`));
+  },
 
-export const createEvent = async ({ title, description, eventDate, photoUrl }) => {
-  const result = await db
-    .insert(events)
-    .values({ title, description, eventDate, photoUrl })
-    .returning();
-  return result[0];
-};
+  // Update event by ID
+  updateEvent: async (eventId, data) => {
+    const id = Number(eventId);
+    const result = await db.update(events)
+      .set({
+        ...data,
+        updatedAt: new Date()
+      })
+      .where(eq(events.eventId, id))
+      .returning();
+    return result[0];
+  },
 
-export const updateEvent = async (id, { title, description, eventDate, photoUrl }) => {
-  const result = await db
-    .update(events)
-    .set({ title, description, eventDate, photoUrl, updatedAt: new Date() })
-    .where(eq(events.eventId, id))
-    .returning();
-  return result[0];
-};
-
-export const deleteEvent = async (id) => {
-  return await db.delete(events).where(eq(events.eventId, id));
+  // Delete event by ID
+  deleteEvent: async (eventId) => {
+    const id = Number(eventId);
+    return db.delete(events).where(eq(events.eventId, id));
+  }
 };
