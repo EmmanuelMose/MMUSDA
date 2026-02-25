@@ -13,6 +13,7 @@ import Announcements from "./components/announcements/Announcements";
 import Events from "./components/events/Events";
 import AboutSDA from "./components/aboutsda/AboutSDA";
 import Books from "./components/book/Book";
+import Departments from "./components/departments/Departments";
 
 function App() {
   const router = createBrowserRouter([
@@ -59,6 +60,10 @@ function App() {
     {
       path: "/books",
       element: <Books />,
+    },
+    {
+      path: "/departments",
+      element: <Departments />,
     },
   ]);
 

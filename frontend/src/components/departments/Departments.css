@@ -1,0 +1,127 @@
+.departments-container {
+  padding: 30px;
+  max-width: 1100px;
+  margin: auto;
+  background: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.departments-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.departments-header h1 {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: darkblue;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.bible-verse {
+  font-size: 1rem;
+  color: black;
+  font-style: italic;
+  max-width: 700px;
+  margin: 20px auto;
+  border-left: 4px solid warmorange;
+  padding-left: 15px;
+}
+
+.quote {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #222;
+  font-weight: 500;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+.table-wrapper:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.departments-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  min-width: 850px;
+}
+
+.departments-table thead {
+  background-color: darkblue;
+  color: white;
+}
+
+.departments-table th {
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.departments-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #ddd;
+  transition: 0.3s ease;
+}
+
+.table-row:hover {
+  background-color: rgba(255, 140, 0, 0.15);
+  transform: scale(1.01);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.departments-table td:hover {
+  color: darkblue;
+  cursor: pointer;
+}
+
+.loading-text {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: darkblue;
+}
+
+.departments-footer {
+  text-align: center;
+  margin-top: 35px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .departments-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .bible-verse,
+  .quote {
+    font-size: 0.9rem;
+  }
+
+  .departments-table {
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+:root {
+  --darkblue: #002B5B;
+  --warmorange: #FF7F11;
+}
