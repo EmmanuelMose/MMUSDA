@@ -1,19 +1,23 @@
-import axios from "axios";
 import { APIDomain } from "../../utils/APIDomain";
 
-const EVENTS_URL = `${APIDomain}/api/events`;
-
 export const fetchAllEvents = async () => {
-  const response = await axios.get(EVENTS_URL);
-  return response.data;
-};
-
-export const fetchEventById = async (id) => {
-  const response = await axios.get(`${EVENTS_URL}/id/${id}`);
-  return response.data;
+  try {
+    const res = await fetch(`${APIDomain}/api/events`);
+    const data = await res.json();
+    return data.events || [];
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
 };
 
 export const fetchEventsByTitle = async (title) => {
-  const response = await axios.get(`${EVENTS_URL}/title/${title}`);
-  return response.data;
+  try {
+    const res = await fetch(`${APIDomain}/api/events/search?title=${encodeURIComponent(title)}`);
+    const data = await res.json();
+    return data.events || [];
+  } catch (error) {
+    console.error("Error searching events:", error);
+    return [];
+  }
 };

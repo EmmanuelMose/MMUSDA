@@ -1,96 +1,85 @@
 import { useEffect, useState } from "react";
-import {
-  fetchAllEvents,
-  fetchEventsByTitle,
-  fetchEventById,
-} from "../../Features/events/eventsAPI";
-import "./events.css";
+import { fetchAllEvents } from "../../Features/events/eventsAPI.js";
+import "./Events.css";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
-  const [title, setTitle] = useState("");
-  const [eventId, setEventId] = useState("");
   const [loading, setLoading] = useState(true);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    loadAllEvents();
+    const load = async () => {
+      const data = await fetchAllEvents();
+      setEvents(data);
+      setLoading(false);
+    };
+    load();
   }, []);
 
-  const loadAllEvents = async () => {
-    setLoading(true);
-    const data = await fetchAllEvents();
-    setEvents(data);
-    setLoading(false);
-  };
+  const filteredEvents = events.filter((event) =>
+    event.title.toLowerCase().includes(searchText.toLowerCase())
+  );
 
-  const handleSearchByTitle = async () => {
-    if (!title.trim()) {
-      loadAllEvents();
-      return;
-    }
-    setLoading(true);
-    const data = await fetchEventsByTitle(title);
-    setEvents(data);
-    setLoading(false);
-  };
-
-  const handleSearchById = async () => {
-    if (!eventId) return;
-    setLoading(true);
-    try {
-      const data = await fetchEventById(eventId);
-      setEvents([data]);
-    } catch {
-      setEvents([]);
-    }
-    setLoading(false);
-  };
+  if (loading) return <p className="loading-text">Loading events...</p>;
 
   return (
     <div className="events-container">
-      <h2 className="events-title">Church Events</h2>
+      <header className="events-header">
+        <h1 className="title-motion">Church Events</h1>
 
-      <div className="events-search">
         <input
           type="text"
-          placeholder="Search by title..."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Search events by title..."
+          className="search-input"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
         />
-        <button onClick={handleSearchByTitle}>Search Title</button>
-      </div>
 
-      <div className="events-search">
-        <input
-          type="number"
-          placeholder="Search by ID..."
-          value={eventId}
-          onChange={(e) => setEventId(e.target.value)}
-        />
-        <button onClick={handleSearchById}>Search ID</button>
-        <button onClick={loadAllEvents}>Reset</button>
-      </div>
+        <p className="verse">
+          “Let us consider one another to stir up love and good works,
+          not forsaking the assembling of ourselves together.”
+          — Hebrews 10:24–25
+        </p>
 
-      {loading ? (
-        <p className="loading">Loading events...</p>
-      ) : events.length === 0 ? (
-        <p className="loading">No events found</p>
-      ) : (
-        <div className="events-grid">
-          {events.map((event) => (
-            <div className="event-card" key={event.eventId}>
-              <div className="event-image-container">
-                <img src={event.photoUrl} alt={event.title} />
-              </div>
-              <div className="event-content">
-                <h3>{event.title}</h3>
-                <p>{event.description}</p>
-                <span>{event.eventDate}</span>
-              </div>
+        <p className="quote">“Great things happen when God’s people gather.”</p>
+        <p className="quote">“Where two or three gather in My name, I am there among them.” — Matthew 18:20</p>
+
+        <p className="intro">
+          Every event strengthens fellowship, builds unity, and inspires spiritual growth.
+          As a family in Christ, we celebrate, worship, and serve together.
+        </p>
+
+        <div className="section-line"></div>
+      </header>
+
+      <div className="events-grid">
+        {filteredEvents.map((event) => (
+          <div key={event.eventId} className="event-card">
+            <div className="event-image-wrapper">
+              <img
+                src={event.photo || "https://via.placeholder.com/400x250?text=Church+Event"}
+                alt={event.title}
+                className="event-image"
+              />
             </div>
-          ))}
-        </div>
+
+            <div className="event-content">
+              <h3 className="event-title">{event.title}</h3>
+              <p className="event-description">{event.description}</p>
+              <p className="event-date">Date: {new Date(event.eventDate).toDateString()}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {filteredEvents.length === 0 && (
+        <p className="no-results">No events match your search.</p>
       )}
+
+      <footer className="events-footer">
+        <p>“Serve the Lord with gladness; come before His presence with singing.” — Psalm 100:2</p>
+        <p>“To everything there is a season, a time for every purpose under heaven.” — Ecclesiastes 3:1</p>
+      </footer>
     </div>
   );
 };
