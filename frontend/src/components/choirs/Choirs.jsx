@@ -1,7 +1,7 @@
 // src/Features/choirs/Choirs.jsx
 import React, { useEffect, useState } from "react";
-import { fetchChoirs } from "../../Features/choirs/choirsAPI";
-import "../../components/Choirs.css";
+import { fetchChoirs } from "../../Features/choirs/choirsAPI.js";
+import "./Choirs.css";
 
 const Choirs = () => {
   const [choirs, setChoirs] = useState([]);

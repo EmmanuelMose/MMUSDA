@@ -1,7 +1,7 @@
 // src/Features/Families.jsx
 import React, { useEffect, useState } from "react";
 import { fetchFamilies } from "../../Features/families/familiesAPI.js";
-import "./Families.css"; // Import your CSS
+import "./Families.css";
 
 const Families = () => {
   const [families, setFamilies] = useState([]);
