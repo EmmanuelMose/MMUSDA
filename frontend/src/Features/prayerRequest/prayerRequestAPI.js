@@ -1,15 +1,15 @@
+
 import { APIDomain } from "../../utils/APIDomain";
 
-// Fetch all public prayer requests
 export const getPublicPrayerRequests = async () => {
   try {
-    const res = await fetch(`${APIDomain}/api/prayer-requests/public`);
+    const res = await fetch(`${APIDomain}/api/prayer-requests`);
+    if (!res.ok) throw new Error("Failed to fetch prayer requests");
     const data = await res.json();
-    if (data.success) return data.data;
-    throw new Error(data.message || "Failed to fetch prayer requests");
+    return data; // returns an array of prayer requests
   } catch (error) {
-    console.error(error);
-    throw error;
+    console.error("Error fetching prayer requests:", error);
+    return [];
   }
 };
 
@@ -21,11 +21,11 @@ export const createPrayerRequest = async (requestData) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestData),
     });
+    if (!res.ok) throw new Error("Failed to create prayer request");
     const data = await res.json();
-    if (data.success) return data.data;
-    throw new Error(data.message || "Failed to create prayer request");
+    return data; // returns the created prayer request object
   } catch (error) {
-    console.error(error);
+    console.error("Error creating prayer request:", error);
     throw error;
   }
 };
