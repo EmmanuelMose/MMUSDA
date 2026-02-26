@@ -1,0 +1,85 @@
+/* src/components/Choirs.css */
+
+/* Container */
+.choirs-container {
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* Title */
+.choirs-title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #0d1b2a; /* Dark Blue */
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  animation: fadeInDown 1s ease;
+}
+
+/* Grid Layout */
+.choirs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Choir Card */
+.choir-card {
+  background: linear-gradient(145deg, #0d1b2a, #1b3b5f); /* Dark Blue Gradient */
+  color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Hover Effect */
+.choir-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  background: linear-gradient(145deg, #ff7f50, #ffa65c); /* Warm Orange Gradient */
+  color: #0d1b2a;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+}
+
+/* Choir Info */
+.choir-name {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.choir-detail {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Loading & Empty States */
+.choirs-loading,
+.choirs-empty {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #0d1b2a;
+  margin-top: 100px;
+  animation: fadeIn 1s ease;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

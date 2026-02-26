@@ -16,6 +16,8 @@ import Books from "./components/book/Book";
 import Departments from "./components/departments/Departments";
 import Leaders from "./components/leaders/Leaders";
 import HomeChurches from "./components/homechurches/HomeChurches";
+import Families from "./components/families/Families";
+import Choirs from "./components/choirs/Choirs";
 
 function App() {
   const router = createBrowserRouter([
@@ -74,6 +76,14 @@ function App() {
     {
       path: "/homechurches",
       element: <HomeChurches />,
+    },
+    {
+      path: "families",
+      element: <Families />,
+    },
+    {
+      path: "choirs",
+      element: <Choirs />,
     },
     
   ]);
