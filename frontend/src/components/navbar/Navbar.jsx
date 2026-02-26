@@ -20,6 +20,7 @@ const navItems = [
       { label: "About MMUSDA", path: "/about/mmusda" },
       { label: "About SDA", path: "/about/sda" },
       { label: "Beliefs", path: "/about/beliefs" },
+      { label: "Members", path: "/members" },
     ]
   },
   { label: "Events", path: "/events", icon: <Calendar className="w-4 h-4" /> },
