@@ -14,6 +14,7 @@ import choirsRouter from "./choirs/choirs.router.js";
 import prayerRouter from "./prayerRequest/prayerRequest.router.js";
 import { membersRouter } from "./members/members.router.js";
 import { suggestionsRouter } from "./suggestions/suggestions.router.js";
+import offeringsRouter from "./offering/offering.router.js";
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use("/api/families", familiesRouter);
 app.use("/api/choirs", choirsRouter);
 app.use("/api/members", membersRouter);
 app.use("/api/suggestions", suggestionsRouter);
+ app.use("/api/offerings", offeringsRouter);
 
 app.get("/", (req, res) =>
   res.send("Backend server is running with multi-frontend support!")
