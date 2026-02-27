@@ -19,6 +19,7 @@ import HomeChurches from "./components/homechurches/HomeChurches";
 import Families from "./components/families/Families";
 import Choirs from "./components/choirs/Choirs";
 import Members from "./components/members/Members";
+import Offering from "./components/offering/Offering";
 
 function App() {
   const router = createBrowserRouter([
@@ -90,6 +91,15 @@ function App() {
       path: "members",
       element: <Members />,
     },
+    {
+      path: "/become-member",
+      element: <Members />,
+    },
+    {
+      path: "/offering",
+      element: <Offering />,
+    },
+    
     
   ]);
 
