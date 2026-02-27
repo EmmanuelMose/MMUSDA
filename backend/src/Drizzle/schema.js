@@ -130,3 +130,20 @@ export const leaders = pgTable("leaders", {
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
+
+export const suggestions = pgTable("suggestions", {
+  suggestionId: serial("suggestion_id").primaryKey(),
+  name: varchar("name", { length: 255 }),                  
+  contactNumber: varchar("contact_number", { length: 50 }), 
+  message: text("message").notNull(),                      
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const offerings = pgTable("offerings", {
+  offeringId: serial("offering_id").primaryKey(),
+  phoneNumber: varchar("phone_number", { length: 50 }).notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  amount: integer("amount").notNull(),
+  purpose: varchar("purpose", { length: 255 }).notNull(),  
+  createdAt: timestamp("created_at").defaultNow(),
+});

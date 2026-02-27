@@ -106,6 +106,43 @@ async function seed() {
       { name: "Leader 4", department: "Health", contactInfo: null, role: "Head" },
       { name: "Leader 5", department: "Education", contactInfo: "leader5@example.com", role: "Director" }
     ]);
+    await db.insert(schema.suggestions).values([
+  {
+    name: "Anonymous Member",
+    contactNumber: "0712345678",
+    message: "I think we should start midweek Bible study."
+  },
+  {
+    name: null,
+    contactNumber: null,
+    message: "Please improve the sound system during services."
+  },
+  {
+    name: "Grace Mwangi",
+    contactNumber: "0798765432",
+    message: "Consider adding more youth programs."
+  }
+]);
+await db.insert(schema.offerings).values([
+  {
+    phoneNumber: "0711111111",
+    name: "John Kamau",
+    amount: 500,
+    purpose: "Tithe"
+  },
+  {
+    phoneNumber: "0722222222",
+    name: "Mary Wanjiku",
+    amount: 1200,
+    purpose: "Church Building Fund"
+  },
+  {
+    phoneNumber: "0733333333",
+    name: "Peter Otieno",
+    amount: 300,
+    purpose: "Youth Ministry Support"
+  }
+]);
 
     console.log("Seeding complete!");
     await pool.end();
