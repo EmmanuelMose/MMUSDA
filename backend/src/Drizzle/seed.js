@@ -143,6 +143,10 @@ await db.insert(schema.offerings).values([
     purpose: "Youth Ministry Support"
   }
 ]);
+await db.insert(schema.offeringDetails).values({
+  name: "Emmanuel Mose",
+  phoneNumber: "254718146250"
+});
 
     console.log("Seeding complete!");
     await pool.end();

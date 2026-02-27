@@ -147,3 +147,9 @@ export const offerings = pgTable("offerings", {
   purpose: varchar("purpose", { length: 255 }).notNull(),  
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const offeringDetails = pgTable("offering_details", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  phoneNumber: varchar("phone_number", { length: 50 }).notNull(),
+});
