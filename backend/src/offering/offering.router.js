@@ -3,17 +3,18 @@ import {
   createOfferingController,
   getAllOfferingsController,
   getByPhoneAndNameController,
-  deleteOfferingController
+  deleteOfferingController,
+  getPhoneAndNameController
 } from "./offering.controller.js";
 
 const offeringsRouter = express.Router();
 
 offeringsRouter.post("/", createOfferingController);
 offeringsRouter.get("/", getAllOfferingsController);
-
-// Search by phone and name
 offeringsRouter.get("/search", getByPhoneAndNameController);
-
 offeringsRouter.delete("/:id", deleteOfferingController);
+
+// New route for phoneNumber and name only
+offeringsRouter.get("/phones-names", getPhoneAndNameController);
 
 export default offeringsRouter;

@@ -1,58 +1,54 @@
 .offering-container {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 20px;
+  background-color: #001f4d; /* dark blue */
+  border-radius: 12px;
+  color: white;
   font-family: Arial, sans-serif;
 }
 
-.offering-display {
-  background-color: #f0f4f8;
-  padding: 15px;
-  border-radius: 8px;
+.offering-form h2 {
+  color: #ffa500; /* warm orange */
   margin-bottom: 20px;
-}
-
-.offering-display h2 {
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.offering-display p {
-  margin: 5px 0;
-  color: #555;
+  text-align: center;
 }
 
 .offering-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.offering-form h2 {
-  margin-bottom: 10px;
-  color: #333;
+  gap: 12px;
 }
 
 .offering-form input {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ffa500;
+  font-size: 16px;
+}
+
+.offering-form input::placeholder {
+  color: #ccc;
 }
 
 .offering-form button {
-  padding: 10px;
-  background-color: #4caf50;
-  color: white;
+  padding: 12px;
+  background-color: #ffa500; /* warm orange */
+  color: #001f4d; /* dark blue */
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .offering-form button:hover {
-  background-color: #45a049;
+  background-color: #ff8c00;
 }
 
 .message {
+  text-align: center;
+  font-weight: bold;
+  color: #00ffcc; /* bright contrast */
   margin-top: 10px;
-  color: #006600;
 }

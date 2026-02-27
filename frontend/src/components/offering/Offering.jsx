@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { createOffering, getOfferingByPhoneAndName } from "../../Features/offering/offeringAPI";
+import React, { useState } from "react";
+import { createOffering } from "../../Features/offering/offeringAPI";
 import "./Offering.css";
 
 const Offering = () => {
-  const [offering, setOffering] = useState(null);
   const [formData, setFormData] = useState({
     phoneNumber: "",
     name: "",
@@ -12,20 +11,6 @@ const Offering = () => {
   });
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    const fetchOffering = async () => {
-      try {
-        const phone = formData.phoneNumber || "defaultPhone";
-        const name = formData.name || "defaultName";
-        const data = await getOfferingByPhoneAndName(phone, name);
-        if (data) setOffering(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchOffering();
-  }, [formData.phoneNumber, formData.name]);
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -33,10 +18,9 @@ const Offering = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newOffering = await createOffering(formData);
-      setOffering(newOffering);
-      setMessage("Offering created successfully");
-      setFormData({ ...formData, amount: "", purpose: "" });
+      await createOffering(formData);
+      setMessage("Offering created successfully!");
+      setFormData({ phoneNumber: "", name: "", amount: "", purpose: "" });
     } catch (err) {
       setMessage(err.message);
     }
@@ -44,22 +28,8 @@ const Offering = () => {
 
   return (
     <div className="offering-container">
-      <div className="offering-display">
-        {offering ? (
-          <>
-            <h2>Offering Info</h2>
-            <p><strong>Phone:</strong> {offering.phoneNumber}</p>
-            <p><strong>Name:</strong> {offering.name}</p>
-            <p><strong>Amount:</strong> {offering.amount}</p>
-            <p><strong>Purpose:</strong> {offering.purpose}</p>
-          </>
-        ) : (
-          <p>No offering found</p>
-        )}
-      </div>
-
       <form className="offering-form" onSubmit={handleSubmit}>
-        <h2>Create Offering</h2>
+        <h2>Create New Offering</h2>
         <input
           type="text"
           name="phoneNumber"

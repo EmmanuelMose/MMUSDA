@@ -2,7 +2,8 @@ import {
   createOffering,
   getAllOfferings,
   getOfferingByPhoneAndName,
-  deleteOffering
+  deleteOffering,
+  getPhoneAndName
 } from "./offering.service.js";
 
 export const createOfferingController = async (req, res) => {
@@ -26,7 +27,6 @@ export const getAllOfferingsController = async (req, res) => {
   }
 };
 
-// Updated controller to fetch by phone & name
 export const getByPhoneAndNameController = async (req, res) => {
   try {
     const { phoneNumber, name } = req.query;
@@ -49,5 +49,16 @@ export const deleteOfferingController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to delete offering" });
+  }
+};
+
+// New controller: Get only phoneNumber and name
+export const getPhoneAndNameController = async (req, res) => {
+  try {
+    const data = await getPhoneAndName();
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch phone numbers and names" });
   }
 };

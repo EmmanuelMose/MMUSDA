@@ -10,7 +10,6 @@ export const getAllOfferings = async () => {
   return await db.select().from(offerings);
 };
 
-// Updated: Use 'and' for multiple conditions
 export const getOfferingByPhoneAndName = async (phoneNumber, name) => {
   return await db
     .select()
@@ -20,4 +19,12 @@ export const getOfferingByPhoneAndName = async (phoneNumber, name) => {
 
 export const deleteOffering = async (offeringId) => {
   return await db.delete(offerings).where(eq(offerings.offeringId, offeringId));
+};
+
+// New: Get only phoneNumber and name
+export const getPhoneAndName = async () => {
+  return await db.select({
+    phoneNumber: offerings.phoneNumber,
+    name: offerings.name
+  }).from(offerings);
 };
