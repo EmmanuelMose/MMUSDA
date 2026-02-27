@@ -15,6 +15,7 @@ import prayerRouter from "./prayerRequest/prayerRequest.router.js";
 import { membersRouter } from "./members/members.router.js";
 import { suggestionsRouter } from "./suggestions/suggestions.router.js";
 import offeringsRouter from "./offering/offering.router.js";
+import offeringDetailsRouter from "./offeringDetails/offeringDetails.router.js";
 
 const app = express();
 
@@ -32,7 +33,7 @@ app.use(
       if (allowedOrigins.includes(origin)) return callback(null, true);
       callback(new Error("Not allowed by CORS"));
     },
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE"]
   })
 );
 
@@ -50,7 +51,8 @@ app.use("/api/families", familiesRouter);
 app.use("/api/choirs", choirsRouter);
 app.use("/api/members", membersRouter);
 app.use("/api/suggestions", suggestionsRouter);
- app.use("/api/offerings", offeringsRouter);
+app.use("/api/offerings", offeringsRouter);
+app.use("/api/offeringsdetails", offeringDetailsRouter);
 
 app.get("/", (req, res) =>
   res.send("Backend server is running with multi-frontend support!")
