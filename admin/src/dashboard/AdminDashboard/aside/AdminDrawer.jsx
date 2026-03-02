@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { adminDrawerData } from "./drawerData";
 import { NavLink } from "react-router-dom";
-import "./AdminDrawer.css";
 import { HiMenu, HiX } from "react-icons/hi";
+import "./AdminDrawer.css";
 
-const AdminDrawer = () => {
+const AdminDrawer = ({ onSelect }) => {
   const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
@@ -12,11 +12,16 @@ const AdminDrawer = () => {
     window.location.href = "/login";
   };
 
+  const handleClick = (link) => {
+    onSelect(link);
+    setOpen(false);
+  };
+
   return (
     <>
       <div className="top-navbar">
         <button className="menu-btn" onClick={() => setOpen(true)}>
-          <HiMenu size={30} />
+          <HiMenu size={28} />
         </button>
         <h1 className="nav-title">Admin Panel</h1>
       </div>
@@ -27,22 +32,20 @@ const AdminDrawer = () => {
         <div className="drawer-header">
           <span>Admin Panel</span>
           <button className="close-btn" onClick={() => setOpen(false)}>
-            <HiX size={28} />
+            <HiX size={26} />
           </button>
         </div>
 
         <nav className="drawer-nav">
           {adminDrawerData.map((item) => (
-            <NavLink
+            <div
               key={item.id}
-              to={`/dashboard/${item.link}`}
-              className={({ isActive }) =>
-                `drawer-item ${isActive ? "active" : ""}`
-              }
+              className="drawer-item"
+              onClick={() => handleClick(item.link)}
             >
               {item.icon && <item.icon className="drawer-icon" />}
               <span>{item.name}</span>
-            </NavLink>
+            </div>
           ))}
         </nav>
 
