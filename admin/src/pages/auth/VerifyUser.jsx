@@ -13,7 +13,7 @@ export default function VerifyUser() {
       setMessage(res.data.message);
       window.location.href = "/login";
     } catch (err) {
-      setMessage(err.response.data.error);
+      setMessage(err.response?.data?.error || "Verification failed");
     }
   };
 
@@ -22,8 +22,8 @@ export default function VerifyUser() {
       <h2>Verify Account</h2>
       {message && <p>{message}</p>}
       <form onSubmit={handleVerify}>
-        <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input placeholder="Verification Code" value={code} onChange={e => setCode(e.target.value)} />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+        <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Verification Code" />
         <button type="submit">Verify</button>
       </form>
     </div>

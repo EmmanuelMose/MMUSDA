@@ -7,7 +7,6 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <AdminDrawer />
-
       <div className="dashboard-content">
         <div className="content-card">
           <Routes>

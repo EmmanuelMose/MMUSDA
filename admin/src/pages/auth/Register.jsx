@@ -15,7 +15,7 @@ export default function Register() {
       const res = await axios.post("/auth/register", { email, password });
       setMessage(res.data.message);
     } catch (err) {
-      setMessage(err.response.data.error);
+      setMessage(err.response?.data?.error || "Registration failed");
     }
   };
 
@@ -24,9 +24,9 @@ export default function Register() {
       <h2>Register</h2>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
-        <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        <input placeholder="Confirm Password" type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+        <input value={password} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        <input value={confirmPassword} type="password" onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" />
         <button type="submit">Register</button>
       </form>
     </div>
