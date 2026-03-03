@@ -75,7 +75,7 @@ const Navbar = () => {
       <header className="header-ticker">
         <div className="ticker-wrapper">
           <h1 className="main-heading">
-            Masinde Muliro University Seventh Day Adventist Church - Welcome to the Light of Truth
+            Masinde Muliro University Seventh Day Adventist Church - Welcome to the Light of Truth**
           </h1>
         </div>
       </header>
