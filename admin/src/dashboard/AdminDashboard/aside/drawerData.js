@@ -14,85 +14,79 @@ export const adminDrawerData = [
         id: "departments",
         name: "Departments",
         icon: FaBuilding,
-        link: "departments",
-        description: "Manage department listings"
+        link: "departments"
     },
-    {
-        id: "Admins",
-        name: "Admins",
-        link: "admins",
-        description: "website admins"
-    },
+    
     {
         id: "events",
         name: "Events",
         icon: FaCalendarCheck,
-        link: "events",
-        description: "Event Management"
+        link: "events"
     },
     {
         id: "leaders",
         name: "Leaders",
         icon: FaUsers,
-        link: "leaders",
-        description: "Leadership Management"
+        link: "leaders"
     },
     {
         id: "homechurches",
         name: "Home Churches",
         icon: FaHome,
-        link: "homechurches",
-        description: "Home Churches"
+        link: "homechurches"
     },
     {
         id: "families",
         name: "Families",
         icon: FaUserFriends,
-        link: "families",
-        description: "Families"
+        link: "families"
     },
     {
-        id: "anouncements",
+        id: "announcements",
         name: "Announcements",
         icon: FaBullhorn,
-        link: "anouncements",
-        description: "Announcements"
+        link: "announcements"
     },
     {
         id: "choirs",
         name: "Choirs",
         icon: FaMusic,
-        link: "choirs",
-        description: "Church Choirs"
+        link: "choirs"
     },
     {
         id: "members",
         name: "Members",
-        link: "members",
-        description: "members"
+        icon: FaUsers,
+        link: "members"
     },
     {
         id: "contacts",
-        name: "contacts",
-        link: "contacts",
-        description: "contacts"
+        name: "Contacts",
+        icon: FaChurch,
+        link: "contacts"
     },
     {
-        id: "Suggestions",
+        id: "suggestions",
         name: "Suggestions",
-        link: "suggestions",
-        description: "Suggestions"
+        icon: FaBullhorn,
+        link: "suggestions"
     },
     {
-        id: "Available Offering",
+        id: "offering",
         name: "Offering",
-        link: "offering",
-        description: "Offering"
+        icon: FaChurch,
+        link: "offering"
     },
     {
-        id: "Offering Details",
-        name: "Offering details",
-        link: "offering details",
-        description: "Offering Details"
+        id: "offeringDetails",
+        name: "Offering Details",
+        icon: FaChurch,
+        link: "offering-details"
+    },
+    {
+        id: "admins",
+        name: "Admins",
+        icon: FaUsers,
+        link: "admins"
     },
 ];

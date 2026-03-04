@@ -1,74 +1,26 @@
-.admin-dashboard {
-  display: flex;
-  min-height: 100vh;
+.admin-container {
   background: #0d1b2a;
-  color: white;
-}
-
-.dashboard-main {
-  flex: 1;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  margin-left: 260px;
-  transition: margin-left 0.3s ease;
-  position: relative;
 }
 
-.drawer-closed {
-  margin-left: 70px;
-}
-
-.dashboard-content {
+.main-content {
   flex: 1;
-  padding: 25px;
   background: #1b2a49;
-  border-radius: 20px;
-  margin: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  overflow-y: auto;
-  transition: all 0.3s;
-}
-
-/* Active content on small screens */
-.active-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 100px);
-  text-align: center;
-}
-
-.mobile-close {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  color: #ff7f50;
-  cursor: pointer;
-  z-index: 1001;
-  transition: color 0.3s;
-}
-
-.mobile-close:hover {
+  margin-left: 260px;
+  padding: 25px;
+  transition: margin-left 0.4s ease;
   color: white;
+  min-height: 100vh;
 }
 
-/* Responsive adjustments */
+.main-content.collapsed {
+  margin-left: 80px;
+}
+
 @media (max-width: 768px) {
-  .dashboard-main {
+  .main-content {
     margin-left: 0;
-  }
-
-  .dashboard-content {
-    margin: 0;
-    border-radius: 0;
     padding: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .dashboard-content {
-    padding: 10px;
   }
 }

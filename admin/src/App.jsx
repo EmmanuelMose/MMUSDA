@@ -10,6 +10,7 @@ import ForgetPassword from './pages/auth/ForgetPassword';
 import ResetCode from './pages/auth/ResetCode';
 import NewPassword from './pages/auth/NewPassword';
 import Departments from './components/departments/Departments';
+import Events  from "./components/events/Events"
 // Dashboard
 import AdminDashboard from './dashboard/AdminDashboard/AdminDashboard';
 
@@ -38,6 +39,7 @@ function App() {
       children: [
         { path: '', element: <h2>Admin Dashboard</h2> },
         { path: 'departments', element: <Departments /> },
+        { path: 'events', element: <Events /> },
       ],
     },
 

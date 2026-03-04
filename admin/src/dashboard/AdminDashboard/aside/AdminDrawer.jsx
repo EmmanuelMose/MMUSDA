@@ -1,15 +1,9 @@
-// src/components/AdminDrawer/AdminDrawer.jsx
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { adminDrawerData } from "../aside/drawerData";
+import { adminDrawerData } from "../../AdminDashboard/aside/drawerData";
 import "./AdminDrawer.css";
 
-const AdminDrawer = ({
-  isSidebarOpen,
-  onToggle,
-  onMenuClick,
-  activeContent,
-}) => {
+const AdminDrawer = ({ isSidebarOpen, onToggle }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -19,51 +13,35 @@ const AdminDrawer = ({
   };
 
   return (
-    <aside
-      className={`admin-drawer ${
-        isSidebarOpen ? "expanded" : "collapsed"
-      } ${activeContent ? "hidden-mobile" : ""}`}
-    >
-      {/* Header */}
+    <aside className={`drawer ${isSidebarOpen ? "open" : "closed"}`}>
       <div className="drawer-header">
-        <span className={`drawer-title ${isSidebarOpen ? "visible" : ""}`}>
+        <span className={`drawer-title ${isSidebarOpen ? "show" : ""}`}>
           Admin Dashboard
         </span>
-        <button onClick={onToggle} className="drawer-toggle">
+
+        <button onClick={onToggle} className="toggle-btn">
           {isSidebarOpen ? "❮" : "❯"}
         </button>
       </div>
 
-      {/* Navigation */}
       <nav className="drawer-nav">
-        {adminDrawerData.map((item) => {
-          if (item.id.toLowerCase() === "logout") {
-            return (
-              <button
-                key={item.id}
-                onClick={handleLogout}
-                className="drawer-item logout-item"
-              >
-                {item.icon && <item.icon size={22} />}
-                {isSidebarOpen && <span>{item.name}</span>}
-              </button>
-            );
-          }
+        {adminDrawerData.map((item) => (
+          <NavLink
+            key={item.id}
+            to={item.link}
+            className="drawer-item"
+          >
+            {item.icon && <item.icon size={20} className="item-icon" />}
+            {isSidebarOpen && <span className="item-text">{item.name}</span>}
+          </NavLink>
+        ))}
 
-          return (
-            <div
-              key={item.id}
-              className={`drawer-item`}
-              onClick={() => onMenuClick(item.name)}
-            >
-              {item.icon && <item.icon size={22} />}
-              {isSidebarOpen && <span>{item.name}</span>}
-            </div>
-          );
-        })}
+        <button className="drawer-item logout" onClick={handleLogout}>
+          <span className="item-icon">🚪</span>
+          {isSidebarOpen && <span className="item-text">Logout</span>}
+        </button>
       </nav>
 
-      {/* Footer */}
       <div className="drawer-footer">
         © {new Date().getFullYear()} Church Admin
       </div>
