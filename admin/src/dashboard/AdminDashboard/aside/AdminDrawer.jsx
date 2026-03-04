@@ -4,7 +4,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { adminDrawerData } from "../aside/drawerData";
 import "./AdminDrawer.css";
 
-const AdminDrawer = ({ isSidebarOpen, onToggle }) => {
+const AdminDrawer = ({
+  isSidebarOpen,
+  onToggle,
+  onMenuClick,
+  activeContent,
+}) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -14,7 +19,11 @@ const AdminDrawer = ({ isSidebarOpen, onToggle }) => {
   };
 
   return (
-    <aside className={`admin-drawer ${isSidebarOpen ? "expanded" : "collapsed"}`}>
+    <aside
+      className={`admin-drawer ${
+        isSidebarOpen ? "expanded" : "collapsed"
+      } ${activeContent ? "hidden-mobile" : ""}`}
+    >
       {/* Header */}
       <div className="drawer-header">
         <span className={`drawer-title ${isSidebarOpen ? "visible" : ""}`}>
@@ -42,16 +51,14 @@ const AdminDrawer = ({ isSidebarOpen, onToggle }) => {
           }
 
           return (
-            <NavLink
+            <div
               key={item.id}
-              to={item.link}
-              className={({ isActive }) =>
-                `drawer-item ${isActive ? "active" : ""}`
-              }
+              className={`drawer-item`}
+              onClick={() => onMenuClick(item.name)}
             >
               {item.icon && <item.icon size={22} />}
               {isSidebarOpen && <span>{item.name}</span>}
-            </NavLink>
+            </div>
           );
         })}
       </nav>

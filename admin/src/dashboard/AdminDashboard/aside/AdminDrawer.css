@@ -1,21 +1,25 @@
-/* src/components/AdminDrawer/AdminDrawer.css */
-
 .admin-drawer {
   height: 100vh;
-  background: linear-gradient(to bottom, #1e3a8a, #1e40af, #000);
+  background: linear-gradient(to bottom, #0d1b2a, #1b2a49);
   color: white;
   display: flex;
   flex-direction: column;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease;
   overflow: hidden;
+  border-right: 2px solid #ff7f50;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .admin-drawer.expanded {
-  width: 250px;
+  width: 260px;
 }
 
 .admin-drawer.collapsed {
-  width: 60px;
+  width: 70px;
 }
 
 .drawer-header {
@@ -23,15 +27,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid #1e40af;
+  border-bottom: 1px solid #ff7f50;
 }
 
 .drawer-title {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
+  color: #ff7f50;
   opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.3s;
+  transform: translateX(-20px);
+  transition: all 0.4s ease;
 }
 
 .drawer-title.visible {
@@ -42,10 +47,10 @@
 .drawer-toggle {
   background: none;
   border: none;
-  font-size: 1.2rem;
-  color: #93c5fd;
+  font-size: 1.5rem;
+  color: #ff7f50;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, color 0.3s;
 }
 
 .drawer-toggle:hover {
@@ -66,37 +71,56 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 10px;
-  border-radius: 10px;
-  transition: all 0.3s;
+  padding: 12px 15px;
+  border-radius: 12px;
   text-decoration: none;
-  color: #93c5fd;
+  color: #cfd8dc;
   font-weight: 500;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
 .drawer-item:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 127, 80, 0.15);
   transform: scale(1.05);
+  color: #ff7f50;
+  box-shadow: 0 4px 15px rgba(255,127,80,0.3);
 }
 
 .drawer-item.active {
-  background: linear-gradient(to right, #3b82f6, #1e40af);
+  background: linear-gradient(to right, #ff7f50, #ff5722);
   color: white;
+  font-weight: 600;
 }
 
 .logout-item {
-  color: #f87171;
+  color: #ff6b6b;
 }
 
 .logout-item:hover {
-  background: rgba(248, 113, 113, 0.2);
+  background: rgba(255, 107, 107, 0.2);
   color: white;
 }
 
 .drawer-footer {
   padding: 15px;
   text-align: center;
-  font-size: 0.75rem;
-  border-top: 1px solid #1e40af;
-  color: #93c5fd;
+  font-size: 0.8rem;
+  border-top: 1px solid #ff7f50;
+  color: #cfd8dc;
+}
+
+/* Hide drawer when active content on small screens */
+@media (max-width: 768px) {
+  .admin-drawer {
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .admin-drawer.hidden-mobile {
+    transform: translateX(-100%);
+  }
 }

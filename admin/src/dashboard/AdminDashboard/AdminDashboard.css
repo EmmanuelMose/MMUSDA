@@ -1,74 +1,74 @@
-
-/* src/pages/AdminDashboard/AdminDashboard.css */
-
 .admin-dashboard {
+  display: flex;
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #f3f4f6, #e5e7eb);
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
-.dashboard-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  width: 100%;
-  border-radius: 20px;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.dashboard-topbar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 25px;
-  background: linear-gradient(to right, #1e3a8a, #1e40af);
-  color: white;
-  border-radius: 0;
-}
-
-.dashboard-topbar button {
-  font-size: 1.5rem;
-  color: #cbd5e1;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.dashboard-topbar button:hover {
-  transform: scale(1.2);
+  background: #0d1b2a;
   color: white;
 }
 
 .dashboard-main {
-  display: flex;
   flex: 1;
-  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 260px;
+  transition: margin-left 0.3s ease;
+  position: relative;
 }
 
-.dashboard-drawer {
-  transition: all 0.5s ease-in-out;
-  overflow: hidden;
-}
-
-.dashboard-drawer.expanded {
-  width: 250px;
-}
-
-.dashboard-drawer.collapsed {
-  width: 0;
+.drawer-closed {
+  margin-left: 70px;
 }
 
 .dashboard-content {
   flex: 1;
-  padding: 20px;
-  background: #f9fafb;
-  border-radius: 0 20px 20px 0;
+  padding: 25px;
+  background: #1b2a49;
+  border-radius: 20px;
+  margin: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
   overflow-y: auto;
   transition: all 0.3s;
+}
+
+/* Active content on small screens */
+.active-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
+  text-align: center;
+}
+
+.mobile-close {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: #ff7f50;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s;
+}
+
+.mobile-close:hover {
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-main {
+    margin-left: 0;
+  }
+
+  .dashboard-content {
+    margin: 0;
+    border-radius: 0;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 10px;
+  }
 }
