@@ -44,7 +44,19 @@ const Home = () => {
           />
         ))}
 
+        <div className="overlay"></div>
+
         <button className="arrow right-arrow" onClick={nextImage}>❯</button>
+
+        <div className="dots">
+          {images.map((_, i) => (
+            <span
+              key={i}
+              className={`dot ${i === current ? "active-dot" : ""}`}
+              onClick={() => setCurrent(i)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

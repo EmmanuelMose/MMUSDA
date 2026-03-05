@@ -32,7 +32,6 @@ function App() {
     { path: '/reset-code', element: <ResetCode /> },
     { path: '/new-password', element: <NewPassword /> },
 
-    // Protected dashboard routes
     {
       path: '/admin/dashboard/*',
       element: isLoggedIn ? <AdminDashboard /> : <Navigate to="/login" />,

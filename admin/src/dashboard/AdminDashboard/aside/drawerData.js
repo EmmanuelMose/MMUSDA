@@ -16,7 +16,6 @@ export const adminDrawerData = [
         icon: FaBuilding,
         link: "departments"
     },
-    
     {
         id: "events",
         name: "Events",
