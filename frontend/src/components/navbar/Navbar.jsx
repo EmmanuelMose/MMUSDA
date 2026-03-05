@@ -9,7 +9,6 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
 
-// Navigation Structure
 const navItems = [
   { label: "Home", path: "/", icon: <Home className="w-4 h-4" /> },
   { label: "Departments", path: "/departments", icon: <GraduationCap className="w-4 h-4" /> },
@@ -21,7 +20,6 @@ const navItems = [
       { label: "About SDA", path: "/about/sda" },
       { label: "Beliefs", path: "/about/beliefs" },
       { label: "Members", path: "/members" },
-      
     ]
   },
   { label: "Events", path: "/events", icon: <Calendar className="w-4 h-4" /> },
@@ -57,14 +55,12 @@ const Navbar = () => {
   const [activeSubMenu, setActiveSubMenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll for sticky effect
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu and reset submenus
   const closeMenu = () => {
     setIsOpen(false);
     setActiveSubMenu(null);
@@ -82,21 +78,16 @@ const Navbar = () => {
 
       <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
         <div className="navbar-container">
-          {/* Logo Section */}
           <Link to="/" className="navbar-logo" onClick={closeMenu}>
             <div className="logo-img-wrapper">
-              <img 
-                src={logo1}
-                alt="MMUSDA Logo" 
-              />
+              <img src={logo1} alt="MMUSDA Logo" />
             </div>
             <span>MMUSDA</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <ul className="nav-links desktop-only">
             {navItems.map((item) => (
-              <li key={item.label} className={item.children ? "dropdown" : ""}>
+              <li key={item.label} className={item.children ? "dropdown hover-dropdown" : ""}>
                 {item.children ? (
                   <>
                     <button className="nav-link-btn">
@@ -115,13 +106,11 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Mobile Menu Icon */}
           <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </div>
         </div>
 
-        {/* Mobile Navigation Sidebar */}
         <AnimatePresence>
           {isOpen && (
             <>
