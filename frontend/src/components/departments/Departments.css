@@ -1,117 +1,128 @@
 .departments-container {
-  padding: 30px;
   max-width: 1100px;
   margin: auto;
-  background: white;
-  animation: fadeIn 1s ease-in-out;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7fbff;
 }
 
 .departments-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .departments-header h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  color: darkblue;
+  color: #002B5B;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-bottom: 15px;
+  transition: color 0.3s;
+}
+
+.departments-header h1:hover {
+  color: #FF7F11;
 }
 
 .bible-verse {
   font-size: 1rem;
-  color: black;
+  color: #002B5B;
   font-style: italic;
   max-width: 700px;
-  margin: 20px auto;
-  border-left: 4px solid warmorange;
+  margin: 15px auto;
+  border-left: 4px solid #FF7F11;
   padding-left: 15px;
+  line-height: 1.6;
+  text-align: left;
 }
 
 .quote {
-  margin-top: 10px;
-  font-size: 1rem;
+  margin-top: 8px;
+  font-size: 0.95rem;
   color: #222;
   font-weight: 500;
-}
-
-.table-wrapper {
-  overflow-x: auto;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  padding: 10px;
-  transition: 0.3s ease-in-out;
-}
-
-.table-wrapper:hover {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-.departments-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 1rem;
-  min-width: 850px;
-}
-
-.departments-table thead {
-  background-color: darkblue;
-  color: white;
-}
-
-.departments-table th {
-  padding: 16px 12px;
   text-align: left;
-  font-weight: 700;
-  letter-spacing: 0.5px;
 }
 
-.departments-table td {
-  padding: 15px 12px;
-  border-bottom: 1px solid #ddd;
-  transition: 0.3s ease;
+.departments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
 }
 
-.table-row:hover {
-  background-color: rgba(255, 140, 0, 0.15);
-  transform: scale(1.01);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.departments-table td:hover {
-  color: darkblue;
+.department-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.department-card h2 {
+  font-size: 1.4rem;
+  color: #002B5B;
+  margin-bottom: 12px;
+  transition: color 0.3s;
+}
+
+.department-card:hover h2 {
+  color: #FF7F11;
+}
+
+.dept-desc {
+  color: #333;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  transition: color 0.3s;
+  text-align: left;
+}
+
+.department-card:hover .dept-desc {
+  color: #002B5B;
+}
+
+.dept-leader, .dept-contact {
+  font-weight: 600;
+  color: #FF7F11;
+  margin-bottom: 6px;
+  transition: color 0.3s;
+  text-align: left;
+}
+
+.department-card:hover .dept-leader,
+.department-card:hover .dept-contact {
+  color: #002B5B;
+}
+
+.departments-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #002B5B;
 }
 
 .loading-text {
   text-align: center;
   padding: 50px;
   font-size: 1.2rem;
-  letter-spacing: 1px;
-  color: darkblue;
+  color: #002B5B;
 }
 
-.departments-footer {
-  text-align: center;
-  margin-top: 35px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: black;
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
+  .departments-grid {
+    grid-template-columns: 1fr;
+  }
   .departments-header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
-
-  .bible-verse,
-  .quote {
-    font-size: 0.9rem;
-  }
-
-  .departments-table {
+  .bible-verse, .quote {
     font-size: 0.9rem;
   }
 }
@@ -119,9 +130,4 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-:root {
-  --darkblue: #002B5B;
-  --warmorange: #FF7F11;
 }

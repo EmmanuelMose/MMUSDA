@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { fetchDepartments } from "../../Features/departments/departmentsAPI.js";
 import "./Departments.css";
 
@@ -16,6 +17,16 @@ const Departments = () => {
   }, []);
 
   if (loading) return <p className="loading-text">Loading departments...</p>;
+
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15 } }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
 
   return (
     <div className="departments-container">
@@ -37,29 +48,26 @@ const Departments = () => {
         </p>
       </header>
 
-      <div className="table-wrapper">
-        <table className="departments-table">
-          <thead>
-            <tr>
-              <th>Department Name</th>
-              <th>Description</th>
-              <th>Leader</th>
-              <th>Contact</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {departments.map((dept) => (
-              <tr key={dept.id} className="table-row">
-                <td>{dept.name}</td>
-                <td>{dept.description || "—"}</td>
-                <td>{dept.adminLeader || "—"}</td>
-                <td>{dept.adminContact || "—"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <motion.div
+        className="departments-grid"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {departments.map((dept) => (
+          <motion.div
+            key={dept.id}
+            className="department-card"
+            variants={cardVariants}
+            whileHover={{ scale: 1.03, y: -5, boxShadow: "0 15px 35px rgba(0,0,0,0.2)" }}
+          >
+            <h2>{dept.name}</h2>
+            <p className="dept-desc">{dept.description || "—"}</p>
+            <p className="dept-leader">Leader: {dept.adminLeader || "—"}</p>
+            <p className="dept-contact">Contact: {dept.adminContact || "—"}</p>
+          </motion.div>
+        ))}
+      </motion.div>
 
       <footer className="departments-footer">
         <p>

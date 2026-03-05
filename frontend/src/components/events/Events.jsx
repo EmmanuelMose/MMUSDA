@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { fetchAllEvents } from "../../Features/events/eventsAPI.js";
 import "./Events.css"
 
@@ -20,7 +21,17 @@ const Events = () => {
     event.title.toLowerCase().includes(searchText.toLowerCase())
   );
 
-  if (loading) return <p className="loading-text">Lgit push --force-with-leaseoading events...</p>;
+  if (loading) return <p className="loading-text">Loading events...</p>;
+
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15 } }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
 
   return (
     <div className="events-container">
@@ -52,9 +63,19 @@ const Events = () => {
         <div className="section-line"></div>
       </header>
 
-      <div className="events-grid">
+      <motion.div
+        className="events-grid"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {filteredEvents.map((event) => (
-          <div key={event.eventId} className="event-card">
+          <motion.div
+            key={event.eventId}
+            className="event-card"
+            variants={cardVariants}
+            whileHover={{ scale: 1.03, y: -5, boxShadow: "0 12px 30px rgba(0,0,0,0.35)" }}
+          >
             <div className="event-image-wrapper">
               <img
                 src={event.photo || "https://via.placeholder.com/400x250?text=Church+Event"}
@@ -68,9 +89,9 @@ const Events = () => {
               <p className="event-description">{event.description}</p>
               <p className="event-date">Date: {new Date(event.eventDate).toDateString()}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {filteredEvents.length === 0 && (
         <p className="no-results">No events match your search.</p>
