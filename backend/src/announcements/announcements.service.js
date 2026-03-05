@@ -1,24 +1,46 @@
 import { db } from "../Drizzle/db.js";
 import { announcements } from "../Drizzle/schema.js";
-import { eq, gte, lte, and } from "drizzle-orm";
+import { eq, gte } from "drizzle-orm";
 
 export const AnnouncementsService = {
+
   getAll: async () => {
     return await db.select().from(announcements);
   },
 
+  getById: async (id) => {
+    const result = await db
+      .select()
+      .from(announcements)
+      .where(eq(announcements.announcementId, id));
+
+    return result[0];
+  },
+
   create: async (data) => {
-    const inserted = await db.insert(announcements).values(data).returning();
-    return inserted[0];
+    const result = await db
+      .insert(announcements)
+      .values({
+        title: data.title,
+        description: data.description,
+        createdBy: data.createdBy
+      })
+      .returning();
+
+    return result[0];
   },
 
   update: async (id, data) => {
-    const updated = await db
+    const result = await db
       .update(announcements)
-      .set(data)
+      .set({
+        title: data.title,
+        description: data.description
+      })
       .where(eq(announcements.announcementId, id))
       .returning();
-    return updated[0];
+
+    return result[0];
   },
 
   delete: async (id) => {
@@ -27,15 +49,17 @@ export const AnnouncementsService = {
       .where(eq(announcements.announcementId, id));
   },
 
-  getByDate: async (from, to) => {
+  getByDate: async (startDate) => {
+
+    if (!startDate) {
+      return await db.select().from(announcements);
+    }
+
     return await db
       .select()
       .from(announcements)
-      .where(
-        and(
-          gte(announcements.createdAt, new Date(from)),
-          lte(announcements.createdAt, new Date(to))
-        )
-      );
+      .where(gte(announcements.createdAt, new Date(startDate)));
+
   }
+
 };

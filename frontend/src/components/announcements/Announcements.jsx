@@ -3,6 +3,7 @@ import { announcementAPI } from "../../Features/announcements/announcementsAPI";
 import "./Announcements.css";
 
 const Announcements = () => {
+
   const [announcements, setAnnouncements] = useState([]);
   const [idFilter, setIdFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
@@ -58,11 +59,13 @@ const Announcements = () => {
 
   return (
     <div className="announcements-container">
-      <h1>Announcements</h1>
+
+      <h1 className="page-title">Church Announcements</h1>
 
       <div className="filters">
+
         <div className="filter-group">
-          <label htmlFor="idFilter">Filter by ID:</label>
+          <label htmlFor="idFilter">Filter by ID</label>
           <input
             type="number"
             id="idFilter"
@@ -73,7 +76,7 @@ const Announcements = () => {
         </div>
 
         <div className="filter-group">
-          <label htmlFor="dateFilter">Filter from Date:</label>
+          <label htmlFor="dateFilter">Filter from Date</label>
           <input
             type="date"
             id="dateFilter"
@@ -82,23 +85,39 @@ const Announcements = () => {
           />
           <button onClick={handleFilterByDate}>Apply</button>
         </div>
+
       </div>
 
-      {loading && <p>Loading announcements...</p>}
+      {loading && <p className="status-text">Loading announcements...</p>}
+
       {error && <p className="error">{error}</p>}
 
       <div className="announcements-list">
-        {announcements.length === 0 && !loading && <p>No announcements found.</p>}
+
+        {announcements.length === 0 && !loading && (
+          <p className="status-text">No announcements found.</p>
+        )}
+
         {announcements.map((announcement) => (
           <div key={announcement.announcementId} className="announcement-card">
-            <h2>{announcement.title}</h2>
-            <p>{announcement.content}</p>
-            <p className="date">
+
+            <h2 className="announcement-title">
+              {announcement.title}
+            </h2>
+
+            <p className="announcement-content">
+              {announcement.content}
+            </p>
+
+            <p className="announcement-date">
               Created at: {new Date(announcement.createdAt).toLocaleString()}
             </p>
+
           </div>
         ))}
+
       </div>
+
     </div>
   );
 };
