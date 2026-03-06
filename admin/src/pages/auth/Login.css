@@ -1,62 +1,98 @@
-.auth-card {
-  max-width: 400px;
-  margin: 5vh auto;
-  padding: 30px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  text-align: center;
+.auth-page{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#0d1b2a;
+padding:20px;
 }
-.auth-card h2 {
-  color: darkblue;
-  margin-bottom: 20px;
+
+.auth-card{
+background:white;
+padding:40px;
+width:100%;
+max-width:420px;
+border-radius:12px;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+text-align:center;
 }
-.auth-card input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+
+.auth-card h2{
+margin-bottom:20px;
+color:#0d1b2a;
 }
-.password-container {
-  position: relative;
+
+.auth-card input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
 }
-.show-hide {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: darkblue;
-  font-weight: bold;
+
+.auth-card input:focus{
+outline:none;
+border-color:#f97316;
 }
-button {
-  background-color: darkblue;
-  color: white;
-  padding: 12px;
-  width: 100%;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
+
+.password-box{
+display:flex;
+align-items:center;
+border:1px solid #ccc;
+border-radius:6px;
+padding:0 10px;
+margin-bottom:15px;
 }
-button:hover {
-  background-color: orange;
+
+.password-box input{
+border:none;
+flex:1;
+margin:0;
 }
-.links button {
-  background: none;
-  color: darkblue;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-  text-decoration: underline;
+
+.password-box span{
+cursor:pointer;
+color:#f97316;
+font-size:14px;
 }
-.links button:hover {
-  color: orange;
+
+.auth-card button{
+width:100%;
+padding:12px;
+background:#f97316;
+border:none;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
 }
-.message {
-  margin-bottom: 15px;
-  color: black;
+
+.auth-card button:hover{
+background:#ea580c;
+}
+
+.auth-links{
+margin-top:15px;
+font-size:14px;
+}
+
+.link{
+color:#f97316;
+text-decoration:underline;
+cursor:pointer;
+}
+
+.message{
+color:red;
+margin-bottom:10px;
+}
+
+@media(max-width:480px){
+
+.auth-card{
+padding:25px;
+}
+
 }

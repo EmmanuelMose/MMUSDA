@@ -1,82 +1,98 @@
-
-.auth-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 30px 25px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.auth-page{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#0d1b2a;
+padding:20px;
 }
 
-.auth-card h2 {
-  color: #1E3A8A;
-  margin-bottom: 20px;
+.auth-card{
+background:white;
+padding:40px;
+width:100%;
+max-width:420px;
+border-radius:12px;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+text-align:center;
 }
 
-.auth-card input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.auth-card h2{
+margin-bottom:20px;
+color:#0d1b2a;
 }
 
-.auth-card input:focus {
-  border-color: #F97316;
-  outline: none;
+.auth-card input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
 }
 
-.password-container {
-  position: relative;
+.auth-card input:focus{
+outline:none;
+border-color:#f97316;
 }
 
-.password-container .show-hide {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #1E3A8A;
-  cursor: pointer;
-  font-weight: bold;
+.password-box{
+display:flex;
+align-items:center;
+border:1px solid #ccc;
+border-radius:6px;
+padding:0 10px;
+margin-bottom:15px;
 }
 
-.auth-card button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background-color: #F97316;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
+.password-box input{
+border:none;
+flex:1;
+margin:0;
 }
 
-.auth-card button:hover {
-  background-color: #EA580C;
+.password-box span{
+cursor:pointer;
+color:#f97316;
+font-size:14px;
 }
 
-.links button {
-  background: none;
-  border: none;
-  color: #1E3A8A;
-  cursor: pointer;
-  margin-top: 10px;
-  text-decoration: underline;
-  transition: color 0.3s;
+.auth-card button{
+width:100%;
+padding:12px;
+background:#f97316;
+border:none;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
 }
 
-.links button:hover {
-  color: #F97316;
+.auth-card button:hover{
+background:#ea580c;
 }
 
-.message {
-  font-weight: 500;
-  margin-bottom: 10px;
+.auth-links{
+margin-top:15px;
+font-size:14px;
+}
+
+.link{
+color:#f97316;
+text-decoration:underline;
+cursor:pointer;
+}
+
+.message{
+color:red;
+margin-bottom:10px;
+}
+
+@media(max-width:480px){
+
+.auth-card{
+padding:25px;
+}
+
 }

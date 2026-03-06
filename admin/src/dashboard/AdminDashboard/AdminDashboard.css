@@ -1,26 +1,168 @@
-.admin-container {
-  background: #0d1b2a;
+.dashboard-wrapper {
+  background: #000;
   min-height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 25px;
+}
+
+.admin-dashboard {
+  width: 100%;
+  max-width: 1400px;
+  background: #0b1f3a;
+  border-radius: 12px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+}
+
+.top-nav {
+  height: 70px;
+  background: #061427;
+  border-bottom: 2px solid #ff8c42;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #ff8c42;
+  cursor: pointer;
+}
+
+.page-title {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #0b1f3a;
+  border: 1px solid #ff8c42;
+  padding: 6px 10px;
+  border-radius: 6px;
+  gap: 8px;
+  color: white;
+}
+
+.search-box input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.icon-btn {
+  background: #0b1f3a;
+  border: 1px solid #ff8c42;
+  color: #ff8c42;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.icon-btn:hover {
+  background: #ff8c42;
+  color: black;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  font-size: 26px;
+  color: #ff8c42;
+}
+
+.name {
+  display: block;
+  font-size: 14px;
+  color: white;
+}
+
+.role {
+  font-size: 11px;
+  color: #bbb;
+}
+
+.logout {
+  color: #ff8c42;
 }
 
 .main-content {
-  flex: 1;
-  background: #1b2a49;
-  margin-left: 260px;
   padding: 25px;
-  transition: margin-left 0.4s ease;
-  color: white;
-  min-height: 100vh;
+  background: #08182e;
+  flex: 1;
 }
 
-.main-content.collapsed {
-  margin-left: 80px;
+.content-box {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  padding: 25px;
+  min-height: 500px;
 }
 
-@media (max-width: 768px) {
-  .main-content {
-    margin-left: 0;
-    padding: 15px;
+@media (max-width:1024px) {
+
+  .search-box {
+    display: none;
   }
+
+}
+
+@media (max-width:768px) {
+
+  .dashboard-wrapper {
+    padding: 10px;
+  }
+
+  .admin-dashboard {
+    border-radius: 8px;
+  }
+
+  .user-profile div {
+    display: none;
+  }
+
 }

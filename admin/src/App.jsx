@@ -1,54 +1,88 @@
-import React, { useEffect, useState } from 'react';
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+import React from "react";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 // Auth pages
-import Register from './pages/auth/Register';
-import Login from './pages/auth/Login';
-import VerifyUser from './pages/auth/VerifyUser';
-import ForgetPassword from './pages/auth/ForgetPassword';
-import ResetCode from './pages/auth/ResetCode';
-import NewPassword from './pages/auth/NewPassword';
-import Departments from './components/departments/Departments';
-import Events  from "./components/events/Events"
-// Dashboard
-import AdminDashboard from './dashboard/AdminDashboard/AdminDashboard';
+import Register from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
+import VerifyUser from "./pages/auth/VerifyUser";
+import ForgetPassword from "./pages/auth/ForgetPassword";
+import ResetCode from "./pages/auth/ResetCode";
+import NewPassword from "./pages/auth/NewPassword";
 
+// Dashboard
+import AdminDashboard from "./dashboard/AdminDashboard/AdminDashboard";
+
+// Components
+import Departments from "./components/departments/Departments";
+import Events from "./components/events/Events";
+
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem("token");
+  return token ? children : <Navigate to="/login" replace />;
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/auth/verify",
+    element: <VerifyUser />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgetPassword />,
+  },
+  {
+    path: "/reset-code",
+    element: <ResetCode />,
+  },
+  {
+    path: "/new-password",
+    element: <NewPassword />,
+  },
+
+  {
+    path: "/admin/dashboard",
+    element: (
+      <ProtectedRoute>
+        <AdminDashboard />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <h2>Admin Dashboard</h2>,
+      },
+      {
+        path: "departments",
+        element: <Departments />,
+      },
+      {
+        path: "events",
+        element: <Events />,
+      },
+    ],
+  },
+
+  {
+    path: "/",
+    element: <Navigate to="/login" replace />,
+  },
+
+  {
+    path: "*",
+    element: <Navigate to="/login" replace />,
+  },
+]);
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
-  }, []);
-
-  const router = createBrowserRouter([
-    // Public routes
-    { path: '/register', element: <Register /> },
-    { path: '/login', element: <Login /> },
-    { path: '/auth/verify', element: <VerifyUser /> },
-    { path: '/forgot-password', element: <ForgetPassword /> },
-    { path: '/reset-code', element: <ResetCode /> },
-    { path: '/new-password', element: <NewPassword /> },
-
-    {
-      path: '/admin/dashboard/*',
-      element: isLoggedIn ? <AdminDashboard /> : <Navigate to="/login" />,
-      children: [
-        { path: '', element: <h2>Admin Dashboard</h2> },
-        { path: 'departments', element: <Departments /> },
-        { path: 'events', element: <Events /> },
-      ],
-    },
-
-    // Root redirect
-    { path: '/', element: <Navigate to={isLoggedIn ? '/admin/dashboard' : '/login'} /> },
-
-    // Catch-all redirect
-    { path: '*', element: <Navigate to="/" /> },
-  ]);
-
   return (
     <>
       <RouterProvider router={router} />
