@@ -6,6 +6,7 @@ const YouTubeLive = () => {
   const [videos, setVideos] = useState([]);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [showPlayer, setShowPlayer] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const getVideos = async () => {
@@ -19,10 +20,15 @@ const YouTubeLive = () => {
   if (!showPlayer || !currentVideo) return null;
 
   return (
-    <div className="video-wrapper">
+    <div className={`video-wrapper ${expanded ? "expanded" : ""}`}>
       <div className="video-header">
-        <h2>{currentVideo.title}</h2>
-        <button className="close-button" onClick={() => setShowPlayer(false)}>X</button>
+        <span className="live-indicator">LIVE</span>
+        <h3>{currentVideo.title}</h3>
+
+        <div className="video-actions">
+          <button onClick={() => setExpanded(!expanded)}>⛶</button>
+          <button onClick={() => setShowPlayer(false)}>✕</button>
+        </div>
       </div>
 
       <div className="video-container">
@@ -33,13 +39,16 @@ const YouTubeLive = () => {
           allow="autoplay; encrypted-media"
           allowFullScreen
         />
-        <button className="overlay-close" onClick={() => setShowPlayer(false)}>Close Live</button>
       </div>
 
       {videos.length > 1 && (
         <div className="video-list">
           {videos.slice(1).map((vid) => (
-            <div key={vid.videoId} className="video-item" onClick={() => setCurrentVideo(vid)}>
+            <div
+              key={vid.videoId}
+              className="video-item"
+              onClick={() => setCurrentVideo(vid)}
+            >
               {vid.title}
             </div>
           ))}
