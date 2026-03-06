@@ -1,0 +1,15 @@
+.create-homechurch{
+width:100%;
+max-width:500px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.create-homechurch h2{text-align:center;color:#0b2a4a;margin-bottom:20px;}
+.create-homechurch form{display:flex;flex-direction:column;gap:12px;}
+.create-homechurch input{padding:10px;border:1px solid #ccc;border-radius:6px;}
+.create-homechurch button{padding:12px;background:#ff8c42;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;}
+.create-homechurch button:hover{background:#e6762f;}

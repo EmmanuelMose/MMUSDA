@@ -17,6 +17,7 @@ import AdminDashboard from "./dashboard/AdminDashboard/AdminDashboard";
 import Departments from "./components/departments/Departments";
 import Events from "./components/events/Events";
 import Leaders from "./components/leaders/Leaders";
+import HomeChurches from "./components/homechurches/HomeChurches";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "leaders",
         element: <Leaders />,
+      },
+      {
+        path: "homechurches",
+        element: <HomeChurches />,
       },
     ],
   },

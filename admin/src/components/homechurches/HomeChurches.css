@@ -1,0 +1,87 @@
+.homechurch-page{
+padding:25px;
+background:white;
+min-height:100vh;
+}
+
+.homechurch-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.homechurch-header h2{
+color:#0b2a4a;
+}
+
+.create-btn{
+background:#ff8c42;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+}
+
+.create-btn:hover{
+background:#e6762f;
+}
+
+.table-container{
+width:100%;
+overflow-x:auto;
+}
+
+.homechurch-table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+.homechurch-table th{
+background:#0b2a4a;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+.homechurch-table td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+.actions{
+display:flex;
+gap:12px;
+align-items:center;
+}
+
+.edit-icon{
+color:#ff8c42;
+cursor:pointer;
+font-size:18px;
+}
+
+.delete-icon{
+color:#d11a2a;
+cursor:pointer;
+font-size:18px;
+}
+
+.edit-icon:hover{
+color:#e6762f;
+}
+
+.delete-icon:hover{
+color:#a50f1c;
+}
+
+@media(max-width:768px){
+.homechurch-header{flex-direction:column;align-items:flex-start;}
+.homechurch-table th,
+.homechurch-table td{font-size:14px;padding:10px;}
+}
