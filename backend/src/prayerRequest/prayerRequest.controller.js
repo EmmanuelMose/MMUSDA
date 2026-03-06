@@ -6,6 +6,11 @@ const PrayerRequestsController = {
     res.json(data);
   },
 
+  getLatestFive: async (req, res) => {
+    const data = await PrayerRequestsService.getLatestFive();
+    res.json(data);
+  },
+
   create: async (req, res) => {
     const data = await PrayerRequestsService.create(req.body);
     res.status(201).json(data);

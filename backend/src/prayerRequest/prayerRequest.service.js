@@ -1,10 +1,19 @@
 import { db } from "../Drizzle/db.js";
 import { prayerRequests } from "../Drizzle/schema.js";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 export const PrayerRequestsService = {
   getAll: async () => {
-    return await db.select().from(prayerRequests);
+    return await db.select().from(prayerRequests).orderBy(desc(prayerRequests.createdAt));
+  },
+
+  getLatestFive: async () => {
+    return await db
+      .select()
+      .from(prayerRequests)
+      .where(eq(prayerRequests.isPublic, "yes"))
+      .orderBy(desc(prayerRequests.createdAt))
+      .limit(5);
   },
 
   create: async (data) => {
