@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { fetchAllEvents } from "../../Features/events/eventsAPI.js";
-import "./Events.css";
+import "./Event.css";
 
 const Events = () => {
   const [events, setEvents] = useState([]);

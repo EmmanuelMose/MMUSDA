@@ -10,7 +10,7 @@ import ContactPage from "./pages/ContactPage";
 import Beliefs from "./components/beliefs/Beliefs";
 import AboutMmusda from "./components/aboutmmusda/AboutMmusda";
 import Announcements from "./components/announcements/Announcements";
-import Events from "./components/events/Events";
+import Event from "./components/event/Event";
 import AboutSDA from "./components/aboutsda/AboutSDA";
 import Books from "./components/book/Book";
 import Departments from "./components/departments/Departments";
@@ -60,7 +60,7 @@ function App() {
     },
     {
       path: "/events",
-      element: <Events />,
+      element: <Event />,
     },
     {
       path: "/about/sda",
