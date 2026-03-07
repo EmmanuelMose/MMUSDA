@@ -1,0 +1,1 @@
+ALTER TABLE "events" ALTER COLUMN "photo" SET DATA TYPE varchar(5000);

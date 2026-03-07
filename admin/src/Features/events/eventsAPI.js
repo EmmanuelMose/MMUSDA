@@ -10,12 +10,20 @@ export const EventsAPI = {
   },
 
   createEvent: async (data) => {
-    const res = await axios.post(EVENTS_URL, data);
+    const payload = {
+      ...data,
+      photo: data.photo || null
+    };
+    const res = await axios.post(EVENTS_URL, payload);
     return res.data.event;
   },
 
   updateEvent: async (id, data) => {
-    const res = await axios.put(`${EVENTS_URL}/${id}`, data);
+    const payload = {
+      ...data,
+      photo: data.photo || null
+    };
+    const res = await axios.put(`${EVENTS_URL}/${id}`, payload);
     return res.data.event;
   },
 
