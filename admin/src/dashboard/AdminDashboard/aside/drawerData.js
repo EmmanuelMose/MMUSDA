@@ -94,6 +94,11 @@ export const adminDrawerData = [
     link: "offeringdetails" 
   },
   { 
+    id: "prayerrequests", 
+    name: "PrayerRequests",  
+    link: "prayerrequests" 
+  },
+  { 
     id: "admins", 
     name: "Admins", 
     icon: FaUserShield, 
