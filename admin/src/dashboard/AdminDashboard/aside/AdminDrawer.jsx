@@ -28,7 +28,7 @@ const AdminDrawer = ({ isSidebarOpen, onToggle }) => {
       <aside className={`drawer ${isSidebarOpen ? "open" : "closed"}`}>
         <div className="drawer-header">
           {isSidebarOpen && <h2 className="drawer-title">Church Admin</h2>}
-          <button onClick={onToggle} className="toggle-btn close-mobile-btn">
+          <button onClick={onToggle} className="toggle-btn">
             {isSidebarOpen ? <FaTimes /> : "❯"}
           </button>
         </div>

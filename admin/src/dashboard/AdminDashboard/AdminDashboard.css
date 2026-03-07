@@ -1,72 +1,83 @@
-.dashboard-container {
-  background: #000;
-  min-height: 100vh;
-  padding: 50px; /* Large screen margin */
+.app-container {
   display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 30px;
 }
 
 .admin-layout {
-  width: 100%;
-  background: #0b1f3a;
-  border-radius: 16px;
   display: flex;
+  width: 100%;
+  height: 100%;
+  background: #061427;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.main-wrapper {
+.main-viewport {
   flex: 1;
   display: flex;
   flex-direction: column;
   min-width: 0;
+  height: 100%;
   background: #08182e;
 }
 
-.top-nav {
+.top-bar {
   height: 70px;
   background: #061427;
-  border-bottom: 1px solid rgba(255, 140, 66, 0.2);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 25px;
+  padding: 0 20px;
+  border-bottom: 2px solid #ff8c42;
+  flex-shrink: 0;
 }
 
-.menu-toggle-btn {
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: #ff8c42;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.page-title {
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.nav-right {
+.top-bar-left {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.search-box {
+.mobile-menu-trigger {
+  background: none;
+  border: none;
+  color: #ff8c42;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+.view-title {
+  color: white;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.top-bar-right {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
+  gap: 15px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #0b1f3a;
   border: 1px solid rgba(255, 140, 66, 0.4);
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 7px 12px;
+  border-radius: 6px;
   gap: 10px;
   color: #ff8c42;
 }
 
-.search-box input {
+.search-container input {
   background: none;
   border: none;
   outline: none;
@@ -74,107 +85,100 @@
   width: 150px;
 }
 
-.icon-btn {
-  background: rgba(255, 255, 255, 0.05);
+.action-icon {
+  background: #0b1f3a;
   border: 1px solid rgba(255, 140, 66, 0.3);
   color: #ff8c42;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
   cursor: pointer;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.badge {
+.dot {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background: #ff4757;
+  top: -4px;
+  right: -4px;
+  background: #e74c3c;
   color: white;
-  font-size: 10px;
-  padding: 2px 6px;
+  font-size: 9px;
+  padding: 2px 5px;
   border-radius: 10px;
-  border: 2px solid #061427;
 }
 
-.user-profile {
+.profile-chip {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-left: 10px;
+  padding-left: 15px;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.avatar {
-  font-size: 30px;
+.user-avatar {
+  font-size: 28px;
   color: #ff8c42;
 }
 
-.user-info {
+.profile-text {
   display: flex;
   flex-direction: column;
 }
 
-.name {
-  font-size: 14px;
+.user-name {
   color: white;
-  font-weight: 500;
+  font-size: 14px;
 }
 
-.role {
+.user-role {
+  color: #85929e;
   font-size: 11px;
-  color: #888;
 }
 
-.main-content {
-  flex: 1;
-  padding: 25px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.content-scroll-area {
+.scroll-content {
   flex: 1;
   overflow-y: auto;
-  padding-right: 5px;
+  overflow-x: hidden;
+  padding: 20px;
+  background: #08182e;
 }
 
-.content-card {
+.content-wrapper {
   background: white;
-  color: #333;
-  border-radius: 12px;
-  padding: 30px;
+  color: #2c3e50;
+  border-radius: 8px;
+  padding: 25px;
   min-height: 100%;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1024px) {
-  .dashboard-container {
-    padding: 0;
+  .app-container {
+    padding: 5px;
   }
-  .admin-layout {
-    border-radius: 0;
+  .mobile-menu-trigger {
+    display: block;
   }
-  .search-box {
+  .search-container, .profile-text {
     display: none;
   }
-  .user-info {
-    display: none;
+  .top-bar {
+    padding: 0 15px;
   }
 }
 
-@media (max-width: 768px) {
-  .top-nav {
-    padding: 0 15px;
-  }
-  .page-title {
+@media (max-width: 480px) {
+  .view-title {
     display: none;
   }
-  .main-content {
+  .content-wrapper {
     padding: 15px;
+  }
+  .top-bar-right {
+    gap: 8px;
   }
 }

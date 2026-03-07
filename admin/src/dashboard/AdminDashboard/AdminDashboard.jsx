@@ -28,55 +28,50 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="app-container">
       <div className="admin-layout">
         <AdminDrawer
           isSidebarOpen={isSidebarOpen}
           onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
         />
 
-        <div className="main-wrapper">
-          <header className="top-nav">
-            <div className="nav-left">
-              <button
-                className="menu-toggle-btn"
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              >
+        <div className="main-viewport">
+          <header className="top-bar">
+            <div className="top-bar-left">
+              <button className="mobile-menu-trigger" onClick={() => setIsSidebarOpen(true)}>
                 <FaBars />
               </button>
-              <h2 className="page-title">Dashboard</h2>
+              <h2 className="view-title">Dashboard</h2>
             </div>
 
-            <div className="nav-right">
-              <div className="search-box">
+            <div className="top-bar-right">
+              <div className="search-container">
                 <FaSearch />
-                <input type="text" placeholder="Search..." />
+                <input type="text" placeholder="Search data..." />
               </div>
 
-              <button className="icon-btn">
+              <button className="action-icon">
                 <FaBell />
-                <span className="badge">3</span>
+                <span className="dot">3</span>
               </button>
 
-              <div className="user-profile">
-                <FaUserCircle className="avatar" />
-                <div className="user-info">
-                  <span className="name">Admin</span>
-                  <span className="role">Administrator</span>
+              <div className="profile-chip">
+                <FaUserCircle className="user-avatar" />
+                <div className="profile-text">
+                  <span className="user-name">Admin</span>
+                  <span className="user-role">Super User</span>
                 </div>
               </div>
 
-              <button className="icon-btn logout-btn" onClick={handleLogout}>
+              <button className="action-icon logout-trigger" onClick={handleLogout}>
                 <FaSignOutAlt />
               </button>
             </div>
           </header>
 
-          <main className="main-content">
-            <div className="content-scroll-area">
-              <div className="content-card">
-                <Outlet />
-              </div>
+          <main className="scroll-content">
+            <div className="content-wrapper">
+              <Outlet />
             </div>
           </main>
         </div>

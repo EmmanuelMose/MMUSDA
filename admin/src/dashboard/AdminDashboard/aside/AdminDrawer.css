@@ -4,12 +4,11 @@
   width: 260px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   border-right: 2px solid #ff8c42;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  height: 100%;
+  position: relative;
+  z-index: 1001;
 }
 
 .drawer.closed {
@@ -20,15 +19,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  height: 70px;
-  border-bottom: 1px solid rgba(255, 140, 66, 0.3);
+  padding: 0 20px;
+  min-height: 70px;
+  border-bottom: 1px solid rgba(255, 140, 66, 0.2);
 }
 
 .drawer-title {
   color: #ff8c42;
-  font-size: 1.2rem;
-  white-space: nowrap;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 .toggle-btn {
@@ -37,29 +36,26 @@
   color: #ff8c42;
   font-size: 20px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .drawer-nav {
   flex: 1;
-  padding: 20px 10px;
+  padding: 15px 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   overflow-y: auto;
 }
 
 .drawer-item {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   text-decoration: none;
   padding: 12px;
   border-radius: 8px;
-  color: #bdc3c7;
-  transition: 0.2s;
+  color: #ecf0f1;
+  transition: 0.2s ease;
 }
 
 .drawer-item:hover, .drawer-item.active {
@@ -68,43 +64,54 @@
 }
 
 .item-icon {
-  font-size: 20px;
-  min-width: 25px;
+  font-size: 18px;
+  min-width: 24px;
   display: flex;
   justify-content: center;
 }
 
 .drawer-footer {
-  text-align: center;
   padding: 15px;
-  font-size: 11px;
-  color: #666;
-  border-top: 1px solid rgba(255, 140, 66, 0.2);
+  text-align: center;
+  font-size: 10px;
+  color: #5d6d7e;
+  border-top: 1px solid rgba(255, 140, 66, 0.1);
 }
 
 @media (max-width: 1024px) {
   .drawer {
     position: fixed;
-    left: -260px;
+    top: 5px;
+    bottom: 5px;
+    left: -270px;
+    height: calc(100vh - 10px);
+    border-radius: 8px;
+    border-right: none;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
   }
+
   .drawer.open {
-    left: 0;
-    width: 280px;
+    left: 5px;
+    width: calc(100vw - 70px);
+    max-width: 260px;
   }
+
   .drawer.closed {
-    left: -260px;
+    left: -270px;
   }
+
   .drawer-overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 999;
-    backdrop-filter: blur(4px);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+    display: none;
   }
+
   .drawer-overlay.active {
     display: block;
   }
