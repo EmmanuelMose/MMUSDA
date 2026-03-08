@@ -1,51 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React,{useState,useEffect} from "react";
 import { DepartmentsAPI } from "../../Features/departments/departmentsAPI";
 import "./UpdateDepartment.css";
 
-const UpdateDepartment = ({ department, onUpdated, onCancel }) => {
+const UpdateDepartment = ({department,onUpdated,onCancel})=>{
 
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    adminLeader: "",
-    assistant: "",
-    adminContact: ""
+  const [formData,setFormData] = useState({
+    name:"",
+    description:"",
+    adminLeader:"",
+    assistant:"",
+    adminContact:""
   });
 
-  const [loading, setLoading] = useState(false);
+  const [loading,setLoading] = useState(false);
 
-  useEffect(() => {
+  useEffect(()=>{
 
-    if (department) {
+    if(department){
       setFormData({
-        name: department.name || "",
-        description: department.description || "",
-        adminLeader: department.adminLeader || "",
-        assistant: department.assistant || "",
-        adminContact: department.adminContact || ""
+        name:department.name || "",
+        description:department.description || "",
+        adminLeader:department.adminLeader || "",
+        assistant:department.assistant || "",
+        adminContact:department.adminContact || ""
       });
     }
 
-  }, [department]);
+  },[department]);
 
-  const handleChange = (e) => {
+  const handleChange = (e)=>{
+    const {name,value} = e.target;
 
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
+    setFormData(prev=>({
       ...prev,
-      [name]: value
+      [name]:value
     }));
-
   };
 
-  const handleSubmit = async (e) => {
-
+  const handleSubmit = async(e)=>{
     e.preventDefault();
 
     setLoading(true);
 
-    try {
+    try{
 
       const updated = await DepartmentsAPI.updateDepartment(
         department.departmentId,
@@ -54,15 +51,13 @@ const UpdateDepartment = ({ department, onUpdated, onCancel }) => {
 
       onUpdated(updated);
 
-    } finally {
-
+    }finally{
       setLoading(false);
-
     }
-
   };
 
-  return (
+  return(
+
     <form className="department-form" onSubmit={handleSubmit}>
 
       <h3 className="form-title">Update Department</h3>
@@ -105,7 +100,10 @@ const UpdateDepartment = ({ department, onUpdated, onCancel }) => {
 
       <div className="form-buttons">
 
-        <button className="save-btn">
+        <button
+          className={`save-btn ${loading ? "btn-loading" : ""}`}
+          disabled={loading}
+        >
           {loading ? "Updating..." : "Update"}
         </button>
 
@@ -120,6 +118,7 @@ const UpdateDepartment = ({ department, onUpdated, onCancel }) => {
       </div>
 
     </form>
+
   );
 };
 

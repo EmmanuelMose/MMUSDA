@@ -1,51 +1,53 @@
 import React, { useState } from "react";
 import { DepartmentsAPI } from "../../Features/departments/departmentsAPI";
-import "./UpdateDepartment.css";
+import "./CreateDepartment.css";
 
 const CreateDepartment = ({ onCreated, onCancel }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    adminLeader: "",
-    assistant: "",
-    adminContact: ""
+
+  const [formData,setFormData] = useState({
+    name:"",
+    description:"",
+    adminLeader:"",
+    assistant:"",
+    adminContact:""
   });
 
-  const [loading, setLoading] = useState(false);
+  const [loading,setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (e)=>{
+    const {name,value} = e.target;
 
-    setFormData((prev) => ({
+    setFormData(prev=>({
       ...prev,
-      [name]: value
+      [name]:value
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async(e)=>{
     e.preventDefault();
-
     setLoading(true);
 
-    try {
+    try{
+
       const newDepartment = await DepartmentsAPI.createDepartment(formData);
 
       onCreated(newDepartment);
 
       setFormData({
-        name: "",
-        description: "",
-        adminLeader: "",
-        assistant: "",
-        adminContact: ""
+        name:"",
+        description:"",
+        adminLeader:"",
+        assistant:"",
+        adminContact:""
       });
 
-    } finally {
+    }finally{
       setLoading(false);
     }
   };
 
-  return (
+  return(
+
     <form className="department-form" onSubmit={handleSubmit}>
 
       <h3 className="form-title">Create Department</h3>
@@ -62,9 +64,9 @@ const CreateDepartment = ({ onCreated, onCancel }) => {
       <textarea
         name="description"
         placeholder="Department Description"
+        rows="4"
         value={formData.description}
         onChange={handleChange}
-        rows="4"
       />
 
       <input
@@ -94,17 +96,26 @@ const CreateDepartment = ({ onCreated, onCancel }) => {
 
       <div className="form-buttons">
 
-        <button className="save-btn" type="submit">
+        <button
+          className={`save-btn ${loading ? "btn-loading" : ""}`}
+          type="submit"
+          disabled={loading}
+        >
           {loading ? "Creating..." : "Create"}
         </button>
 
-        <button className="cancel-btn" type="button" onClick={onCancel}>
+        <button
+          type="button"
+          className="cancel-btn"
+          onClick={onCancel}
+        >
           Cancel
         </button>
 
       </div>
 
     </form>
+
   );
 };
 
