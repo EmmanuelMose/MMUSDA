@@ -95,7 +95,8 @@ export const adminDrawerData = [
   },
   { 
     id: "prayerrequests", 
-    name: "PrayerRequests",  
+    name: "PrayerRequests",
+    icon: FaPrayingHands,  
     link: "prayerrequests" 
   },
   { 
