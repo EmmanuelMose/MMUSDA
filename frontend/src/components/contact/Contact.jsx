@@ -5,7 +5,7 @@ import { createContact } from "../../Features/contacts/contactsAPI";
 import {
   FaFacebookF,
   FaTwitter,
-  FaInstagram,
+  FaTiktok,
   FaYoutube,
   FaEnvelope,
   FaWhatsapp
@@ -72,7 +72,7 @@ const Contact = () => {
                 <Mail size={22} />
                 <div>
                   <p className="label">Email</p>
-                  <p className="value">emmanuelmose806@gmail.com</p>
+                  <p className="value">Mmusdachurch1844@gmail.com</p>
                 </div>
               </div>
 
@@ -80,7 +80,7 @@ const Contact = () => {
                 <Phone size={22} />
                 <div>
                   <p className="label">Phone</p>
-                  <p className="value">+254718146250</p>
+                  <p className="value">+254705214338</p>
                 </div>
               </div>
 
@@ -96,27 +96,27 @@ const Contact = () => {
 
             <div className="social-links">
 
-              <a href="https://facebook.com" target="_blank">
+              <a href="https://m.facebook.com/@MasindeMuliroSDA/?wtsid=rdr_0aLQHB4isZ7jCnp0Q&hr=1" target="_blank" rel="noreferrer">
                 <FaFacebookF />
               </a>
 
-              <a href="https://twitter.com" target="_blank">
+              <a href="https://x.com/Mmusda_church?s=09" target="_blank" rel="noreferrer">
                 <FaTwitter />
               </a>
 
-              <a href="https://instagram.com" target="_blank">
-                <FaInstagram />
+              <a href="https://www.tiktok.com/@mmustsda?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer">
+                <FaTiktok />
               </a>
 
-              <a href="https://youtube.com" target="_blank">
+              <a href="https://youtube.com/@mmustsdachurch?si=Mzu6ODG4WY-aMk9z" target="_blank" rel="noreferrer">
                 <FaYoutube />
               </a>
 
-              <a href="mailto:emmanuelmose806@gmail.com">
+              <a href="mailto:Mmusdachurch1844@gmail.com">
                 <FaEnvelope />
               </a>
 
-              <a href="https://wa.me/254718146250" target="_blank">
+              <a href="https://whatsapp.com/channel/0029Vb2VS6M5vKA9AQyoJD3P" target="_blank" rel="noreferrer">
                 <FaWhatsapp />
               </a>
 
