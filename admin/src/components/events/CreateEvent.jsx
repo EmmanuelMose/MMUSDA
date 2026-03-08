@@ -3,21 +3,23 @@ import { EventsAPI } from "../../Features/events/eventsAPI";
 import "./Events.css";
 
 const CreateEvent = ({ onCreated }) => {
-  const [form, setForm] = useState({
-    title: "",
-    description: "",
-    eventDate: "",
-    photo: ""
+
+  const [form,setForm] = useState({
+    title:"",
+    description:"",
+    eventDate:"",
+    photo:""
   });
 
-  const [loading, setLoading] = useState(false);
+  const [loading,setLoading] = useState(false);
 
-  const change = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const change = (e)=>{
+    setForm({...form,[e.target.name]:e.target.value});
   };
 
-  const submit = async (e) => {
+  const submit = async(e)=>{
     e.preventDefault();
+
     setLoading(true);
 
     const newEvent = await EventsAPI.createEvent(form);
@@ -25,17 +27,19 @@ const CreateEvent = ({ onCreated }) => {
     onCreated(newEvent);
 
     setForm({
-      title: "",
-      description: "",
-      eventDate: "",
-      photo: ""
+      title:"",
+      description:"",
+      eventDate:"",
+      photo:""
     });
 
     setLoading(false);
   };
 
-  return (
+  return(
+
     <form onSubmit={submit} className="event-form">
+
       <h3>Create Event</h3>
 
       <input
@@ -73,7 +77,9 @@ const CreateEvent = ({ onCreated }) => {
       <button disabled={loading}>
         {loading ? "Creating..." : "Create Event"}
       </button>
+
     </form>
+
   );
 };
 

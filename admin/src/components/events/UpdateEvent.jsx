@@ -1,34 +1,42 @@
-import React, { useState } from "react";
+import React,{useState} from "react";
 import { EventsAPI } from "../../Features/events/eventsAPI";
 import "./Events.css";
 
-const UpdateEvent = ({ eventData, onUpdated }) => {
-  const [form, setForm] = useState({
-    title: eventData.title || "",
-    description: eventData.description || "",
-    eventDate: eventData.eventDate?.slice(0,10) || "",
-    photo: eventData.photo || ""
+const UpdateEvent = ({eventData,onUpdated})=>{
+
+  const [form,setForm] = useState({
+    title:eventData.title || "",
+    description:eventData.description || "",
+    eventDate:eventData.eventDate?.slice(0,10) || "",
+    photo:eventData.photo || ""
   });
 
-  const [loading, setLoading] = useState(false);
+  const [loading,setLoading] = useState(false);
 
-  const change = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const change = (e)=>{
+    setForm({...form,[e.target.name]:e.target.value});
   };
 
-  const submit = async (e) => {
+  const submit = async(e)=>{
+
     e.preventDefault();
+
     setLoading(true);
 
-    const updated = await EventsAPI.updateEvent(eventData.eventId, form);
+    const updated = await EventsAPI.updateEvent(
+      eventData.eventId,
+      form
+    );
 
     onUpdated(updated);
 
     setLoading(false);
   };
 
-  return (
-    <form onSubmit={submit} className="event-form update-form">
+  return(
+
+    <form onSubmit={submit} className="event-form">
+
       <h3>Update Event</h3>
 
       <input
@@ -64,7 +72,9 @@ const UpdateEvent = ({ eventData, onUpdated }) => {
       <button disabled={loading}>
         {loading ? "Updating..." : "Update Event"}
       </button>
+
     </form>
+
   );
 };
 
