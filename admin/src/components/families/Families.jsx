@@ -13,22 +13,24 @@ export default function Families() {
   const [loading, setLoading] = useState(true);
 
   const fetchFamilies = async () => {
-    try{
+    try {
       setLoading(true);
       const data = await getAllFamilies();
       setFamilies(data);
-    } catch(err){ console.log(err); }
+    } catch (err) {
+      console.log(err);
+    }
     setLoading(false);
   };
 
   useEffect(() => { fetchFamilies(); }, []);
 
   const handleDelete = async (id) => {
-    if(!window.confirm("Delete this family?")) return;
+    if (!window.confirm("Delete this family?")) return;
     try {
       await deleteFamily(id);
       fetchFamilies();
-    } catch(err){ console.log(err); }
+    } catch (err) { console.log(err); }
   };
 
   const openUpdate = (family) => {
@@ -54,38 +56,30 @@ export default function Families() {
         />
       )}
 
-      <div className="table-container">
-        {loading ? <p className="loading-text">Loading families...</p> :
-        <table className="families-table">
-          <thead>
-            <tr>
-              <th>Photo</th>
-              <th>Family Name</th>
-              <th>Head</th>
-              <th>Contact</th>
-              <th>Leader Contact</th>
-              <th>Description</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {families.map(family => (
-              <tr key={family.familyId}>
-                <td>{family.photoUrl ? <img src={family.photoUrl} alt={family.familyName} className="family-photo"/> : "-"}</td>
-                <td>{family.familyName}</td>
-                <td>{family.headOfFamily}</td>
-                <td>{family.contactInfo}</td>
-                <td>{family.leaderContact}</td>
-                <td>{family.description}</td>
-                <td className="actions">
-                  <FaEdit className="edit-icon" onClick={() => openUpdate(family)} />
-                  <FaTrash className="delete-icon" onClick={() => handleDelete(family.familyId)} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>}
-      </div>
+      {loading ? <p className="loading-text">Loading families...</p> : (
+        <div className="families-cards">
+          {families.map(family => (
+            <div className="family-card" key={family.familyId}>
+              <div className="photo-wrapper">
+                {family.photoUrl 
+                  ? <img src={family.photoUrl} alt={family.familyName} /> 
+                  : <div className="placeholder">No Photo</div>}
+              </div>
+              <div className="family-info">
+                <h3>{family.familyName}</h3>
+                <p><strong>Head:</strong> {family.headOfFamily}</p>
+                <p><strong>Contact:</strong> {family.contactInfo}</p>
+                <p><strong>Leader Contact:</strong> {family.leaderContact}</p>
+                <p className="description">{family.description}</p>
+              </div>
+              <div className="card-actions">
+                <FaEdit className="edit-icon" onClick={() => openUpdate(family)} />
+                <FaTrash className="delete-icon" onClick={() => handleDelete(family.familyId)} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
