@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { APIDomain } from "../../utils/APIDomain";
-import { Eye, EyeOff } from "react-icons/fa";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./Login.css";
 
 export default function Login() {
@@ -60,13 +60,11 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button
-                type="button"
-                className="password-toggle-btn"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff /> : <Eye />}
-              </button>
+              {showPassword ? (
+                <FiEyeOff onClick={() => setShowPassword(false)} />
+              ) : (
+                <FiEye onClick={() => setShowPassword(true)} />
+              )}
             </div>
           </div>
 
