@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { APIDomain } from "../../utils/APIDomain";
+import { Eye, EyeOff } from "react-icons/fa";
 import "./Login.css";
 
 export default function Login() {
@@ -33,17 +34,16 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <h2>WELCOME TO MMUSDA ADMIN LOGIN PAGE</h2>
-        <p className="subtitle">Welcome back! Please enter your details to Login.</p>
+        <h2>Login</h2>
 
         {message && <div className="message-banner">{message}</div>}
 
         <form onSubmit={handleLogin}>
           <div className="input-group">
-            <label>Email Address</label>
+            <label>Email</label>
             <input
               type="email"
-              placeholder="admin@example.com"
+              placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -62,24 +62,27 @@ export default function Login() {
               />
               <button
                 type="button"
-                className="toggle-pass"
+                className="password-toggle-btn"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? "Hide" : "Show"}
+                {showPassword ? <EyeOff /> : <Eye />}
               </button>
             </div>
           </div>
 
           <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? <span className="loader"></span> : "Login to Dashboard"}
+            {loading ? "Loading..." : "Login"}
           </button>
         </form>
 
         <div className="auth-footer">
           <p>
-            Don't have an account? <Link to="/register" className="black-link">Register</Link>
+            Forgot your password? <Link to="/forgot-password">Click here</Link>
           </p>
-          <Link to="/forgot-password" className="forgot-link">Forgot Password?</Link>
+          <p>
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
+          <p><Link to="/">Back to Home</Link></p>
         </div>
       </div>
     </div>
