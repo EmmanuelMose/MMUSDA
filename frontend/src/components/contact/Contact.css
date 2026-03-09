@@ -3,10 +3,16 @@
   --sda-blue-dark: #071422;
   --sda-orange: #f39c12;
   --sda-orange-hover: #e67e22;
-  --sda-glow: rgba(243, 156, 18, 0.3);
+  --sda-glow: rgba(243, 156, 18, 0.4);
   --white: #ffffff;
   --glass: rgba(255, 255, 255, 0.05);
   --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes sectionGlow {
+  0% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 20px var(--sda-glow); }
+  50% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(243, 156, 18, 0.6); }
+  100% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 20px var(--sda-glow); }
 }
 
 .contact-section {
@@ -16,11 +22,12 @@
   color: white;
   margin: 20px;
   border-radius: 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  animation: sectionGlow 4s infinite ease-in-out;
+  border: 1px solid rgba(243, 156, 18, 0.2);
 }
 
 .contact-section::before {
@@ -69,10 +76,12 @@
 .contact-info h2 span {
   color: var(--sda-orange);
   transition: var(--transition);
+  display: inline-block;
 }
 
 .contact-info h2:hover span {
   color: #000000;
+  transform: translateY(-2px);
 }
 
 .contact-subtext {
@@ -223,7 +232,7 @@
 }
 
 .contact-submit-btn {
-  margin-top: 10px;
+  margin-top: 15px;
   background: var(--sda-blue);
   color: white;
   padding: 18px;
@@ -252,6 +261,7 @@
   margin-top: 15px;
   font-weight: 700;
   font-size: 0.9rem;
+  color: var(--sda-blue);
 }
 
 @media (max-width: 1024px) {
