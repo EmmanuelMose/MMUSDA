@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { createSuggestion } from "../../Features/suggestions/suggestionsAPI";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, User, Phone, MessageSquare, Info } from "lucide-react";
 import "./Suggestions.css";
 
 const Suggestions = () => {
@@ -10,6 +12,7 @@ const Suggestions = () => {
   });
 
   const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,82 +20,92 @@ const Suggestions = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await createSuggestion(formData);
-      setMessage("Suggestion submitted successfully!");
-      setFormData({
-        name: "",
-        contactNumber: "",
-        message: ""
-      });
+      setIsError(false);
+      setMessage("Your suggestion has been received. Thank you!");
+      setFormData({ name: "", contactNumber: "", message: "" });
     } catch (err) {
+      setIsError(true);
       setMessage(err.message);
     }
   };
 
   return (
     <div className="suggestions-page">
+      <motion.div 
+        className="suggestions-card"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="suggestions-header">
+          <h2 className="suggestions-title">Submit a Suggestion</h2>
+          <div className="title-underline"></div>
+        </div>
 
-      <div className="suggestions-container">
+        <div className="info-banner">
+          <Info size={18} />
+          <p>Name and Contact are optional. You can remain anonymous.</p>
+        </div>
 
         <form className="suggestions-form" onSubmit={handleSubmit}>
-
-          <h2 className="suggestions-title">
-            Submit a Suggestion
-          </h2>
-
-          <p className="optional-note">
-            Name and Contact Number are optional. You may submit your suggestion anonymously.
-          </p>
-
-          <div className="form-group">
-            <label>Your Name (Optional)</label>
+          <div className="input-group">
+            <label><User size={16} /> Full Name (Optional)</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Enter your name (optional)"
+              placeholder="e.g. John Doe"
             />
           </div>
 
-          <div className="form-group">
-            <label>Contact Number (Optional)</label>
+          <div className="input-group">
+            <label><Phone size={16} /> Contact Number (Optional)</label>
             <input
               type="text"
               name="contactNumber"
               value={formData.contactNumber}
               onChange={handleChange}
-              placeholder="Enter your contact number (optional)"
+              placeholder="e.g. 0712345678"
             />
           </div>
 
-          <div className="form-group">
-            <label>Your Suggestion</label>
+          <div className="input-group">
+            <label><MessageSquare size={16} /> Your Suggestion</label>
             <textarea
               name="message"
               value={formData.message}
               onChange={handleChange}
-              placeholder="Write your suggestion here..."
+              placeholder="How can we improve our services?"
               required
             />
           </div>
 
-          <button type="submit" className="submit-btn">
-            Submit Suggestion
-          </button>
+          <motion.button 
+            type="submit" 
+            className="submit-btn"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Send Suggestion <Send size={18} />
+          </motion.button>
 
-          {message && (
-            <p className="response-message">
-              {message}
-            </p>
-          )}
-
+          <AnimatePresence>
+            {message && (
+              <motion.div 
+                className={`feedback-msg ${isError ? 'error' : 'success'}`}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+              >
+                {message}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </form>
-
-      </div>
-
+      </motion.div>
     </div>
   );
 };
