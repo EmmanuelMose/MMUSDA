@@ -1,1 +1,0 @@
-ALTER TABLE "registered_admins" ADD COLUMN "password" varchar(255) NOT NULL;
