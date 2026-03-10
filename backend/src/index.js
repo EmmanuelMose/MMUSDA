@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
 import youtubeRoutes from "./youtube/youtube.router.js";
 import sermonsRouter from "./sermons/sermons.router.js";
 import { announcementsRouter } from "./announcements/announcements.router.js";
@@ -37,6 +38,9 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"]
   })
 );
+
+// Serve uploaded files from /uploads
+app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
 
 app.use("/sermons", sermonsRouter);
 app.use("/youtube", youtubeRoutes);

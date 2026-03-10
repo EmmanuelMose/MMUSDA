@@ -7,7 +7,7 @@ export default function CreateFamily({ onSuccess }) {
   const [headOfFamily, setHeadOfFamily] = useState("");
   const [contactInfo, setContactInfo] = useState("");
   const [leaderContact, setLeaderContact] = useState("");
-  const [photoUrl, setPhotoUrl] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -16,12 +16,11 @@ export default function CreateFamily({ onSuccess }) {
     e.preventDefault();
     setLoading(true);
     try {
-      await createFamily({ familyName, headOfFamily, contactInfo, leaderContact, photoUrl, description });
-      setFamilyName(""); setHeadOfFamily(""); setContactInfo(""); setLeaderContact(""); setPhotoUrl(""); setDescription("");
+      await createFamily({ familyName, headOfFamily, contactInfo, leaderContact, photo, description });
+      setFamilyName(""); setHeadOfFamily(""); setContactInfo(""); setLeaderContact(""); setPhoto(null); setDescription("");
       setMessage("Family created successfully");
       if(onSuccess) onSuccess();
-    } catch (err) {
-      console.log(err);
+    } catch {
       setMessage("Failed to create family");
     }
     setLoading(false);
@@ -35,7 +34,7 @@ export default function CreateFamily({ onSuccess }) {
         <input type="text" placeholder="Head of Family" value={headOfFamily} onChange={e => setHeadOfFamily(e.target.value)} required />
         <input type="text" placeholder="Contact Info" value={contactInfo} onChange={e => setContactInfo(e.target.value)} />
         <input type="text" placeholder="Leader Contact" value={leaderContact} onChange={e => setLeaderContact(e.target.value)} />
-        <input type="text" placeholder="Photo URL" value={photoUrl} onChange={e => setPhotoUrl(e.target.value)} />
+        <input type="file" onChange={e => setPhoto(e.target.files[0])} />
         <textarea placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} />
         <button type="submit" disabled={loading}>{loading ? "Creating..." : "Create"}</button>
       </form>

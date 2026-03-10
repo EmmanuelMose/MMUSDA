@@ -15,13 +15,8 @@ const Families = () => {
     getFamilies();
   }, []);
 
-  if (loading) {
-    return <div className="families-loading">Loading families...</div>;
-  }
-
-  if (!families.length) {
-    return <div className="families-empty">No families found.</div>;
-  }
+  if (loading) return <div className="families-loading">Loading families...</div>;
+  if (!families.length) return <div className="families-empty">No families found.</div>;
 
   return (
     <div className="families-container">
@@ -29,6 +24,13 @@ const Families = () => {
       <div className="families-grid">
         {families.map((family) => (
           <div key={family.familyId} className="family-card">
+            {family.photoUrl && (
+              <img
+                src={family.photoUrl}
+                alt={family.familyName}
+                className="family-photo"
+              />
+            )}
             <h3 className="family-name">{family.familyName}</h3>
             <p className="family-detail"><strong>Head:</strong> {family.headOfFamily}</p>
             {family.contactInfo && <p className="family-detail"><strong>Contact:</strong> {family.contactInfo}</p>}

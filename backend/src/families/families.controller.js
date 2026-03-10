@@ -6,17 +6,19 @@ const FamiliesController = {
       const data = await FamiliesService.getAll();
       res.json(data);
     } catch (err) {
-      console.error(err);
       res.status(500).json({ message: "Failed to fetch families" });
     }
   },
 
   create: async (req, res) => {
     try {
-      const data = await FamiliesService.create(req.body);
+      const familyData = { ...req.body };
+      if (req.file) {
+        familyData.photoUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+      }
+      const data = await FamiliesService.create(familyData);
       res.status(201).json(data);
     } catch (err) {
-      console.error(err);
       res.status(500).json({ message: "Failed to create family" });
     }
   },
@@ -24,11 +26,14 @@ const FamiliesController = {
   update: async (req, res) => {
     try {
       const id = parseInt(req.params.id);
-      const data = await FamiliesService.update(id, req.body);
+      const familyData = { ...req.body };
+      if (req.file) {
+        familyData.photoUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+      }
+      const data = await FamiliesService.update(id, familyData);
       if (!data) return res.status(404).json({ message: "Family not found" });
       res.json(data);
     } catch (err) {
-      console.error(err);
       res.status(500).json({ message: "Failed to update family" });
     }
   },
@@ -39,7 +44,6 @@ const FamiliesController = {
       await FamiliesService.delete(id);
       res.json({ message: "Family deleted" });
     } catch (err) {
-      console.error(err);
       res.status(500).json({ message: "Failed to delete family" });
     }
   }

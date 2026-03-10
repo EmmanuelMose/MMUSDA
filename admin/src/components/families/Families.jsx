@@ -13,13 +13,8 @@ export default function Families() {
   const [loading, setLoading] = useState(true);
 
   const fetchFamilies = async () => {
-    try {
-      setLoading(true);
-      const data = await getAllFamilies();
-      setFamilies(data);
-    } catch (err) {
-      console.log(err);
-    }
+    setLoading(true);
+    try { setFamilies(await getAllFamilies()); } catch {}
     setLoading(false);
   };
 
@@ -27,16 +22,10 @@ export default function Families() {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this family?")) return;
-    try {
-      await deleteFamily(id);
-      fetchFamilies();
-    } catch (err) { console.log(err); }
+    try { await deleteFamily(id); fetchFamilies(); } catch {}
   };
 
-  const openUpdate = (family) => {
-    setSelectedFamily(family);
-    setShowUpdate(true);
-  };
+  const openUpdate = (family) => { setSelectedFamily(family); setShowUpdate(true); };
 
   return (
     <div className="families-page">
@@ -49,11 +38,7 @@ export default function Families() {
 
       {showCreate && <CreateFamily onSuccess={() => { setShowCreate(false); fetchFamilies(); }} />}
       {showUpdate && selectedFamily && (
-        <UpdateFamily
-          family={selectedFamily}
-          onClose={() => setShowUpdate(false)}
-          onSuccess={() => { setShowUpdate(false); fetchFamilies(); }}
-        />
+        <UpdateFamily family={selectedFamily} onClose={() => setShowUpdate(false)} onSuccess={() => { setShowUpdate(false); fetchFamilies(); }} />
       )}
 
       {loading ? <p className="loading-text">Loading families...</p> : (
@@ -61,9 +46,7 @@ export default function Families() {
           {families.map(family => (
             <div className="family-card" key={family.familyId}>
               <div className="photo-wrapper">
-                {family.photoUrl 
-                  ? <img src={family.photoUrl} alt={family.familyName} /> 
-                  : <div className="placeholder">No Photo</div>}
+                {family.photoUrl ? <img src={family.photoUrl} alt={family.familyName} /> : <div className="placeholder">No Photo</div>}
               </div>
               <div className="family-info">
                 <h3>{family.familyName}</h3>
@@ -73,8 +56,8 @@ export default function Families() {
                 <p className="description">{family.description}</p>
               </div>
               <div className="card-actions">
-                <FaEdit className="edit-icon" onClick={() => openUpdate(family)} />
-                <FaTrash className="delete-icon" onClick={() => handleDelete(family.familyId)} />
+                <FaEdit onClick={() => openUpdate(family)} />
+                <FaTrash onClick={() => handleDelete(family.familyId)} />
               </div>
             </div>
           ))}

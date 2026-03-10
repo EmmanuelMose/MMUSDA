@@ -7,17 +7,14 @@ export default function UpdateFamily({ family, onClose, onSuccess }) {
   const [headOfFamily, setHeadOfFamily] = useState(family.headOfFamily);
   const [contactInfo, setContactInfo] = useState(family.contactInfo);
   const [leaderContact, setLeaderContact] = useState(family.leaderContact);
-  const [photoUrl, setPhotoUrl] = useState(family.photoUrl);
+  const [photo, setPhoto] = useState(null);
   const [description, setDescription] = useState(family.description);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    try {
-      await updateFamily(family.familyId, { familyName, headOfFamily, contactInfo, leaderContact, photoUrl, description });
-      onSuccess();
-    } catch (err) { console.log(err); }
+    try { await updateFamily(family.familyId, { familyName, headOfFamily, contactInfo, leaderContact, photo, description }); onSuccess(); } catch {}
     setLoading(false);
   };
 
@@ -30,11 +27,11 @@ export default function UpdateFamily({ family, onClose, onSuccess }) {
           <input type="text" value={headOfFamily} onChange={e => setHeadOfFamily(e.target.value)} required />
           <input type="text" value={contactInfo} onChange={e => setContactInfo(e.target.value)} />
           <input type="text" value={leaderContact} onChange={e => setLeaderContact(e.target.value)} />
-          <input type="text" value={photoUrl} onChange={e => setPhotoUrl(e.target.value)} />
+          <input type="file" onChange={e => setPhoto(e.target.files[0])} />
           <textarea value={description} onChange={e => setDescription(e.target.value)} />
           <div className="update-actions">
             <button type="submit" disabled={loading}>{loading ? "Updating..." : "Update"}</button>
-            <button type="button" className="cancel-btn" onClick={onClose}>Cancel</button>
+            <button type="button" onClick={onClose}>Cancel</button>
           </div>
         </form>
       </div>

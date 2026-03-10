@@ -18,7 +18,6 @@
 
 .families-title:hover {
   color: #ff8c00;
-  cursor: default;
 }
 
 .families-grid {
@@ -44,6 +43,14 @@
   color: #ffa500;
   box-shadow: 0 12px 30px rgba(0,0,0,0.35);
   border-top: 5px solid #ff8c00;
+}
+
+.family-photo {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
 }
 
 .family-name {
