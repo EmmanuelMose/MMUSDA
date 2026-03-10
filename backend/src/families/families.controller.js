@@ -14,7 +14,7 @@ const FamiliesController = {
     try {
       const familyData = { ...req.body };
       if (req.file) {
-        familyData.photoUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+        familyData.photoUrl = `https://mmusda.onrender.com/uploads/${req.file.filename}`;
       }
       const data = await FamiliesService.create(familyData);
       res.status(201).json(data);
@@ -28,7 +28,7 @@ const FamiliesController = {
       const id = parseInt(req.params.id);
       const familyData = { ...req.body };
       if (req.file) {
-        familyData.photoUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+        familyData.photoUrl = `https://mmusda.onrender.com/uploads/${req.file.filename}`;
       }
       const data = await FamiliesService.update(id, familyData);
       if (!data) return res.status(404).json({ message: "Family not found" });
