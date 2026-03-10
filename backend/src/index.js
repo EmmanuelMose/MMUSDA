@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import path from "path";
+import dotenv from "dotenv";
 import youtubeRoutes from "./youtube/youtube.router.js";
 import sermonsRouter from "./sermons/sermons.router.js";
 import { announcementsRouter } from "./announcements/announcements.router.js";
@@ -18,6 +18,8 @@ import { suggestionsRouter } from "./suggestions/suggestions.router.js";
 import offeringsRouter from "./offering/offering.router.js";
 import offeringDetailsRouter from "./offeringDetails/offeringDetails.router.js";
 import { AdminsRouter } from "./admins/admins.router.js";
+
+dotenv.config();
 
 const app = express();
 
@@ -39,9 +41,6 @@ app.use(
   })
 );
 
-// Serve uploaded files from /uploads
-app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
-
 app.use("/sermons", sermonsRouter);
 app.use("/youtube", youtubeRoutes);
 app.use("/api/prayer-requests", prayerRouter);
@@ -61,7 +60,9 @@ app.use("/api/offeringsdetails", offeringDetailsRouter);
 app.use("/api/admins", AdminsRouter);
 
 app.get("/", (req, res) =>
-  res.send("MKUU HAPA NI BACKEND,HUWEZI ONA KITU INAFANYIKA,MAYBE UTUHACK WHICH HUWEZI,SISI NDO SIFUNA!!!!!")
+  res.send(
+    "MKUU HAPA NI BACKEND, HUWEZI ONA KITU INAFANYIKA, MAYBE UTUHACK WHICH HUWEZI, SISI NDO SIFUNA!!!!!"
+  )
 );
 
 const PORT = process.env.PORT || 5000;
