@@ -96,7 +96,9 @@ const Events = () => {
           viewport={{ once: true }}
         >
           <div className="verse-card-interactive">
-            <p className="interactive-text">“Let us consider one another to stir up love and good works, not forsaking the assembling of ourselves together.”</p>
+            <p className="interactive-text">
+              “Let us consider one another to stir up love and good works, not forsaking the assembling of ourselves together.”
+            </p>
             <span className="reference">— Hebrews 10:24–25</span>
           </div>
         </motion.div>
@@ -121,7 +123,7 @@ const Events = () => {
               >
                 <div className="event-image-container">
                   <img
-                    src={event.photo || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&q=80&w=800"}
+                    src={event.photo || "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg"}
                     alt={event.title}
                   />
                   <div className="status-badge">Live Event</div>
