@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchChoirs } from "../../Features/choirs/choirsAPI.js";
-import { Music, Users, User, Quote, Mic2, Music4 } from "lucide-react";
-import { motion } from "framer-motion";
+import { Music, Users, User, Quote, Mic2, Music4, Youtube } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./Choirs.css";
 
 const Choirs = () => {
@@ -9,10 +9,10 @@ const Choirs = () => {
   const [loading, setLoading] = useState(true);
 
   const musicVerses = [
-    "Psalm 95:1 - Oh come, let us sing to the Lord; let us make a joyful noise to the rock of our salvation!",
-    "Colossians 3:16 - Sing psalms and hymns and spiritual songs with thankfulness in your hearts to God.",
-    "Psalm 147:1 - Praise the Lord! For it is good to sing praises to our God; for it is pleasant.",
-    "Psalm 104:33 - I will sing to the Lord as long as I live; I will sing praise to my God while I have being."
+    "Psalm 95:1 - Oh come, let us sing to the Lord!",
+    "Colossians 3:16 - Sing with thankfulness in your hearts.",
+    "Psalm 147:1 - It is good to sing praises to our God.",
+    "Psalm 104:33 - I will sing to the Lord as long as I live."
   ];
 
   useEffect(() => {
@@ -32,72 +32,104 @@ const Choirs = () => {
   if (loading) {
     return (
       <div className="choirs-loading-container">
-        <div className="music-loader">
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+        >
           <Music4 size={50} className="pulse-icon" />
-          <p>Harmonizing...</p>
-        </div>
+        </motion.div>
+        <p>Harmonizing...</p>
       </div>
     );
   }
 
   return (
-    <div className="choirs-page">
-      <header className="choirs-hero">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="hero-content"
-        >
-          <Mic2 className="hero-icon" size={40} />
-          <h1 className="choirs-main-title">MMUSDA <span className="highlight">CHOIRS</span></h1>
-          <div className="hero-verse">
-            <Quote size={14} className="q-icon" />
-            <p>"Sing to Him a new song; play skillfully with a shout of joy." — Psalm 33:3</p>
-          </div>
-        </motion.div>
-      </header>
+    <div className="choirs-outer-wrapper">
+      <div className="choirs-page-card">
+        <header className="choirs-slim-hero">
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="slim-hero-content"
+          >
+            <div className="mini-badge">
+              <Mic2 size={16} />
+              <span>MMUSDA MUSIC</span>
+            </div>
+            <h1 className="slim-title">OUR <span className="highlight">CHOIRS</span></h1>
+          </motion.div>
+        </header>
 
-      <div className="choirs-main-wrapper">
-        <div className="choirs-grid">
-          {choirs.length > 0 ? (
-            choirs.map((choir, index) => (
-              <motion.div 
-                key={choir.choirId} 
-                className="choir-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-              >
-                <div className="card-accent-line"></div>
-                <div className="choir-body">
-                  <h3 className="choir-name">{choir.name}</h3>
-                  
-                  <div className="choir-meta">
-                    <div className="meta-item">
-                      <User size={15} />
-                      <span><strong>Leader:</strong> {choir.leader || "TBA"}</span>
-                    </div>
-                    <div className="meta-item">
-                      <Users size={15} />
-                      <span><strong>Members:</strong> {choir.members || "N/A"}</span>
-                    </div>
+        <div className="choirs-content-area">
+          <AnimatePresence>
+            {choirs.length > 0 ? (
+              choirs.map((choir, index) => (
+                <motion.div 
+                  key={choir.choirId} 
+                  className={`choir-stripe ${index % 2 !== 0 ? "reverse" : ""}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <div className="choir-visual">
+                    <motion.img 
+                      whileHover={{ scale: 1.03 }}
+                      src={choir.choirPhoto || "https://via.placeholder.com/1200x600?text=MMUSDA+Choir"} 
+                      alt={choir.name} 
+                      className="choir-img-wide"
+                    />
+                    <div className="img-overlay-glow"></div>
                   </div>
 
-                  {choir.description && (
-                    <p className="choir-desc">{choir.description}</p>
-                  )}
+                  <div className="choir-details">
+                    <div className="details-inner">
+                      <div className="details-top">
+                        <span className="index-tag">0{index + 1}</span>
+                        <h2 className="choir-display-name">{choir.name}</h2>
+                      </div>
 
-                  <div className="bible-footer">
-                    <Music size={12} />
-                    <span>{musicVerses[index % musicVerses.length]}</span>
+                      <div className="meta-row">
+                        <div className="meta-pill">
+                          <User size={14} />
+                          <span>{choir.leaderName}</span>
+                        </div>
+                        <div className="meta-pill">
+                          <Users size={14} />
+                          <span>{choir.membersCount} Voices</span>
+                        </div>
+                      </div>
+
+                      <p className="choir-excerpt">
+                        {choir.description || "Leading the congregation in spiritual worship through the gift of song."}
+                      </p>
+
+                      <div className="details-actions">
+                        {choir.videoUrl && (
+                          <motion.a 
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            href={choir.videoUrl} 
+                            target="_blank" 
+                            className="yt-btn-modern"
+                          >
+                            <Youtube size={18} />
+                            <span>YouTube</span>
+                          </motion.a>
+                        )}
+                        <div className="verse-snippet">
+                          <Quote size={12} />
+                          <span>{musicVerses[index % musicVerses.length]}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))
-          ) : (
-            <div className="choirs-empty-msg">No active choirs found.</div>
-          )}
+                </motion.div>
+              ))
+            ) : (
+              <div className="no-data">No choirs found.</div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
