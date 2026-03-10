@@ -9,12 +9,40 @@ export const getAllChoirs = async () => {
 };
 
 export const createChoir = async (data) => {
-  const res = await axios.post(BASE, data);
+  const formData = new FormData();
+  for (const key in data) {
+    if (key === "choirPhoto") {
+      if (data[key] instanceof File) {
+        formData.append("choirPhoto", data[key]);
+      } else if (data[key]) {
+        formData.append("choirPhoto", data[key]);
+      }
+    } else {
+      formData.append(key, data[key]);
+    }
+  }
+  const res = await axios.post(BASE, formData, { 
+    headers: { "Content-Type": "multipart/form-data" } 
+  });
   return res.data;
 };
 
 export const updateChoir = async (id, data) => {
-  const res = await axios.put(`${BASE}/${id}`, data);
+  const formData = new FormData();
+  for (const key in data) {
+    if (key === "choirPhoto") {
+      if (data[key] instanceof File) {
+        formData.append("choirPhoto", data[key]);
+      } else if (data[key]) {
+        formData.append("choirPhoto", data[key]);
+      }
+    } else {
+      formData.append(key, data[key]);
+    }
+  }
+  const res = await axios.put(`${BASE}/${id}`, formData, { 
+    headers: { "Content-Type": "multipart/form-data" } 
+  });
   return res.data;
 };
 
