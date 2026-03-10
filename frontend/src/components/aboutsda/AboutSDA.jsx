@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import logo1 from "../../assets/images/logo1.jpeg";
+import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaLightbulb, FaGlobe, FaHistory, FaBookOpen } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 import './AboutSDA.css';
-import { FaBars, FaTimes } from 'react-icons/fa';
 
 const AboutSDA = () => {
   const [activeFaq, setActiveFaq] = useState(0);
@@ -10,6 +11,7 @@ const AboutSDA = () => {
   const faqData = [
     {
       question: "How do Adventists view faith and science?",
+      icon: <FaLightbulb />,
       content: [
         "Operate 118 universities with strong STEM programs",
         "Loma Linda researchers contribute to NASA studies",
@@ -18,6 +20,7 @@ const AboutSDA = () => {
     },
     {
       question: "Why keep Sabbath in the 21st century?",
+      icon: <FaHistory />,
       content: [
         "24-hour digital detox reduces stress",
         "Community building through fellowship",
@@ -26,6 +29,7 @@ const AboutSDA = () => {
     },
     {
       question: "What makes Adventist education unique?",
+      icon: <FaBookOpen />,
       content: [
         "Whole-person development",
         "Service learning opportunities",
@@ -34,6 +38,7 @@ const AboutSDA = () => {
     },
     {
       question: "How does Adventism approach social justice?",
+      icon: <FaGlobe />,
       content: [
         "Humanitarian work through ADRA",
         "Health advocacy and education",
@@ -42,109 +47,119 @@ const AboutSDA = () => {
     }
   ];
 
-  const toggleFaq = (index) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
-
   return (
-    <div className="sda-container">
-      <aside className={`sda-sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <button className="close-btn" onClick={() => setSidebarOpen(false)}>
-          <FaTimes size={22} />
+    <div className="sda-outer-wrapper">
+      <div className="sda-page-card">
+        
+        <aside className={`sda-sidebar ${sidebarOpen ? 'sidebar-active' : ''}`}>
+          <button className="sidebar-close-btn" onClick={() => setSidebarOpen(false)}>
+            <FaTimes />
+          </button>
+          
+          <div className="sidebar-header">
+            <img src={logo1} alt="Logo" className="sidebar-logo-img" />
+            <h3>SDA GLOBAL</h3>
+          </div>
+
+          <nav className="sda-nav">
+            <a href="#history" className="sda-nav-item" onClick={() => setSidebarOpen(false)}>
+              <FaHistory className="nav-icon" /> <span>History</span>
+            </a>
+            <a href="#faq" className="sda-nav-item" onClick={() => setSidebarOpen(false)}>
+              <FaLightbulb className="nav-icon" /> <span>Frequent Q&A</span>
+            </a>
+            <a href="#video" className="sda-nav-item" onClick={() => setSidebarOpen(false)}>
+              <FaGlobe className="nav-icon" /> <span>Impact</span>
+            </a>
+          </nav>
+
+          <div className="sidebar-fact-card">
+            <div className="fact-badge">DID YOU KNOW?</div>
+            <p>Seventh-day Adventists observe the Sabbath on Saturday, emphasizing rest, worship, and family.</p>
+          </div>
+        </aside>
+
+        <button className="sda-mobile-trigger" onClick={() => setSidebarOpen(true)}>
+          <FaBars />
         </button>
-        <nav className="sidebar-nav">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#history" onClick={() => setSidebarOpen(false)}>History</a></li>
-            <li><a href="#faq" onClick={() => setSidebarOpen(false)}>Frequent Q&A</a></li>
-            <li><a href="#video" onClick={() => setSidebarOpen(false)}>Global Impact</a></li>
-            <li><a href="#mission" onClick={() => setSidebarOpen(false)}>Mission & Structure</a></li>
-          </ul>
-        </nav>
-        <div className="did-you-know">
-          <h4>Did You Know?</h4>
-          <p>Seventh-day Adventists observe the Sabbath on Saturday, emphasizing rest, worship, and family.</p>
-        </div>
-      </aside>
 
-      <button className="hamburger-btn" onClick={() => setSidebarOpen(true)}>
-        <FaBars size={22} />
-      </button>
+        <main className="sda-main-layout">
+          <header className="sda-hero-banner">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <div className="hero-badge">OFFICIAL OVERVIEW</div>
+              <h1>ABOUT SEVENTH DAY <span className="highlight">ADVENTIST</span></h1>
+              <p className="bible-verse">"Come now, let us reason together" — Isaiah 1:18</p>
+            </motion.div>
+          </header>
 
-      <main className="sda-main">
-        <header className="sda-header">
-          <h1>ABOUT SEVENTH DAY ADVENTIST CHURCH (SDA)</h1>
-          <p className="bible-verse">"Come now, let us reason together" - Isaiah 1:18</p>
-          <p className="tagline">A faith that welcomes intellectual inquiry</p>
-        </header>
-
-        <section id="history" className="history-section">
-          <div className="history-grid">
-            <div className="history-image-container">
-              <img src={logo1} alt="SDA Logo" />
-            </div>
-            <div className="history-text">
-              <h2>HISTORY ABOUT SDA</h2>
-              <p>
-                The Seventh-day Adventist Church emerged from the Great Awakening movements of the 19th century, 
-                when young Bible students began questioning mainstream interpretations of Scripture.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="faq" className="faq-section">
-          <h2>FREQUENT Q&A</h2>
-          <div className="accordion">
-            {faqData.map((item, index) => (
-              <div key={index} className={`accordion-item ${activeFaq === index ? 'active' : ''}`}>
-                <button className="accordion-header" onClick={() => toggleFaq(index)}>
-                  {item.question}
-                  <span className="icon">{activeFaq === index ? '-' : '+'}</span>
-                </button>
-                {activeFaq === index && (
-                  <div className="accordion-body">
-                    <ul>
-                      {item.content.map((line, i) => (
-                        <li key={i}>{line}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+          <div className="sda-content-padding">
+            <section id="history" className="history-modern-section">
+              <div className="history-flex">
+                <div className="history-image-box">
+                  <img src={logo1} alt="SDA Heritage" />
+                  <div className="image-overlay-glow"></div>
+                </div>
+                <div className="history-content-text">
+                  <h2 className="section-title">THE HERITAGE</h2>
+                  <p>The Seventh-day Adventist Church emerged from the Great Awakening movements of the 19th century, when young Bible students began questioning mainstream interpretations of Scripture.</p>
+                  <button className="learn-more-btn">Read Full Story</button>
+                </div>
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        <section id="video" className="video-section">
-            <h3>The Adventist Story</h3>
-            <div className="video-responsive">
-                <iframe 
+            <section id="faq" className="faq-modern-section">
+              <h2 className="section-title text-center">FREQUENT Q&A</h2>
+              <div className="accordion-group">
+                {faqData.map((item, index) => (
+                  <div key={index} className={`faq-card ${activeFaq === index ? 'faq-active' : ''}`}>
+                    <button className="faq-trigger" onClick={() => setActiveFaq(activeFaq === index ? null : index)}>
+                      <span className="faq-q-text">{item.icon} {item.question}</span>
+                      {activeFaq === index ? <FaChevronUp /> : <FaChevronDown />}
+                    </button>
+                    <AnimatePresence>
+                      {activeFaq === index && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="faq-answer"
+                        >
+                          <ul className="faq-list">
+                            {item.content.map((line, i) => <li key={i}>{line}</li>)}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section id="video" className="video-modern-section">
+              <div className="video-container-card">
+                <h3 className="video-title">The Adventist Story</h3>
+                <div className="video-frame-wrapper">
+                  <iframe 
                     src="https://www.youtube.com/embed/Ezd2BdtkLX0" 
                     title="YouTube video player" 
                     frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowFullScreen>
-                </iframe>
-            </div>
-        </section>
+                  </iframe>
+                </div>
+              </div>
+            </section>
+          </div>
 
-        <section id="mission" className="mission-section">
-            <h2>Mission & Church Structure</h2>
-            <div className="mission-content">
-                <p>The mission of the SDA Church is to proclaim the everlasting gospel of Jesus Christ to all people, teaching biblical principles and promoting a healthy, balanced lifestyle.</p>
-                <ul>
-                    <li>Global organizational structure</li>
-                    <li>Emphasis on youth and community programs</li>
-                    <li>Active missionary work worldwide</li>
-                </ul>
-            </div>
-        </section>
-      </main>
-
-      <div className="right-branding">
-        <img src={logo1} alt="SDA Logo" />
-        <p>MMUSDA</p>
+          <footer className="sda-footer-branding">
+             <div className="footer-logo-wrap">
+                <img src={logo1} alt="MMUSDA" />
+                <div>
+                  <h4>MMUSDA</h4>
+                  <p>Building Faith, Serving Humanity</p>
+                </div>
+             </div>
+          </footer>
+        </main>
       </div>
     </div>
   );
