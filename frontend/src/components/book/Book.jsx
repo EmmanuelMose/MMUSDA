@@ -1,95 +1,147 @@
 import React from 'react';
+import { BookOpen, Target, History, BookMarked, Globe, Quote, Library, ArrowRight, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import './Books.css';
 
 const Books = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  };
+
   return (
-    <div className="books-page">
+    <div className="books-outer-wrapper">
+      <div className="books-page-card">
+        <header className="books-slim-hero">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="slim-hero-content"
+          >
+            <motion.div 
+              className="mini-badge"
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 140, 0, 0.25)" }}
+            >
+              <Sparkles size={16} />
+              <span>MMUSDA MINISTRY</span>
+            </motion.div>
+            <h1 className="slim-title">LITERATURE <span className="highlight">MINISTRY</span></h1>
+            <p className="hero-subtitle">Sharing truth through the power of the printed page</p>
+          </motion.div>
+        </header>
 
-      <header className="books-header">
-        <div className="books-hero">
-          <h1>Literature Ministry Department</h1>
-          <p className="subtitle">"Fulfilling the great commission through the printed page"</p>
-        </div>
-      </header>
+        <motion.div 
+          className="books-content-area"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.section variants={itemVariants} className="intro-stripe">
+            <div className="text-content">
+              <h2 className="section-display-name">Who Are We?</h2>
+              <p className="section-excerpt">
+                The Literature Ministry Department of Masinde Muliro University SDA Church is part of a global network 
+                committed to evangelism through printed and digital materials. Inspired by the three angels' message, 
+                we provide gospel-centered resources to church members and the community.
+              </p>
+              <div className="meta-row">
+                <motion.div whileHover={{ y: -3 }} className="meta-pill">
+                  <Target size={14} />
+                  <span>Hope & Salvation</span>
+                </motion.div>
+                <motion.div whileHover={{ y: -3 }} className="meta-pill">
+                  <Globe size={14} />
+                  <span>Global Network</span>
+                </motion.div>
+              </div>
+            </div>
+          </motion.section>
 
-      <div className="books-content">
+          <div className="info-grid">
+            <motion.div 
+              variants={itemVariants}
+              whileHover={{ y: -8, boxShadow: "0 20px 30px -10px rgba(0,0,0,0.1)" }}
+              className="glass-card"
+            >
+              <div className="card-head">
+                <div className="icon-circle">
+                  <History size={20} />
+                </div>
+                <h3>Historical Foundation</h3>
+              </div>
+              <p>Dating back to 1849 with James White's "The Present Truth," MMUSDA's chapter began in 2012, spreading the gospel one page at a time under divine guidance.</p>
+              <div className="verse-snippet">
+                <Quote size={12} />
+                <span>"No better witness than inspired text."</span>
+              </div>
+            </motion.div>
 
-        <section className="vision-mission-grid">
-          <div className="info-card animate-slide-up">
-            <h3>Vision</h3>
-            <p>Reach every home and heart with the message of hope and salvation through SDA literature.</p>
+            <motion.div 
+              variants={itemVariants}
+              whileHover={{ y: -8, boxShadow: "0 20px 30px -10px rgba(0,0,0,0.1)" }}
+              className="glass-card"
+            >
+              <div className="card-head">
+                <div className="icon-circle">
+                  <BookMarked size={20} />
+                </div>
+                <h3>What We Do</h3>
+              </div>
+              <ul className="interactive-list">
+                <motion.li whileHover={{ x: 5 }}><span>📖</span> Literature Distribution</motion.li>
+                <motion.li whileHover={{ x: 5 }}><span>🛠️</span> Member Training</motion.li>
+                <motion.li whileHover={{ x: 5 }}><span>🤝</span> Outreach Support</motion.li>
+                <motion.li whileHover={{ x: 5 }}><span>💻</span> Digital Access</motion.li>
+              </ul>
+            </motion.div>
           </div>
-          <div className="info-card animate-slide-up">
-            <h3>Mission</h3>
-            <p>Mobilize and equip members to share truth-filled literature that transforms lives.</p>
-          </div>
-        </section>
 
-        <section className="text-section">
-          <h2>Who Are We?</h2>
-          <p>The Literature Ministry Department of Masinde Muliro University SDA Church is part of a global network committed to evangelism through printed and digital materials. Inspired by the three angels' message, we provide gospel-centered resources to church members and the community.</p>
+          <motion.section variants={itemVariants} className="cta-stripe">
+            <motion.div 
+              className="importance-box"
+              whileHover={{ scale: 1.01 }}
+            >
+              <div className="importance-content">
+                <Quote className="quote-icon" size={40} />
+                <p>"If there is one work more important than another, it is that of getting our publications before the people."</p>
+                <cite>— Ellen G. White, The Publishing Ministry</cite>
+              </div>
+            </motion.div>
 
-          <div className="historical-box animate-slide-up">
-            <h2>Historical Foundation</h2>
-            <p>The literature ministry dates back to the 1840s. Elder James White published <i>The Present Truth</i> in 1849, laying the foundation for Adventist publishing.</p>
-            <p>MMUSDA's literature ministry began in 2012, spreading the gospel one page at a time under divine guidance.</p>
-            <p className="scripture-quote">"There is no better witness of Christ than the inspired text of scripture."</p>
-          </div>
-        </section>
-
-        <section className="list-grid">
-          <div className="list-card animate-slide-up">
-            <h3>What We Do</h3>
-            <ul>
-              <li>📖 Literature Distribution: Books, tracts, and Bible studies sharing hope and healing.</li>
-              <li>🛠️ Training: Equip members to become literature evangelists.</li>
-              <li>🤝 Outreach Support: Partner with departments for evangelism events.</li>
-              <li>💻 Digital Access: Promote online materials and social media outreach.</li>
-            </ul>
-          </div>
-
-          <div className="list-card animate-slide-up">
-            <h3>Goals & Objectives</h3>
-            <ul>
-              <li>Revive literature evangelism in the church.</li>
-              <li>Encourage members to be literature missionaries.</li>
-              <li>Nurture spiritual growth through inspired writings.</li>
-              <li>Reach unreached communities with Christ-centered messages.</li>
-              <li>Support youth through summer literature programs.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="involvement-section animate-slide-up">
-          <h2>How You Can Get Involved</h2>
-          <div className="involvement-chips">
-            <span>Share a tract daily</span>
-            <span>Volunteer for workshops</span>
-            <span>Support through prayer</span>
-            <span>Donate materials</span>
-            <span>Pray for open hearts</span>
-          </div>
-        </section>
-
-        <section className="cta-section">
-          <div className="importance-box animate-slide-up">
-            <h3>Why It Still Matters</h3>
-            <p>A printed book or tract can speak to a soul when words cannot. This ministry remains one of the most effective outreach channels today.</p>
-            <blockquote>
-              "If there is one work more important than another, it is that of getting our publications before the people."
-              <cite>— Ellen G. White, The Publishing Ministry</cite>
-            </blockquote>
-          </div>
-
-          <div className="online-library animate-slide-up">
-            <h2>Ellen G. White Books – Full Online Library</h2>
-            <p>Access the complete collection online through the official EGW Writings website.</p>
-            <a href="https://egwwritings.org/titles/books" target="_blank" rel="noopener noreferrer" className="browse-button">
-              📚 Browse All EGW Books
-            </a>
-          </div>
-        </section>
-
+            <div className="library-action">
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                <Library size={40} className="lib-icon" />
+              </motion.div>
+              <h3>Full Online Library</h3>
+              <p>Deepen your spiritual journey by accessing the complete collection through the official EGW Writings website.</p>
+              
+              <motion.a 
+                href="https://egwwritings.org/titles/books" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="interactive-btn"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span>Browse All EGW Books</span>
+                <ArrowRight size={18} className="btn-arrow" />
+              </motion.a>
+            </div>
+          </motion.section>
+        </motion.div>
       </div>
     </div>
   );
