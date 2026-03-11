@@ -32,37 +32,42 @@ export default function NewPassword() {
   };
 
   return (
-    <div className="auth-card">
-      <h2>Set New Password</h2>
-      {message && <p className="message">{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="password-container">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="New Password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-          <span className="show-hide" onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? "Hide" : "Show"}
-          </span>
-        </div>
-        <div className="password-container">
-          <input
-            type={showConfirm ? "text" : "password"}
-            placeholder="Confirm Password"
-            value={confirm}
-            onChange={(e) => setConfirm(e.target.value)}
-            required
-          />
-          <span className="show-hide" onClick={() => setShowConfirm(!showConfirm)}>
-            {showConfirm ? "Hide" : "Show"}
-          </span>
-        </div>
-        <button type="submit" disabled={loading}>{loading ? "Resetting..." : "Reset Password"}</button>
-      </form>
-      <button className="link-btn" onClick={() => window.history.back()}>Back</button>
+    <div className="auth-page">
+      <div className="auth-card">
+        <h1 className="panel-title">RESET PASSWORD PANEL</h1>
+        <h2>Set New Password</h2>
+        {message && <p className="message">{message}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>New Password</label>
+            <div className="password-box">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="New Password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                required
+              />
+              <span onClick={() => setShowPassword(!showPassword)}>{showPassword ? "Hide" : "Show"}</span>
+            </div>
+          </div>
+          <div className="input-group">
+            <label>Confirm Password</label>
+            <div className="password-box">
+              <input
+                type={showConfirm ? "text" : "password"}
+                placeholder="Confirm Password"
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                required
+              />
+              <span onClick={() => setShowConfirm(!showConfirm)}>{showConfirm ? "Hide" : "Show"}</span>
+            </div>
+          </div>
+          <button type="submit" className="register-btn" disabled={loading}>{loading ? "Resetting..." : "Reset Password"}</button>
+        </form>
+        <button className="link-btn" onClick={() => window.history.back()}>Back</button>
+      </div>
     </div>
   );
 }
