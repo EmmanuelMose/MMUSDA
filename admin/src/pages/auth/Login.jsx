@@ -34,6 +34,7 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <h1 className="panel-title">WELCOME TO MMUSDA ADMIN PANEL</h1>
         <h2>Login</h2>
 
         {message && <div className="message-banner">{message}</div>}

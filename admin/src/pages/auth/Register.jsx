@@ -1,10 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { APIDomain } from "../../utils/APIDomain";
 import "./Register.css";
 
 export default function Register(){
+
+const navigate = useNavigate()
 
 const [email,setEmail] = useState("")
 const [password,setPassword] = useState("")
@@ -33,6 +35,10 @@ password
 })
 
 setMessage(res.data.message)
+
+setTimeout(()=>{
+navigate(`/auth/verify?email=${email}`)
+},1500)
 
 }catch(err){
 
