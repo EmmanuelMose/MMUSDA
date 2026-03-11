@@ -88,6 +88,12 @@ export const adminDrawerData = [
     icon: FaHandHoldingUsd, 
     link: "offering" 
   },
+  {
+  id: "sermons",
+  name: "Sermons",
+  icon: FaBible,
+  link: "sermons"
+},
   { 
     id: "offeringdetails", 
     name: "OfferingDetails", 

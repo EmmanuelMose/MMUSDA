@@ -1,58 +1,82 @@
-// src/controllers/sermons.controller.js
-import SermonsService from '../sermons/sermons.service.js';
+import SermonsService from "../sermons/sermons.service.js";
 
 const SermonsController = {
-  // GET /api/sermons/initial
   getInitialSermons: async (req, res) => {
     try {
       const data = await SermonsService.getInitialSermons();
       res.json(data);
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to fetch initial sermons' });
+      res.status(500).json({ error: "Failed to fetch initial sermons" });
     }
   },
 
-  // GET /api/sermons/all
   getAllSermons: async (req, res) => {
     try {
       const data = await SermonsService.getAllSermons();
       res.json(data);
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to fetch all sermons' });
+      res.status(500).json({ error: "Failed to fetch sermons" });
     }
   },
 
-  // POST /api/sermons
   createSermon: async (req, res) => {
     try {
       const { title, sermonDate, videoUrl, description } = req.body;
+
       if (!title || !sermonDate) {
-        return res.status(400).json({ error: 'Title and sermonDate are required' });
+        return res.status(400).json({ error: "title and sermonDate are required" });
       }
-      const newSermon = await SermonsService.createSermon({ title, sermonDate, videoUrl, description });
-      res.status(201).json(newSermon);
+
+      const sermon = await SermonsService.createSermon({
+        title,
+        sermonDate,
+        videoUrl,
+        description
+      });
+
+      res.status(201).json(sermon);
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to create sermon' });
+      res.status(500).json({ error: "Failed to create sermon" });
     }
   },
 
-  // DELETE /api/sermons/:id
+  updateSermon: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { title, sermonDate, videoUrl, description } = req.body;
+
+      const updated = await SermonsService.updateSermon(parseInt(id), {
+        title,
+        sermonDate,
+        videoUrl,
+        description
+      });
+
+      if (!updated) {
+        return res.status(404).json({ error: "Sermon not found" });
+      }
+
+      res.json(updated);
+    } catch (err) {
+      res.status(500).json({ error: "Failed to update sermon" });
+    }
+  },
+
   deleteSermon: async (req, res) => {
     try {
       const { id } = req.params;
-      const result = await SermonsService.deleteSermon(parseInt(id));
-      if (result.rowCount === 0) {
-        return res.status(404).json({ error: 'Sermon not found' });
+
+      const deleted = await SermonsService.deleteSermon(parseInt(id));
+
+      if (!deleted) {
+        return res.status(404).json({ error: "Sermon not found" });
       }
-      res.json({ message: 'Sermon deleted successfully' });
+
+      res.json({ message: "Sermon deleted successfully" });
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to delete sermon' });
+      res.status(500).json({ error: "Failed to delete sermon" });
     }
-  },
+  }
 };
 
 export default SermonsController;

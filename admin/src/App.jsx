@@ -28,6 +28,7 @@ import OfferingDetails from "./components/offeringdetails/OfferingDetails";
 import Admins from "./components/admins/Admins";
 import Prayer from "./components/prayer/Prayer";
 import Choir from "./components/choir/Choir";
+import Sermons from "./components/sermons/Sermons";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -128,6 +129,10 @@ const router = createBrowserRouter([
       {
         path: "choirs",
         element: <Choir />,
+      },
+      {
+        path: "sermons",
+        element: <Sermons />,
       },
     ],
   },
