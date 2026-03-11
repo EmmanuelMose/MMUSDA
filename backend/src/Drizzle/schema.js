@@ -42,7 +42,7 @@ export const events = pgTable("events", {
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
   eventDate: date("event_date").notNull(),
-  photo: varchar("photo", { length: 5000 }).default(null), // URL of the image
+  photo: varchar("photo", { length: 5000 }).default(null), 
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });

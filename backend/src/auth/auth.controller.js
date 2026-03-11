@@ -39,6 +39,15 @@ export const requestReset = async (req, res) => {
   }
 };
 
+export const verifyReset = async (req, res) => {
+  try {
+    const result = await authService.verifyResetCode(req.body);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 export const resetPassword = async (req, res) => {
   try {
     const result = await authService.resetPassword(req.body);

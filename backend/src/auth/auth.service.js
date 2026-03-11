@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 
 const generateCode = () => Math.floor(100000 + Math.random() * 900000).toString();
 
+// --- Registration ---
 export const registerAdmin = async ({ email, password }) => {
   const admin = await db.select().from(admins).where(eq(admins.email, email)).limit(1);
   if (!admin.length) throw new Error("Email not registered in system");
@@ -58,6 +59,7 @@ export const verifyAdmin = async ({ email, code }) => {
   if (!registered.length) throw new Error("Registration record not found");
   if (registered[0].verificationCode !== code) throw new Error("Invalid verification code");
 
+  // --- Only for account verification, clear code ---
   await db.update(registeredAdmins)
     .set({ isVerified: true, verificationCode: null })
     .where(eq(registeredAdmins.registeredId, registered[0].registeredId));
@@ -65,6 +67,7 @@ export const verifyAdmin = async ({ email, code }) => {
   return { message: "Verification successful" };
 };
 
+// --- Login ---
 export const loginAdmin = async ({ email, password }) => {
   const admin = await db.select().from(admins).where(eq(admins.email, email)).limit(1);
   if (!admin.length) throw new Error("Admin not found");
@@ -95,6 +98,8 @@ export const loginAdmin = async ({ email, password }) => {
   };
 };
 
+// --- Password Reset Flow ---
+// Step 1: Request Reset
 export const requestPasswordReset = async ({ email }) => {
   const admin = await db.select().from(admins).where(eq(admins.email, email)).limit(1);
   if (!admin.length) throw new Error("Email not found");
@@ -119,6 +124,25 @@ export const requestPasswordReset = async ({ email }) => {
   return { message: "Reset code sent" };
 };
 
+// Step 2: Verify Reset Code (does NOT clear code)
+export const verifyResetCode = async ({ email, code }) => {
+  const admin = await db.select().from(admins).where(eq(admins.email, email)).limit(1);
+  if (!admin.length) throw new Error("Admin not found");
+
+  const adminId = admin[0].adminId;
+
+  const registered = await db.select()
+    .from(registeredAdmins)
+    .where(eq(registeredAdmins.adminId, adminId))
+    .limit(1);
+
+  if (!registered.length) throw new Error("Account not registered");
+  if (registered[0].verificationCode !== code) throw new Error("Invalid reset code");
+
+  return { message: "Code verified" }; // do not clear yet
+};
+
+// Step 3: Reset Password
 export const resetPassword = async ({ email, code, newPassword }) => {
   const admin = await db.select().from(admins).where(eq(admins.email, email)).limit(1);
   if (!admin.length) throw new Error("Email not found");
@@ -136,7 +160,7 @@ export const resetPassword = async ({ email, code, newPassword }) => {
   const hashed = await bcrypt.hash(newPassword, 10);
 
   await db.update(registeredAdmins)
-    .set({ password: hashed, verificationCode: null })
+    .set({ password: hashed, verificationCode: null }) // clear code AFTER successful reset
     .where(eq(registeredAdmins.registeredId, registered[0].registeredId));
 
   return { message: "Password reset successful" };
